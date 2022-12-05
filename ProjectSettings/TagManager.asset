@@ -11,8 +11,8 @@ TagManager:
   - 
   - Water
   - UI
-  - Player
-  - 
+  - Player_Body
+  - Player_Bullet
   - 
   - 
   - 
@@ -41,6 +41,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Player
+  - name: Player_Body
     uniqueID: 4018716385
+    locked: 0
+  - name: Player_Bullet
+    uniqueID: 1469125127
     locked: 0

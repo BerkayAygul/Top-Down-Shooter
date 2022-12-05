@@ -15,6 +15,8 @@ public class PlayerAttributes : MonoBehaviour
 
     public Animator playerAnimator;
 
+
+
     void Start()
     {
         playerCamera = Camera.main;
@@ -46,7 +48,6 @@ public class PlayerAttributes : MonoBehaviour
         Vector2 weaponOffset = new Vector2(mousePosition.x - screenPoint.x, mousePosition.y - screenPoint.y);
         float weaponAngle = Mathf.Atan2(weaponOffset.y, weaponOffset.x) * Mathf.Rad2Deg;
         playerWeaponHand.rotation = Quaternion.Euler(0, 0, weaponAngle);
-
         if(moveInput != Vector2.zero)
         {
             playerAnimator.SetBool("isPlayerMoving", true);
