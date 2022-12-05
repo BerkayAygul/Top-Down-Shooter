@@ -39,6 +39,9 @@ public class ServerLauncher : MonoBehaviourPunCallbacks
     public GameObject createNicknamePanel;
     public TMP_InputField nicknameInput;
     private bool hasSetNickname;
+
+    public string levelNameToPlay;
+    public GameObject startGameButton;
     void Start()
     {
         CloseMenus();
@@ -63,6 +66,8 @@ public class ServerLauncher : MonoBehaviourPunCallbacks
     {
         PhotonNetwork.JoinLobby();
         loadingText.text = "Joining Lobby...";
+
+        PhotonNetwork.AutomaticallySyncScene = true;
     }
 
     public override void OnJoinedLobby()
@@ -126,6 +131,15 @@ public class ServerLauncher : MonoBehaviourPunCallbacks
         roomNameText.text = PhotonNetwork.CurrentRoom.Name;
 
         ListAllPlayers();
+
+        if (PhotonNetwork.IsMasterClient)
+        {
+            startGameButton.SetActive(true);
+        }
+        else
+        {
+            startGameButton.SetActive(false);
+        }
     }
 
     public override void OnCreateRoomFailed(short returnCode, string message)
@@ -263,6 +277,22 @@ public class ServerLauncher : MonoBehaviourPunCallbacks
             CloseMenus();
             menuButtons.SetActive(true);
             hasSetNickname = true;
+        }
+    }
+
+    public void StartGame()
+    {
+        PhotonNetwork.LoadLevel(levelNameToPlay);
+    }
+    public override void OnMasterClientSwitched(Player newMasterClient)
+    {
+        if (PhotonNetwork.IsMasterClient)
+        {
+            startGameButton.SetActive(true);
+        }
+        else
+        {
+            startGameButton.SetActive(false);
         }
     }
 
