@@ -14,7 +14,7 @@ TagManager:
   - UI
   - Player_Body
   - Player_Bullet
-  - 
+  - Enemy_Projectile
   - 
   - 
   - 
@@ -47,4 +47,7 @@ TagManager:
     locked: 0
   - name: Player_Bullet
     uniqueID: 1469125127
+    locked: 0
+  - name: Enemy_Projectile
+    uniqueID: 169502241
     locked: 0

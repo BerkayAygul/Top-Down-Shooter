@@ -15,6 +15,8 @@ public class EnemyController : MonoBehaviour
     public int enemyHealth = 200;
 
     public GameObject hitEffect;
+
+
     void Update()
     {
         if(Vector3.Distance(transform.position, PlayerAttributes.instance.transform.position) < rangeToChasePlayer)
