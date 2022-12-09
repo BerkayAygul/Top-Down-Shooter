@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerAttributes : MonoBehaviour
 {
+    public static PlayerAttributes instance;
+
     public float moveSpeed;
     private Vector2 moveInput;
 
@@ -15,7 +17,10 @@ public class PlayerAttributes : MonoBehaviour
 
     public Animator playerAnimator;
 
-
+    private void Awake()
+    {
+        instance = this;
+    }
 
     void Start()
     {
