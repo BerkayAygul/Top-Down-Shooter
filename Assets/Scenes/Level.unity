@@ -421,7 +421,7 @@ GameObject:
   - component: {fileID: 691130443}
   m_Layer: 0
   m_Name: Enemy - Skeleton
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -505,6 +505,8 @@ MonoBehaviour:
   enemyRB: {fileID: 691130440}
   rangeToChasePlayer: 6
   skeletonAnimator: {fileID: 691130443}
+  enemyHealth: 150
+  hitEffect: {fileID: 8150682208409160637, guid: 8ed857aa4cac1d24db5d225978457151, type: 3}
 --- !u!95 &691130443
 Animator:
   serializedVersion: 4

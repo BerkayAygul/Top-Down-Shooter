@@ -9,6 +9,8 @@ public class PlayerProjectile : MonoBehaviour
 
     public GameObject projectileImpactEffect;
 
+    public int damageToGive = 50;
+
     void Update()
     {
         projectileRB.velocity = transform.right * projectileSpeed;
@@ -18,6 +20,11 @@ public class PlayerProjectile : MonoBehaviour
     {
         Instantiate(projectileImpactEffect, transform.position, transform.rotation);
         Destroy(gameObject);
+
+        if(collisionObject.tag == "Enemy")
+        {
+            collisionObject.GetComponent<EnemyController>().DamageEnemy(damageToGive);
+        }
     }
 
     private void OnBecameInvisible()

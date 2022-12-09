@@ -12,11 +12,9 @@ public class EnemyController : MonoBehaviour
 
     public Animator skeletonAnimator;
 
-    void Start()
-    {
-        
-    }
+    public int enemyHealth = 200;
 
+    public GameObject hitEffect;
     void Update()
     {
         if(Vector3.Distance(transform.position, PlayerAttributes.instance.transform.position) < rangeToChasePlayer)
@@ -49,5 +47,18 @@ public class EnemyController : MonoBehaviour
         {
             skeletonAnimator.SetBool("isSkeletonMoving", false);
         }
+    }
+
+    public void DamageEnemy(int damage)
+    {
+        enemyHealth -= damage;
+
+        Instantiate(hitEffect, transform.position, transform.rotation);
+
+        if(enemyHealth <= 0)
+        {
+            Destroy(gameObject);
+        }
+           
     }
 }
