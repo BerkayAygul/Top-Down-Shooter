@@ -218,10 +218,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy - Skeleton
       objectReference: {fileID: 0}
-    - target: {fileID: 2996410614592613702, guid: 4bb8a4219aa3cbb4ebfb325c65ba9cbe, type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
     - target: {fileID: 2996410614592613703, guid: 4bb8a4219aa3cbb4ebfb325c65ba9cbe, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -322,10 +318,6 @@ PrefabInstance:
     - target: {fileID: 7646298474353698961, guid: b84ccb4ed0ff49e429638c1994c95bd8, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 7646298474353698961, guid: b84ccb4ed0ff49e429638c1994c95bd8, type: 3}
-      propertyPath: m_Layer
-      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b84ccb4ed0ff49e429638c1994c95bd8, type: 3}

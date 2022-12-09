@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 2996410614592613705}
   - component: {fileID: 2996410614592613704}
   - component: {fileID: 2996410614592613707}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Enemy - Skeleton
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -202,6 +202,7 @@ MonoBehaviour:
   projectileObject: {fileID: 792493161297836614, guid: 99789675af2734c4d8262d7b61317135, type: 3}
   projectileFirePoint: {fileID: 2996410614559993235}
   timeBetweenShots: 1
+  shootRange: 10
 --- !u!1 &2996410615443219250
 GameObject:
   m_ObjectHideFlags: 0
