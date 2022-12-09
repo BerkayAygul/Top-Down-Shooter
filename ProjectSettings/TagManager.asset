@@ -13,9 +13,9 @@ TagManager:
   - Water
   - UI
   - Player_Body
-  - Player_Bullet
+  - Player_Projectile
+  - Enemy_Body
   - Enemy_Projectile
-  - 
   - 
   - 
   - 
@@ -48,6 +48,9 @@ TagManager:
   - name: Player_Bullet
     uniqueID: 1469125127
     locked: 0
-  - name: Enemy_Projectile
+  - name: Enemy_Body
     uniqueID: 169502241
+    locked: 0
+  - name: Enemy_Projectile
+    uniqueID: 3809394659
     locked: 0
