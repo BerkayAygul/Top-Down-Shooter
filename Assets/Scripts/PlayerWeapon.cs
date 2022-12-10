@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
-public class PlayerWeapon : MonoBehaviour
+public class PlayerWeapon : MonoBehaviourPunCallbacks
 {
     public GameObject projectileObject;
     public Transform projectileFirePoint;
@@ -10,16 +11,19 @@ public class PlayerWeapon : MonoBehaviour
     private float shotCounter = 1;
     void Update()
     {
-        if (shotCounter > 0)
+        if(photonView.IsMine)
         {
-            shotCounter -= Time.deltaTime;
-        }
-        else
-        {
-            if (Input.GetMouseButtonDown(0) || Input.GetMouseButton(0))
+            if (shotCounter > 0)
             {
-                Instantiate(projectileObject, projectileFirePoint.position, projectileFirePoint.rotation);
-                shotCounter = timeBetweenShots;
+                shotCounter -= Time.deltaTime;
+            }
+            else
+            {
+                if (Input.GetMouseButtonDown(0) || Input.GetMouseButton(0))
+                {
+                    Instantiate(projectileObject, projectileFirePoint.position, projectileFirePoint.rotation);
+                    shotCounter = timeBetweenShots;
+                }
             }
         }
     }
