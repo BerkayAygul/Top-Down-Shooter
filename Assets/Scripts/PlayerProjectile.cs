@@ -1,3 +1,4 @@
+using System;
 using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
@@ -12,7 +13,7 @@ public class PlayerProjectile : MonoBehaviourPunCallbacks
 
     public int damageToGive = 50;
 
-    void Update()
+    private void Start()
     {
         photonView.RPC("MoveProjectile", RpcTarget.All);
     }
@@ -39,7 +40,7 @@ public class PlayerProjectile : MonoBehaviourPunCallbacks
     [PunRPC]
     public void MoveProjectile()
     {
-        projectileRB.velocity = transform.right * projectileSpeed;
+        projectileRB.AddForce(transform.right * projectileSpeed*3,ForceMode2D.Impulse);
     }
 
     [PunRPC]
