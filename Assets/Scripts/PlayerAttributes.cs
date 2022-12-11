@@ -25,7 +25,7 @@ public class PlayerAttributes : MonoBehaviourPunCallbacks
 
     void Start()
     {
-        if(photonView.IsMine)
+        if (photonView.IsMine)
         {
             playerCamera = Camera.main;
         }

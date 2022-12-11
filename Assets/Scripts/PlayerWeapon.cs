@@ -21,10 +21,28 @@ public class PlayerWeapon : MonoBehaviourPunCallbacks
             {
                 if (Input.GetMouseButtonDown(0) || Input.GetMouseButton(0))
                 {
-                    Instantiate(projectileObject, projectileFirePoint.position, projectileFirePoint.rotation);
+                    InstantiatePlayerBullet();
                     shotCounter = timeBetweenShots;
                 }
             }
         }
+    }
+
+    /*
+    public void InstantiatePlayerBullet()
+    {
+        photonView.RPC("RPCInstantiatePlayerBullet", RpcTarget.All);
+    }
+
+    [PunRPC]
+    public void RPCInstantiatePlayerBullet()
+    {
+        PhotonNetwork.Instantiate(projectileObject.name, projectileFirePoint.position, projectileFirePoint.rotation);
+    }
+    */
+
+    public void InstantiatePlayerBullet()
+    {
+        PhotonNetwork.Instantiate(projectileObject.name, projectileFirePoint.position, projectileFirePoint.rotation);
     }
 }

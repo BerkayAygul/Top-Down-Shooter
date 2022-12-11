@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 2077253496077243865}
   - component: {fileID: 4739121994787236656}
   - component: {fileID: 7296094652494368642}
+  - component: {fileID: 6224909742937710517}
+  - component: {fileID: 7929688988205414286}
   m_Layer: 7
   m_Name: Player Projectile
   m_TagString: Untagged
@@ -102,6 +104,7 @@ MonoBehaviour:
   projectileSpeed: 7.5
   projectileRB: {fileID: 7296094652494368642}
   projectileImpactEffect: {fileID: 3644861423452807198, guid: 788dae8dc43d25b4d9932991e5b7b69c, type: 3}
+  damageToGive: 50
 --- !u!61 &4739121994787236656
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -149,3 +152,42 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &6224909742937710517
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4705656337214625592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 0
+  ObservedComponents:
+  - {fileID: 7929688988205414286}
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
+--- !u!114 &7929688988205414286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4705656337214625592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1

@@ -36,6 +36,11 @@ MonoBehaviour:
   RpcList:
   - ClickRpc
   - DestroyRpc
+  - DamageEnemy
+  - InstantiatePlayerBullet
+  - RPCInstantiatePlayerBullet
+  - MoveProjectile
+  - DestroyObject
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 0
