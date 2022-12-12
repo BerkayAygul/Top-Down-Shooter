@@ -1,5 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using Photon.Pun;
+using Photon.Realtime;
 using UnityEngine;
 
 public class EnemyController : MonoBehaviour
@@ -16,18 +20,11 @@ public class EnemyController : MonoBehaviour
 
     public GameObject hitEffect;
 
-
     void Update()
     {
-        if(Vector3.Distance(transform.position, PlayerAttributes.instance.transform.position) < rangeToChasePlayer)
-        {
-            moveDirection = PlayerAttributes.instance.transform.position - transform.position;
-        }
-        else
-        {
-            moveDirection = Vector3.zero;
-        }
-
+        moveDirection = GetNearestPlayer().position - transform.position;
+        
+        
         moveDirection.Normalize();
 
         enemyRB.velocity = moveDirection * moveSpeed;
@@ -62,5 +59,20 @@ public class EnemyController : MonoBehaviour
             Destroy(gameObject);
         }
            
+    }
+    
+    Transform GetNearestPlayer()
+    {
+        var players = UnityEngine.Object.FindObjectsOfType<PlayerAttributes>();
+        Transform nearestPlayer;
+        List<float> distances = new List<float>();
+        
+        for (int i = 0; i < players.Length; i++ )
+        {
+            distances.Add(Vector3.Distance(gameObject.transform.position, players[i].transform.position));
+        }
+        int index = distances.FindIndex(distance => distances.Min() == distance);// used Linq for getting the min distance value from distances list.
+        nearestPlayer = players[index].transform;
+        return nearestPlayer;
     }
 }
