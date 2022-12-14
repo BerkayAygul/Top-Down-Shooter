@@ -19,10 +19,23 @@ public class EnemyController : MonoBehaviour
     public int enemyHealth = 200;
 
     public GameObject hitEffect;
+    public static EnemyController instance;
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     void Update()
     {
-        moveDirection = GetNearestPlayer().position - transform.position;
+        if (GetDistance(GetNearestPlayer().transform) >= 4)
+        {
+            moveDirection = GetNearestPlayer().position - transform.position;
+        }
+        else
+        {
+            moveDirection = Vector2.zero;
+        }
         
         
         moveDirection.Normalize();
@@ -61,7 +74,7 @@ public class EnemyController : MonoBehaviour
            
     }
     
-    Transform GetNearestPlayer()
+    public Transform GetNearestPlayer()
     {
         var players = UnityEngine.Object.FindObjectsOfType<PlayerAttributes>();
         Transform nearestPlayer;
@@ -74,5 +87,10 @@ public class EnemyController : MonoBehaviour
         int index = distances.FindIndex(distance => distances.Min() == distance);// used Linq for getting the min distance value from distances list.
         nearestPlayer = players[index].transform;
         return nearestPlayer;
+    }
+
+    public float GetDistance(Transform playerTransform)
+    {
+        return Vector3.Distance(gameObject.transform.position, playerTransform.position);
     }
 }

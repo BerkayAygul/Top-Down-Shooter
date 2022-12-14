@@ -9,7 +9,7 @@ public class EnemyProjectile : MonoBehaviour
 
     void Start()
     {
-        projectileDirection = PlayerAttributes.instance.transform.position - transform.position;
+        projectileDirection = EnemyController.instance.GetNearestPlayer().position - transform.position;
         projectileDirection.Normalize();
     }
 
