@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class EnemyProjectile : MonoBehaviour
 {
+    private EnemyShooting _enemyShooting;
     public float projectileSpeed;
     private Vector3 projectileDirection;
 
     void Start()
     {
-        projectileDirection = EnemyController.instance.GetNearestPlayer().position - transform.position;
+        _enemyShooting = new EnemyShooting();
+        projectileDirection = _enemyShooting.GetNearestPlayer(gameObject).position - transform.position;
         projectileDirection.Normalize();
     }
 
