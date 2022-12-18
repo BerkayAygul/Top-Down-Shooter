@@ -28,7 +28,9 @@ public class PlayerProjectile : MonoBehaviourPunCallbacks
         if(collisionObject.tag == "Enemy")
         {
             //collisionObject.GetComponent<EnemyController>().DamageEnemy(damageToGive);
-            collisionObject.gameObject.GetPhotonView().RPC("DamageEnemy", RpcTarget.All, damageToGive);
+            //collisionObject.gameObject.GetPhotonView().RPC("DealDamage", RpcTarget.All, damageToGive);
+                EnemyController enemy = collisionObject.gameObject.GetComponent<EnemyController>();
+                enemy.TakeDamage(damageToGive);
         }
     }
 
