@@ -40,7 +40,7 @@ public class ItemDrop : MonoBehaviour
       GameObject droppedItem = GetDropItem();
       if (droppedItem != null)
       {
-         Instantiate(droppedItem);
+         Instantiate(droppedItem,transform.position,Quaternion.identity);
       }
    }
 }
