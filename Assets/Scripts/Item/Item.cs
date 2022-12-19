@@ -10,6 +10,7 @@ public class Item:MonoBehaviour
     public Sprite itemSprite;
     public Image itemImage;
     public int itemLevel;
+    public float itemDropChance;
     public ItemScriptable.RequiredClass requiredClass;
     public ItemScriptable.ItemRarity itemRarity;
     public ItemScriptable.ItemType itemType;

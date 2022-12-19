@@ -301,6 +301,7 @@ MonoBehaviour:
   itemSprite: {fileID: 0}
   itemImage: {fileID: 0}
   itemLevel: 0
+  itemDropChance: 40
   requiredClass: 0
   itemRarity: 0
   itemType: 0

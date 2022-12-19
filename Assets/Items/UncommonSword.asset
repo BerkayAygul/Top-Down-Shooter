@@ -16,6 +16,7 @@ MonoBehaviour:
   itemSprite: {fileID: 7482667652216324306, guid: 6b86befd1f966194ea2295e48da02491, type: 3}
   itemImage: {fileID: 2883834959676621773, guid: 4d0021a828433bc4aa4ef801a51638c9, type: 3}
   itemLevel: 1
+  itemDropChance: 40
   requiredClass: 1
   itemRarity: 1
   itemType: 0

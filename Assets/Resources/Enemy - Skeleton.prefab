@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: 2996410614592613707}
   - component: {fileID: 6683519168775596631}
   - component: {fileID: -8586681143491651164}
+  - component: {fileID: 3940931456583218475}
   m_Layer: 8
   m_Name: Enemy - Skeleton
   m_TagString: Enemy
@@ -194,6 +195,25 @@ MonoBehaviour:
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
   m_UseLocal: 1
+--- !u!114 &3940931456583218475
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2996410614592613702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e5c0d60cfe50344db33b133935ee0e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemList:
+  - {fileID: 5246945592806804052, guid: 9267531eb776588459adb4fe62d69560, type: 3}
+  - {fileID: 5246945592806804052, guid: 3066700acef66dc4aaaa5eb0752fbf69, type: 3}
+  - {fileID: 5246945592806804052, guid: 8dd5833f88bc59644bec2c4cb8aee11f, type: 3}
+  - {fileID: 5246945592806804052, guid: c2a0d59f35521af44ac549ff2fb5893d, type: 3}
+  - {fileID: 5246945592806804052, guid: a00ecabdd389b7541979b0de50c5930a, type: 3}
+  - {fileID: 5246945592806804052, guid: 1d1aacbaf95e08e4fb4474cb19d04c3e, type: 3}
 --- !u!1 &2996410614924873158
 GameObject:
   m_ObjectHideFlags: 0

@@ -19,6 +19,7 @@ public class ItemAttrubuteSetter : MonoBehaviour
         item.itemImage = itemScriptable.itemImage;
         item.itemSprite = itemScriptable.itemSprite;
         item.itemLevel = itemScriptable.itemLevel;
+        item.itemDropChance = itemScriptable.itemDropChance;
         item.requiredClass = itemScriptable.requiredClass;
     }
 }

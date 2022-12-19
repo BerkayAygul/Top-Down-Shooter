@@ -14,6 +14,7 @@ public class ItemScriptable : ScriptableObject
     public Sprite itemSprite;
     public Image itemImage;
     public int itemLevel;
+    public float itemDropChance;
     public RequiredClass requiredClass;
     public ItemRarity itemRarity;
     public ItemType itemType;
