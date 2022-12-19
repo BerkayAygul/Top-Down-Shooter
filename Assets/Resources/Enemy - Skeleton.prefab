@@ -87,7 +87,7 @@ MonoBehaviour:
   enemyRB: {fileID: 2996410614592613704}
   rangeToChasePlayer: 6
   skeletonAnimator: {fileID: 2996410614592613707}
-  enemyHealth: 150
+  enemyHealth: 200
   hitEffect: {fileID: 8150682208409160637, guid: 8ed857aa4cac1d24db5d225978457151, type: 3}
 --- !u!61 &2996410614592613705
 BoxCollider2D:

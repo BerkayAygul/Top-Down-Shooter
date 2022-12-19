@@ -21,6 +21,13 @@ public class EnemyController : MonoBehaviour
 
     public GameObject hitEffect;
 
+    private PhotonView pw;
+
+    private void Awake()
+    {
+        pw = GetComponent<PhotonView>();
+    }
+
     private void Start()
     {
         _enemyShooting = new EnemyShooting();
@@ -61,18 +68,22 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    public void DamageEnemy(int damage)
+    public void TakeDamage(int damage)
     {
         enemyHealth -= damage;
-
         Instantiate(hitEffect, transform.position, transform.rotation);
 
         if(enemyHealth <= 0)
         {
-            Destroy(gameObject);
-        }
-           
-    }
-    
+            enemyHealth = 0;
 
+            pw.RPC("DestroyObject", RpcTarget.All);
+        }
+    }
+
+    [PunRPC]
+    public void DestroyObject()
+    {
+        Destroy(gameObject);
+    }
 }

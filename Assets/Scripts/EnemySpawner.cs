@@ -18,7 +18,7 @@ public class EnemySpawner : MonoBehaviour
 
     void Start()
     {
-        if (PhotonNetwork.IsConnected)
+        if (PhotonNetwork.IsConnected && PhotonNetwork.IsMasterClient)
         {
             SpawnEnemy();
         }
@@ -26,7 +26,10 @@ public class EnemySpawner : MonoBehaviour
     
     public void SpawnEnemy()
     {
-        Transform spawnPoint = EnemySpawnManager.instance.GetSpawnPoint();
-        createdEnemy = PhotonNetwork.Instantiate(enemyPrefabs[enemyIndex].name, spawnPoint.position, spawnPoint.rotation);
+        for (enemyIndex = 0; enemyIndex < enemyPrefabs.Length; enemyIndex++)
+        {
+            Transform spawnPoint = EnemySpawnManager.instance.GetSpawnPoint();
+            createdEnemy = PhotonNetwork.Instantiate(enemyPrefabs[enemyIndex].name, spawnPoint.position, spawnPoint.rotation);
+        }
     }
 }
