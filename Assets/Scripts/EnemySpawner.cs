@@ -29,7 +29,7 @@ public class EnemySpawner : MonoBehaviour
         for (enemyIndex = 0; enemyIndex < enemyPrefabs.Length; enemyIndex++)
         {
             Transform spawnPoint = EnemySpawnManager.instance.GetSpawnPoint();
-            createdEnemy = PhotonNetwork.Instantiate(enemyPrefabs[enemyIndex].name, spawnPoint.position, spawnPoint.rotation);
+            createdEnemy = PhotonNetwork.InstantiateRoomObject(enemyPrefabs[enemyIndex].name, spawnPoint.position, spawnPoint.rotation);
         }
     }
 }
