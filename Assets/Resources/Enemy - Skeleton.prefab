@@ -47,6 +47,7 @@ GameObject:
   - component: {fileID: 6683519168775596631}
   - component: {fileID: -8586681143491651164}
   - component: {fileID: 3940931456583218475}
+  - component: {fileID: 4781969752282364260}
   m_Layer: 8
   m_Name: Enemy - Skeleton
   m_TagString: Enemy
@@ -172,7 +173,7 @@ MonoBehaviour:
   Group: 0
   prefixField: -1
   Synchronization: 3
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   observableSearch: 0
   ObservedComponents:
   - {fileID: -8586681143491651164}
@@ -214,6 +215,18 @@ MonoBehaviour:
   - {fileID: 5246945592806804052, guid: c2a0d59f35521af44ac549ff2fb5893d, type: 3}
   - {fileID: 5246945592806804052, guid: a00ecabdd389b7541979b0de50c5930a, type: 3}
   - {fileID: 5246945592806804052, guid: 1d1aacbaf95e08e4fb4474cb19d04c3e, type: 3}
+--- !u!114 &4781969752282364260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2996410614592613702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2304b3e1e9daea94b99b889b79a06034, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2996410614924873158
 GameObject:
   m_ObjectHideFlags: 0
