@@ -40,7 +40,7 @@ public class ItemDrop : MonoBehaviour
       GameObject droppedItem = GetDropItem();
       if (droppedItem != null)
       {
-         Instantiate(droppedItem,transform.position,Quaternion.identity);
+         PhotonNetwork.Instantiate(droppedItem.name,transform.position,Quaternion.identity);
       }
    }
 }

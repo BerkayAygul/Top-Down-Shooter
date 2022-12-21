@@ -260,12 +260,13 @@ GameObject:
   - component: {fileID: 5246945592806804053}
   - component: {fileID: 4951185928336883281}
   - component: {fileID: 3935630067010271056}
-  - component: {fileID: -8786456903204299386}
-  - component: {fileID: -7720264713161276981}
-  - component: {fileID: -5846840365277652798}
-  - component: {fileID: -7519077651034084163}
+  - component: {fileID: -3928528792122315612}
+  - component: {fileID: 829705251476841037}
+  - component: {fileID: -6544429718610333367}
+  - component: {fileID: -5940621245328783914}
+  - component: {fileID: -8517710178944848360}
   m_Layer: 0
-  m_Name: LegendarySword
+  m_Name: ItemTemplate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -304,7 +305,7 @@ MonoBehaviour:
   itemSprite: {fileID: 0}
   itemImage: {fileID: 0}
   itemLevel: 0
-  itemDropChance: 5
+  itemDropChance: 0
   requiredClass: 0
   itemRarity: 0
   itemType: 0
@@ -324,9 +325,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4393547b8b9bbfe478cf18d97888b97e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemScriptable: {fileID: 11400000, guid: b40a60d46f444714eb5eb1d9a2573304, type: 2}
+  itemScriptable: {fileID: 11400000, guid: 56f66515dc6b61641adab74920918d9a, type: 2}
   item: {fileID: 4951185928336883281}
---- !u!114 &-8786456903204299386
+--- !u!114 &-3928528792122315612
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -338,7 +339,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7ccbbdd87c824649b96df53b786f90e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!50 &-7720264713161276981
+--- !u!50 &829705251476841037
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
@@ -359,7 +360,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!61 &-5846840365277652798
+--- !u!61 &-6544429718610333367
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -385,7 +386,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &-7519077651034084163
+--- !u!114 &-5940621245328783914
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -397,7 +398,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8ef7fb3920b2a54daf50404ba2b22c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventoryItem: {fileID: 4951185928336883281}
+--- !u!114 &-8517710178944848360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5246945592806804052}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &6588224439178379758
 GameObject:
   m_ObjectHideFlags: 0
