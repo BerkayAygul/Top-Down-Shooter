@@ -20,7 +20,8 @@ public class PlayerProjectile : MonoBehaviourPunCallbacks
 
     private void OnTriggerEnter2D(Collider2D collisionObject)
     {
-        Instantiate(projectileImpactEffect, transform.position, transform.rotation);
+        //photonView.RPC("InstantiateEffect", RpcTarget.All);
+        PhotonNetwork.Instantiate(projectileImpactEffect.name, transform.position, transform.rotation);
         Destroy(gameObject);
 
         photonView.RPC("DestroyObject", RpcTarget.All);
@@ -47,5 +48,11 @@ public class PlayerProjectile : MonoBehaviourPunCallbacks
     public void DestroyObject()
     {
         Destroy(gameObject);
+    }
+
+    [PunRPC]
+    public void InstantiateEffect()
+    {
+        Instantiate(projectileImpactEffect, transform.position, transform.rotation);
     }
 }

@@ -21,6 +21,8 @@ public class PlayerAttributes : MonoBehaviourPunCallbacks
     public int playerMaxHeatlh = 200;
     public int playerCurrentHealth;
 
+    public GameObject hitEffect;
+
     private void Awake()
     {
         instance = this;
@@ -81,6 +83,7 @@ public class PlayerAttributes : MonoBehaviourPunCallbacks
         if(photonView.IsMine)
         {
             playerCurrentHealth -= damage;
+            photonView.RPC("InstantiateEffect", RpcTarget.All);
 
             if (playerCurrentHealth <= 0)
             {
@@ -88,5 +91,11 @@ public class PlayerAttributes : MonoBehaviourPunCallbacks
                 PlayerSpawner.instance.Die();
             }
         }
+    }
+
+    [PunRPC]
+    public void InstantiateEffect()
+    {
+        Instantiate(hitEffect, transform.position, transform.rotation);
     }
 }

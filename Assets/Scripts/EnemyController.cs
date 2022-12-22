@@ -76,7 +76,8 @@ public class EnemyController : MonoBehaviourPunCallbacks
         if (pw.IsMine)
         {
             currentEnemyHealth -= damage;
-            Instantiate(hitEffect, transform.position, transform.rotation);
+
+            PhotonNetwork.Instantiate(hitEffect.name, transform.position, transform.rotation);
 
             if (currentEnemyHealth <= 0)
             {
