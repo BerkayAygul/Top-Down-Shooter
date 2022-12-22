@@ -17,6 +17,9 @@ public class PlayerAttributes : MonoBehaviourPunCallbacks
     private Camera playerCamera;
 
     public Animator playerAnimator;
+  
+    public int playerMaxHeatlh = 200;
+    public int playerCurrentHealth;
 
     private void Awake()
     {
@@ -29,6 +32,8 @@ public class PlayerAttributes : MonoBehaviourPunCallbacks
         {
             playerCamera = Camera.main;
         }
+
+        playerCurrentHealth = playerMaxHeatlh;
     }
 
     void Update()
@@ -66,6 +71,21 @@ public class PlayerAttributes : MonoBehaviourPunCallbacks
             else
             {
                 playerAnimator.SetBool("isPlayerMoving", false);
+            }
+        }
+    }
+
+    [PunRPC]
+    public void TakeDamage(int damage)
+    {
+        if(photonView.IsMine)
+        {
+            playerCurrentHealth -= damage;
+
+            if (playerCurrentHealth <= 0)
+            {
+                playerCurrentHealth = 0;
+                PlayerSpawner.instance.Die();
             }
         }
     }

@@ -435,6 +435,8 @@ MonoBehaviour:
   playerRB: {fileID: 7646298474353698967}
   playerWeaponHand: {fileID: 7646298473996126164}
   playerAnimator: {fileID: 7646298474353698964}
+  playerMaxHeatlh: 1000
+  playerCurrentHealth: 0
 --- !u!95 &7646298474353698964
 Animator:
   serializedVersion: 4

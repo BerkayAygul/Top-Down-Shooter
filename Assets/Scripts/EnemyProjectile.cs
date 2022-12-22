@@ -1,12 +1,15 @@
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyProjectile : MonoBehaviour
+public class EnemyProjectile : MonoBehaviourPunCallbacks
 {
     private EnemyShooting _enemyShooting;
     public float projectileSpeed;
     private Vector3 projectileDirection;
+
+    public int damageToGive = 50;
 
     void Start()
     {
@@ -24,7 +27,11 @@ public class EnemyProjectile : MonoBehaviour
     {
         if(collisionObject.tag == "Player")
         {
-
+            PlayerAttributes player = collisionObject.gameObject.GetComponent<PlayerAttributes>();
+            if (player.photonView.IsMine)
+            {
+                player.photonView.RPC("TakeDamage", RpcTarget.All, damageToGive);
+            }
         }
         Destroy(gameObject);
     }
