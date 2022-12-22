@@ -83,7 +83,7 @@ public class PlayerAttributes : MonoBehaviourPunCallbacks
         if(photonView.IsMine)
         {
             playerCurrentHealth -= damage;
-            photonView.RPC("InstantiateEffect", RpcTarget.All);
+            PhotonNetwork.Instantiate(hitEffect.name, transform.position, transform.rotation);
 
             if (playerCurrentHealth <= 0)
             {
@@ -91,11 +91,5 @@ public class PlayerAttributes : MonoBehaviourPunCallbacks
                 PlayerSpawner.instance.Die();
             }
         }
-    }
-
-    [PunRPC]
-    public void InstantiateEffect()
-    {
-        Instantiate(hitEffect, transform.position, transform.rotation);
     }
 }
