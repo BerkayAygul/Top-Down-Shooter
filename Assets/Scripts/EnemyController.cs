@@ -6,7 +6,7 @@ using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine;
 
-public class EnemyController : MonoBehaviour
+public class EnemyController : MonoBehaviourPunCallbacks
 {
     private EnemyShooting _enemyShooting;
     public float moveSpeed;
@@ -17,11 +17,12 @@ public class EnemyController : MonoBehaviour
 
     public Animator skeletonAnimator;
 
-    public int enemyHealth = 200;
+    public int enemyMaxHealth = 200;
+    public int currentEnemyHealth;
 
     public GameObject hitEffect;
 
-    private PhotonView pw;
+    public PhotonView pw;
 
     private void Awake()
     {
@@ -31,6 +32,7 @@ public class EnemyController : MonoBehaviour
     private void Start()
     {
         _enemyShooting = new EnemyShooting();
+        currentEnemyHealth = enemyMaxHealth;
     }
 
     void Update()
@@ -68,22 +70,25 @@ public class EnemyController : MonoBehaviour
         }
     }
 
+    [PunRPC]
     public void TakeDamage(int damage)
     {
-        enemyHealth -= damage;
-        Instantiate(hitEffect, transform.position, transform.rotation);
-
-        if(enemyHealth <= 0)
+        if (pw.IsMine)
         {
-            enemyHealth = 0;
+            currentEnemyHealth -= damage;
+            Instantiate(hitEffect, transform.position, transform.rotation);
 
-            pw.RPC("DestroyObject", RpcTarget.All);
+            if (currentEnemyHealth <= 0)
+            {
+                currentEnemyHealth = 0;
+
+                DestroyObject();
+            }
         }
     }
 
-    [PunRPC]
     public void DestroyObject()
     {
-        Destroy(gameObject);
+        PhotonNetwork.Destroy(gameObject);
     }
 }
