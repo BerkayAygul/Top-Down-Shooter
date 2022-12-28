@@ -508,6 +508,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventory: {fileID: 11400000, guid: d55aab9c06a157843b82832bc1ee29e9, type: 2}
+  itemImage: {fileID: 0}
 --- !u!1 &7646298474693082323
 GameObject:
   m_ObjectHideFlags: 0

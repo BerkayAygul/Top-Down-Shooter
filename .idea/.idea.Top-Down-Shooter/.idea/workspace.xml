@@ -13,6 +13,8 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/InventoryGameUpdate.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/InventoryUIController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/EnemyShooting.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Item/ItemDrop.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Item/ItemMovement.cs" root0="FORCE_HIGHLIGHTING" />
@@ -90,6 +92,7 @@
       <workItem from="1670789129118" duration="3204000" />
       <workItem from="1670875475137" duration="3027000" />
       <workItem from="1671445904658" duration="3751000" />
+      <workItem from="1672254920748" duration="9087000" />
     </task>
     <servers />
   </component>

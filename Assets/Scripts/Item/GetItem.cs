@@ -6,6 +6,7 @@ using UnityEngine;
 public class GetItem : MonoBehaviour
 {
     private InventoryItem inventoryItem;
+    public GameObject inventory;
     private int count = 1;
 
     private void Start()
@@ -21,8 +22,15 @@ public class GetItem : MonoBehaviour
             {
                 CreateItemForInventory(inventoryItem);
             }
-            col.GetComponent<InventoryController>().inventory.AddItem(inventoryItem,count);
-             
+
+            if (col.GetComponent<InventoryController>().inventory.items.Count <= 21)
+            {
+                col.GetComponent<InventoryController>().inventory.AddItem(inventoryItem,count);
+            }
+            else
+            {
+                Debug.Log("Not enough space in inventory!!");
+            }
             Destroy(gameObject);
         }
     }
