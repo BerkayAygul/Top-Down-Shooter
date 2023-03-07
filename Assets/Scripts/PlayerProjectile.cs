@@ -20,15 +20,18 @@ public class PlayerProjectile : MonoBehaviourPunCallbacks
 
     private void OnTriggerEnter2D(Collider2D collisionObject)
     {
-        PhotonNetwork.Instantiate(projectileImpactEffect.name, transform.position, transform.rotation);
-        Destroy(gameObject);
+        if(photonView.IsMine)
+        {
+            PhotonNetwork.Instantiate(projectileImpactEffect.name, transform.position, transform.rotation);
+            Destroy(gameObject);
 
-        photonView.RPC("DestroyObject", RpcTarget.All);
+            photonView.RPC("DestroyObject", RpcTarget.All);
 
-        if(collisionObject.tag == "Enemy")
-        {                
-            EnemyController enemy = collisionObject.gameObject.GetComponent<EnemyController>();;
-            enemy.pw.RPC("TakeDamage", RpcTarget.All, damageToGive);
+            if (collisionObject.tag == "Enemy")
+            {
+                EnemyController enemy = collisionObject.gameObject.GetComponent<EnemyController>(); ;
+                enemy.pw.RPC("TakeDamage", RpcTarget.All, damageToGive, PhotonNetwork.LocalPlayer.ActorNumber);
+            }
         }
     }
 

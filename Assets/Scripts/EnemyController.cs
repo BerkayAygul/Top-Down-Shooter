@@ -71,7 +71,7 @@ public class EnemyController : MonoBehaviourPunCallbacks
     }
 
     [PunRPC]
-    public void TakeDamage(int damage)
+    public void TakeDamage(int damage, int damagerPlayerActorNumber)
     {
         if (pw.IsMine)
         {
@@ -83,7 +83,11 @@ public class EnemyController : MonoBehaviourPunCallbacks
             {
                 currentEnemyHealth = 0;
 
+                MatchManager.instance.UpdateStatsEventSend(damagerPlayerActorNumber, 0, 1);
+
                 DestroyObject();
+
+
             }
         }
     }
