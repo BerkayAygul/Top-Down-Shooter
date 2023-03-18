@@ -8,8 +8,16 @@ public class InventoryUIController : MonoBehaviour
     
     public void OpenInventory()
     {
-        UpdateInventory();
-        InventoryObject.gameObject.SetActive(true);
+        if(InventoryObject.activeInHierarchy == true)
+        {
+            CloseInventory();
+        }
+        else
+        {
+            UpdateInventory();
+            InventoryObject.gameObject.SetActive(true);
+        }
+       
     }
 
     public void CloseInventory()
