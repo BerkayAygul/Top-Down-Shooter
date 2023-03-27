@@ -76,8 +76,8 @@ public class EnemyController : MonoBehaviourPunCallbacks
     [PunRPC]
     public void TakeDamage(int damage, int damagerPlayerActorNumber)
     {
-        
-        if (pw.IsMine || pw.IsMine == false)
+        pw.ControllerActorNr = damagerPlayerActorNumber;
+        if (pw.IsMine)
         {
             currentEnemyHealth -= damage;
 
@@ -85,9 +85,10 @@ public class EnemyController : MonoBehaviourPunCallbacks
             if (currentEnemyHealth <= 0)
             {
                 currentEnemyHealth = 0;
-                
-                MatchManager.instance.UpdateStatsEventSend(damagerPlayerActorNumber, 0, 1);
                 RandomItemAddToPlayer(damagerPlayerActorNumber);
+                MatchManager.instance.UpdateStatsEventSend(damagerPlayerActorNumber, 0, 1);
+                
+                
                 DestroyObject();
             } 
         }
@@ -113,7 +114,6 @@ public class EnemyController : MonoBehaviourPunCallbacks
     }
     private void RandomItemAddToPlayer( int playerActorNumber)
     {
-        Debug.Log("Girdi LOOOOOOO");
         int randomNumber = Random.Range(1, 101);
         List<ItemScriptable> selectedItems = new List<ItemScriptable>();
         foreach (ItemScriptable item in possibleItems)
@@ -125,8 +125,10 @@ public class EnemyController : MonoBehaviourPunCallbacks
         }
         if (selectedItems.Count > 0)
         {
-            ItemScriptable droppedItem = selectedItems[Random.Range(0, selectedItems.Count-1)];
-            Inventory playerInventory = MatchManager.instance.inventories[playerActorNumber];
+            ItemScriptable droppedItem = selectedItems[Random.Range(0, selectedItems.Count-1)]; //select random item
+            
+            Inventory playerInventory = MatchManager.instance.inventories[playerActorNumber];//getting player's  inventory
+            
             GameObject itemaddText = Instantiate(MatchManager.instance.itemTextPrefab, MatchManager.instance.itemTextPanel.transform);
             itemaddText.transform.SetParent(MatchManager.instance.itemTextPanel.transform);
             itemaddText.GetComponent<TextMeshProUGUI>().text = GetPlayerName(playerActorNumber) + " isimli oyuncu " +
@@ -138,8 +140,11 @@ public class EnemyController : MonoBehaviourPunCallbacks
 
     public string GetPlayerName(int playerActorNumber)
     {
+        int i = 0;
         foreach (var playerInformation in MatchManager.instance.allPlayersList)
         {
+            i++;
+            
             if (playerInformation.playerActorNumber == playerActorNumber)
             {
                 return playerInformation.playerUsername;
