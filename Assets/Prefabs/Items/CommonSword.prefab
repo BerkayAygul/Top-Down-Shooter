@@ -297,18 +297,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01f710172b5a4a846b0b10536cb4d7e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemName: 
-  itemSprite: {fileID: 0}
+  itemName: Fenaitem
+  itemSprite: {fileID: 6954847684770999777, guid: ff04e4a59675fad49995a9d7f974bc3d, type: 3}
   itemImage: {fileID: 0}
-  itemLevel: 0
+  itemLevel: 2
   itemDropChance: 60
   requiredClass: 0
   itemRarity: 0
   itemType: 0
-  strenght: 0
-  vitality: 0
-  agility: 0
-  intelligent: 0
+  strenght: 2
+  vitality: 2
+  agility: 3
+  intelligent: 4
 --- !u!114 &3935630067010271056
 MonoBehaviour:
   m_ObjectHideFlags: 0

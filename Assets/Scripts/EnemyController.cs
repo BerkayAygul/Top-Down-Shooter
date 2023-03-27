@@ -4,7 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using Photon.Pun;
 using Photon.Realtime;
+using TMPro;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class EnemyController : MonoBehaviourPunCallbacks
 {
@@ -21,6 +23,7 @@ public class EnemyController : MonoBehaviourPunCallbacks
     public int currentEnemyHealth;
 
     public GameObject hitEffect;
+    public List<ItemScriptable> possibleItems;
 
     public PhotonView pw;
 
@@ -75,29 +78,48 @@ public class EnemyController : MonoBehaviourPunCallbacks
     [PunRPC]
     public void TakeDamage(int damage, int damagerPlayerActorNumber)
     {
+        pw.ControllerActorNr = damagerPlayerActorNumber;
         if (pw.IsMine)
         {
             currentEnemyHealth -= damage;
 
             PhotonNetwork.Instantiate(hitEffect.name, transform.position, transform.rotation);
-
             if (currentEnemyHealth <= 0)
             {
                 currentEnemyHealth = 0;
 
-                if(isBoss == false)
-                {
-                    MatchManager.instance.UpdateStatsEventSend(damagerPlayerActorNumber, 0, 1, false);
-                }
-                else
-                {
-                    MatchManager.instance.UpdateStatsEventSend(damagerPlayerActorNumber, 0, 1, true);
-                }
-                DestroyObject();
             }
         }
+        if (selectedItems.Count > 0)
+        {
+            ItemScriptable droppedItem = selectedItems[Random.Range(0, selectedItems.Count-1)]; //select random item
+            
+            Inventory playerInventory = MatchManager.instance.inventories[playerActorNumber];//getting player's  inventory
+            
+            GameObject itemaddText = Instantiate(MatchManager.instance.itemTextPrefab, MatchManager.instance.itemTextPanel.transform);
+            itemaddText.transform.SetParent(MatchManager.instance.itemTextPanel.transform);
+            itemaddText.GetComponent<TextMeshProUGUI>().text = GetPlayerName(playerActorNumber) + " isimli oyuncu " +
+                                                               droppedItem.itemName + " eşyasını düşürdü"; 
+            playerInventory.items.Add(ItemAttributeSetter(droppedItem));
+        }
+      
     }
 
+    public string GetPlayerName(int playerActorNumber)
+    {
+        int i = 0;
+        foreach (var playerInformation in MatchManager.instance.allPlayersList)
+        {
+            i++;
+            
+            if (playerInformation.playerActorNumber == playerActorNumber)
+            {
+                return playerInformation.playerUsername;
+            }
+        }
+
+        return "Bir hata ortaya cikti";
+    }
     public void DestroyObject()
     {
         PhotonNetwork.Destroy(gameObject);

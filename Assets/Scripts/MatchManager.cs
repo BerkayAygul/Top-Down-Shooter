@@ -4,12 +4,18 @@ using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
 using ExitGames.Client.Photon;
+using TMPro;
 
 public class MatchManager : MonoBehaviourPunCallbacks, IOnEventCallback
 {
     public static MatchManager instance;
 
     public List<PlayerInformation> allPlayersList = new List<PlayerInformation>();
+
+    public Dictionary< int,Inventory> inventories = new Dictionary<int,Inventory>(); //players inventories.
+
+    public GameObject itemTextPrefab;
+    public GameObject itemTextPanel;
 
     private int index;
 
@@ -40,6 +46,7 @@ public class MatchManager : MonoBehaviourPunCallbacks, IOnEventCallback
 
     void Start()
     {
+        
         if(!PhotonNetwork.IsConnected)
         {
             UnityEngine.SceneManagement.SceneManager.LoadScene(0);

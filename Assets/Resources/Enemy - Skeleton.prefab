@@ -91,6 +91,13 @@ MonoBehaviour:
   enemyMaxHealth: 200
   currentEnemyHealth: 0
   hitEffect: {fileID: 8150682208409160637, guid: 8ed857aa4cac1d24db5d225978457151, type: 3}
+  possibleItems:
+  - {fileID: 11400000, guid: 8634cc7d88c4a97489d3bd8ced554751, type: 2}
+  - {fileID: 11400000, guid: 97a58ce1be477d44a81f9e814950d982, type: 2}
+  - {fileID: 11400000, guid: b40a60d46f444714eb5eb1d9a2573304, type: 2}
+  - {fileID: 11400000, guid: c09888da7402b1f40abbf34357c407fd, type: 2}
+  - {fileID: 11400000, guid: 7705c792579882c4286d4d6b8956fe57, type: 2}
+  - {fileID: 11400000, guid: 6424a516cbfbf7745877e951bd40a799, type: 2}
   pw: {fileID: 0}
   isBoss: 0
 --- !u!61 &2996410614592613705
@@ -211,13 +218,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e5c0d60cfe50344db33b133935ee0e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemList:
-  - {fileID: 5246945592806804052, guid: 9267531eb776588459adb4fe62d69560, type: 3}
-  - {fileID: 5246945592806804052, guid: 3066700acef66dc4aaaa5eb0752fbf69, type: 3}
-  - {fileID: 5246945592806804052, guid: 8dd5833f88bc59644bec2c4cb8aee11f, type: 3}
-  - {fileID: 5246945592806804052, guid: c2a0d59f35521af44ac549ff2fb5893d, type: 3}
-  - {fileID: 5246945592806804052, guid: a00ecabdd389b7541979b0de50c5930a, type: 3}
-  - {fileID: 5246945592806804052, guid: 1d1aacbaf95e08e4fb4474cb19d04c3e, type: 3}
+  itemList: []
 --- !u!114 &4781969752282364260
 MonoBehaviour:
   m_ObjectHideFlags: 0
