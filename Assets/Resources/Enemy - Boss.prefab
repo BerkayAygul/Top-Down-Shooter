@@ -49,7 +49,7 @@ GameObject:
   - component: {fileID: 3940931456583218475}
   - component: {fileID: 4781969752282364260}
   m_Layer: 8
-  m_Name: Enemy - Skeleton
+  m_Name: Enemy - Boss
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -84,22 +84,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efc5c750f08fc214ba77ea786f2aa1a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 3
+  moveSpeed: 4
   enemyRB: {fileID: 2996410614592613704}
   rangeToChasePlayer: 6
   skeletonAnimator: {fileID: 2996410614592613707}
-  enemyMaxHealth: 200
+  enemyMaxHealth: 1000
   currentEnemyHealth: 0
   hitEffect: {fileID: 8150682208409160637, guid: 8ed857aa4cac1d24db5d225978457151, type: 3}
-  possibleItems:
-  - {fileID: 11400000, guid: 8634cc7d88c4a97489d3bd8ced554751, type: 2}
-  - {fileID: 11400000, guid: 97a58ce1be477d44a81f9e814950d982, type: 2}
-  - {fileID: 11400000, guid: b40a60d46f444714eb5eb1d9a2573304, type: 2}
-  - {fileID: 11400000, guid: c09888da7402b1f40abbf34357c407fd, type: 2}
-  - {fileID: 11400000, guid: 7705c792579882c4286d4d6b8956fe57, type: 2}
-  - {fileID: 11400000, guid: 6424a516cbfbf7745877e951bd40a799, type: 2}
   pw: {fileID: 0}
-  isBoss: 0
+  isBoss: 1
 --- !u!61 &2996410614592613705
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -218,7 +211,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e5c0d60cfe50344db33b133935ee0e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemList: []
+  itemList:
+  - {fileID: 5246945592806804052, guid: 9267531eb776588459adb4fe62d69560, type: 3}
+  - {fileID: 5246945592806804052, guid: 3066700acef66dc4aaaa5eb0752fbf69, type: 3}
+  - {fileID: 5246945592806804052, guid: 8dd5833f88bc59644bec2c4cb8aee11f, type: 3}
+  - {fileID: 5246945592806804052, guid: c2a0d59f35521af44ac549ff2fb5893d, type: 3}
+  - {fileID: 5246945592806804052, guid: a00ecabdd389b7541979b0de50c5930a, type: 3}
+  - {fileID: 5246945592806804052, guid: 1d1aacbaf95e08e4fb4474cb19d04c3e, type: 3}
 --- !u!114 &4781969752282364260
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -355,7 +354,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -7537196482120660328, guid: 02027016afbc5d544ab92ba819bc8094, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.15566039, b: 0.17972173, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

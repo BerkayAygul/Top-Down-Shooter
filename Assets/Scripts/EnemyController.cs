@@ -27,6 +27,8 @@ public class EnemyController : MonoBehaviourPunCallbacks
 
     public PhotonView pw;
 
+    public bool isBoss = false;
+
     private void Awake()
     {
         pw = GetComponent<PhotonView>();
@@ -85,42 +87,7 @@ public class EnemyController : MonoBehaviourPunCallbacks
             if (currentEnemyHealth <= 0)
             {
                 currentEnemyHealth = 0;
-                RandomItemAddToPlayer(damagerPlayerActorNumber);
-                MatchManager.instance.UpdateStatsEventSend(damagerPlayerActorNumber, 0, 1);
-                
-                
-                DestroyObject();
-            } 
-        }
-           
-        
-    }
-    public Item ItemAttributeSetter(ItemScriptable itemScriptable)
-    {
-        Item item = new Item();
-        item.agility = itemScriptable.agility;
-        item.strenght = itemScriptable.strenght;
-        item.intelligent = itemScriptable.intelligent;
-        item.vitality = itemScriptable.vitality;
-        item.itemName = itemScriptable.itemName;
-        item.itemRarity = itemScriptable.itemRarity;
-        item.itemType = itemScriptable.itemType;
-        item.itemImage = itemScriptable.itemImage;
-        item.itemSprite = itemScriptable.itemSprite;
-        item.itemLevel = itemScriptable.itemLevel;
-        item.itemDropChance = itemScriptable.itemDropChance;
-        item.requiredClass = itemScriptable.requiredClass;
-        return item;
-    }
-    private void RandomItemAddToPlayer( int playerActorNumber)
-    {
-        int randomNumber = Random.Range(1, 101);
-        List<ItemScriptable> selectedItems = new List<ItemScriptable>();
-        foreach (ItemScriptable item in possibleItems)
-        {
-            if (randomNumber <= item.itemDropChance)
-            {
-                selectedItems.Add(item);
+
             }
         }
         if (selectedItems.Count > 0)

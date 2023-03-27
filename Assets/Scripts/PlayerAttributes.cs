@@ -18,7 +18,7 @@ public class PlayerAttributes : MonoBehaviourPunCallbacks
 
     public Animator playerAnimator;
   
-    public int playerMaxHeatlh = 200;
+    public int playerMaxHealth = 1000;
     public int playerCurrentHealth;
 
     public GameObject hitEffect;
@@ -35,7 +35,10 @@ public class PlayerAttributes : MonoBehaviourPunCallbacks
             playerCamera = Camera.main;
         }
 
-        playerCurrentHealth = playerMaxHeatlh;
+        playerCurrentHealth = playerMaxHealth;
+
+        UIController.instance.healthSlider.maxValue = playerMaxHealth;
+        UIController.instance.healthSlider.value = playerMaxHealth;
     }
 
     void Update()
@@ -90,6 +93,8 @@ public class PlayerAttributes : MonoBehaviourPunCallbacks
                 playerCurrentHealth = 0;
                 PlayerSpawner.instance.Die();
             }
+
+            UIController.instance.healthSlider.value = playerCurrentHealth;
         }
     }
 }
