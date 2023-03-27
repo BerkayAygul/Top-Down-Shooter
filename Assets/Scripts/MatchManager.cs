@@ -22,6 +22,17 @@ public class MatchManager : MonoBehaviourPunCallbacks, IOnEventCallback
         UpdateStatsEvent
     }
 
+    public enum GameStates : byte
+    {
+        GameWaitingState,
+        GamePlayingState,
+        GameEndingState
+    }
+
+    public GameStates currentGameState = GameStates.GameWaitingState;
+
+    public float waitGameStateTime = 8f;
+
     private void Awake()
     {
         instance = this;
@@ -36,12 +47,14 @@ public class MatchManager : MonoBehaviourPunCallbacks, IOnEventCallback
         else
         {
             NewPlayerEventSend(PhotonNetwork.LocalPlayer.NickName);
+
+            currentGameState = GameStates.GamePlayingState;
         }
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Tab))
+        if (Input.GetKeyDown(KeyCode.Tab) && currentGameState != GameStates.GameEndingState)
         {
             if (UIController.instance.leaderboardTableDisplay.activeInHierarchy)
             {
@@ -115,7 +128,9 @@ public class MatchManager : MonoBehaviourPunCallbacks, IOnEventCallback
 
     public void ListPlayerEventSend()
     {
-        object[] package = new object[allPlayersList.Count];
+        object[] package = new object[allPlayersList.Count + 1];
+
+        package[0] = currentGameState;
 
         for (int i = 0; i < allPlayersList.Count; i++)
         {
@@ -125,7 +140,7 @@ public class MatchManager : MonoBehaviourPunCallbacks, IOnEventCallback
             playersInPackage[1] = allPlayersList[i].playerActorNumber;
             playersInPackage[2] = allPlayersList[i].playerKills;
 
-            package[i] = playersInPackage;
+            package[i + 1] = playersInPackage;
         }
 
         PhotonNetwork.RaiseEvent
@@ -141,7 +156,9 @@ public class MatchManager : MonoBehaviourPunCallbacks, IOnEventCallback
     {
         allPlayersList.Clear();
 
-        for (int i = 0; i < receivedData.Length; i++)
+        currentGameState = (GameStates)receivedData[0];
+
+        for (int i = 1; i < receivedData.Length; i++)
         {
             object[] playersInPackage = (object[])receivedData[i];
 
@@ -156,14 +173,16 @@ public class MatchManager : MonoBehaviourPunCallbacks, IOnEventCallback
 
             if (PhotonNetwork.LocalPlayer.ActorNumber == player.playerActorNumber)
             {
-                index = i;
+                index = i-1;
             }
         }
+
+        CurrentGameStateCheck();
     }
 
-    public void UpdateStatsEventSend(int playerActorNumber, int statTypeToUpdate, int amountToChange)
+    public void UpdateStatsEventSend(int playerActorNumber, int statTypeToUpdate, int amountToChange, bool isBossDefeated)
     {
-        object[] package = new object[] { playerActorNumber, statTypeToUpdate, amountToChange };
+        object[] package = new object[] { playerActorNumber, statTypeToUpdate, amountToChange, isBossDefeated };
 
         PhotonNetwork.RaiseEvent
             (
@@ -179,6 +198,7 @@ public class MatchManager : MonoBehaviourPunCallbacks, IOnEventCallback
         int playerActorNumber = (int)receivedData[0];
         int statTypeToUpdate = (int)receivedData[1];
         int amountToChange = (int)receivedData[2];
+        bool isBossDefeated = (bool)receivedData[3];
 
         for (int i = 0; i < allPlayersList.Count; i++)
         {
@@ -204,6 +224,11 @@ public class MatchManager : MonoBehaviourPunCallbacks, IOnEventCallback
 
                 break;
             }
+        }
+
+        if(isBossDefeated == true)
+        {
+            MatchEndCheck(isBossDefeated);
         }
     }
 
@@ -274,6 +299,64 @@ public class MatchManager : MonoBehaviourPunCallbacks, IOnEventCallback
         }
         return sortedPlayersList;
     }
+
+    public override void OnLeftRoom()
+    {
+        base.OnLeftRoom();
+
+        UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+    }
+
+    void MatchEndCheck(bool _bossDefeated)
+    {
+        bool bossDefeated = false;
+        bossDefeated = _bossDefeated;
+
+        if(bossDefeated == true)
+        {
+            if(PhotonNetwork.IsMasterClient && currentGameState != GameStates.GameEndingState)
+            {
+                currentGameState = GameStates.GameEndingState;
+                ListPlayerEventSend();
+            }
+        }
+    }
+
+    void CurrentGameStateCheck()
+    {
+        if(currentGameState == GameStates.GameEndingState)
+        {
+            EndMatch();
+        }
+    }
+
+    void EndMatch()
+    {
+        currentGameState = GameStates.GameEndingState;
+
+        if(PhotonNetwork.IsMasterClient)
+        {
+            PhotonNetwork.DestroyAll();
+        }
+
+        UIController.instance.matchEndScreen.SetActive(true);
+        ShowLeaderboard();
+
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
+        StartCoroutine(EndMatchCoroutine());
+    }
+
+    private IEnumerator EndMatchCoroutine()
+    {
+        yield return new WaitForSeconds(waitGameStateTime);
+
+        PhotonNetwork.AutomaticallySyncScene = false;
+
+        PhotonNetwork.LeaveRoom();
+    }
+
 
     [System.Serializable]
     public class PlayerInformation

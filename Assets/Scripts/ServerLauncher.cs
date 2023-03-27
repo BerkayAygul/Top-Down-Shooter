@@ -50,6 +50,9 @@ public class ServerLauncher : MonoBehaviourPunCallbacks
         loadingText.text = "Connecting To Network...";
 
         PhotonNetwork.ConnectUsingSettings();
+
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
     void CloseMenus()
     {

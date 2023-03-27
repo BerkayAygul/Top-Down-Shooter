@@ -15,6 +15,8 @@ public class UIController : MonoBehaviour
 
     public Slider healthSlider;
 
+    public GameObject matchEndScreen;
+
     private void Awake()
     {
         instance = this;

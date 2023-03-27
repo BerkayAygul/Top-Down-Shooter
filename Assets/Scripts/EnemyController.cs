@@ -24,6 +24,8 @@ public class EnemyController : MonoBehaviourPunCallbacks
 
     public PhotonView pw;
 
+    public bool isBoss = false;
+
     private void Awake()
     {
         pw = GetComponent<PhotonView>();
@@ -83,11 +85,15 @@ public class EnemyController : MonoBehaviourPunCallbacks
             {
                 currentEnemyHealth = 0;
 
-                MatchManager.instance.UpdateStatsEventSend(damagerPlayerActorNumber, 0, 1);
-
+                if(isBoss == false)
+                {
+                    MatchManager.instance.UpdateStatsEventSend(damagerPlayerActorNumber, 0, 1, false);
+                }
+                else
+                {
+                    MatchManager.instance.UpdateStatsEventSend(damagerPlayerActorNumber, 0, 1, true);
+                }
                 DestroyObject();
-
-
             }
         }
     }
