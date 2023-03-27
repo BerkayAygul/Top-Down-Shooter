@@ -31,6 +31,10 @@ public class PlayerSpawner : MonoBehaviour
         // Instantiate Player Prefab over the network.
         #endregion
         player = PhotonNetwork.Instantiate(playerPrefab.name, spawnPoint.position, spawnPoint.rotation);
+        //Gets player's inventory information to MatchManager.cs
+        Inventory playerInventory = player.GetComponent<Inventory>();
+        int playerActorNumber = player.GetPhotonView().Controller.ActorNumber;
+        MatchManager.instance.inventories.Add(playerActorNumber,playerInventory);
     }
 
     public void Die()
