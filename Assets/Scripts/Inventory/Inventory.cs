@@ -14,10 +14,5 @@ public class Inventory : MonoBehaviour
            return gameObject.GetComponent<PhotonView>().ControllerActorNr;
        }
    }
-
-   private void Start()
-   {
-       Debug.Log(ownerActorNum.ToString());
-   }
 }
 

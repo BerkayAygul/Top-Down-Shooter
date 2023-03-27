@@ -76,23 +76,23 @@ public class EnemyController : MonoBehaviourPunCallbacks
     [PunRPC]
     public void TakeDamage(int damage, int damagerPlayerActorNumber)
     {
-        if (pw.IsMine)
+        
+        if (pw.IsMine || pw.IsMine == false)
         {
             currentEnemyHealth -= damage;
 
             PhotonNetwork.Instantiate(hitEffect.name, transform.position, transform.rotation);
-
             if (currentEnemyHealth <= 0)
             {
                 currentEnemyHealth = 0;
-                RandomItemAddToPlayer(damagerPlayerActorNumber);
-                MatchManager.instance.UpdateStatsEventSend(damagerPlayerActorNumber, 0, 1);
                 
+                MatchManager.instance.UpdateStatsEventSend(damagerPlayerActorNumber, 0, 1);
+                RandomItemAddToPlayer(damagerPlayerActorNumber);
                 DestroyObject();
-
-
-            }
+            } 
         }
+           
+        
     }
     public Item ItemAttributeSetter(ItemScriptable itemScriptable)
     {
@@ -113,6 +113,7 @@ public class EnemyController : MonoBehaviourPunCallbacks
     }
     private void RandomItemAddToPlayer( int playerActorNumber)
     {
+        Debug.Log("Girdi LOOOOOOO");
         int randomNumber = Random.Range(1, 101);
         List<ItemScriptable> selectedItems = new List<ItemScriptable>();
         foreach (ItemScriptable item in possibleItems)
