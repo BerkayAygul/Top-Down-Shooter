@@ -4659,7 +4659,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1252851272
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5285,9 +5285,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1842984669}
-        m_TargetAssemblyTypeName: InventoryController, Assembly-CSharp
-        m_MethodName: ShowItems
+      - m_Target: {fileID: 1930749325}
+        m_TargetAssemblyTypeName: SkillTreeController, Assembly-CSharp
+        m_MethodName: OpenSkillTree
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6753,6 +6753,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea9e7575034cd774789f15939f336bac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skillTreePanel: {fileID: 1252851271}
 --- !u!1 &1985742037
 GameObject:
   m_ObjectHideFlags: 0
