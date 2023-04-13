@@ -12,6 +12,7 @@ public class MatchManager : MonoBehaviourPunCallbacks, IOnEventCallback
 
     public List<PlayerInformation> allPlayersList = new List<PlayerInformation>();
 
+    public List<GameObject> playersGameObjects = new List<GameObject>();//all players gameobjects
     public Dictionary< int,Inventory> inventories = new Dictionary<int,Inventory>(); //players inventories.
 
     public GameObject itemTextPrefab;
