@@ -24,6 +24,9 @@ public class EnemyController : MonoBehaviourPunCallbacks
 
     public GameObject hitEffect;
     public List<ItemScriptable> possibleItems;
+    
+    //Exp amount
+    public int enemyExp = 1;
 
     public PhotonView pw;
 
@@ -96,6 +99,7 @@ public class EnemyController : MonoBehaviourPunCallbacks
                     MatchManager.instance.UpdateStatsEventSend(damagerPlayerActorNumber, 0, 1, true);
                 }
                 RandomItemAddToPlayer(damagerPlayerActorNumber);
+                GiveExp(enemyExp,damagerPlayerActorNumber);
                 DestroyObject();
                 
             }
@@ -159,6 +163,19 @@ public class EnemyController : MonoBehaviourPunCallbacks
         }
 
         return "Bir hata ortaya cikti";
+    }
+
+    public void GiveExp(int amount, int actorNumber)
+    {
+        foreach (var player in MatchManager.instance.playersGameObjects)
+        {
+            int playerActorNumber = player.GetComponent<PhotonView>().ControllerActorNr;
+            PlayerAttributes playerAttributes = player.GetComponent<PlayerAttributes>();
+            if ( playerActorNumber== actorNumber)
+            {
+                playerAttributes.GetExp(amount);
+            }
+        }
     }
     public void DestroyObject()
     {
