@@ -436,6 +436,14 @@ MonoBehaviour:
   playerRB: {fileID: 7646298474353698967}
   playerWeaponHand: {fileID: 7646298473996126164}
   playerAnimator: {fileID: 7646298474353698964}
+  strength: 1
+  dexterity: 1
+  intelligence: 1
+  vitality: 1
+  statPoints: 0
+  playerMaxExperience: 100
+  playerCurrentExperience: 0
+  playerLevel: 0
   playerMaxHealth: 1000
   playerCurrentHealth: 0
   hitEffect: {fileID: 8150682208409160637, guid: 41b8f29dfea2ab64fa18a7f480965650, type: 3}
