@@ -17,6 +17,20 @@ public class PlayerAttributes : MonoBehaviourPunCallbacks
     private Camera playerCamera;
 
     public Animator playerAnimator;
+    
+    
+
+    //Stats
+    public int strength = 1;
+    public int dexterity = 1;
+    public int intelligence = 1;
+    public int vitality= 1;
+    public int statPoints = 0;
+
+    //Exp
+    public int playerMaxExperience = 100;
+    public int playerCurrentExperience = 0;
+    public int playerLevel = 1;
   
     public int playerMaxHealth = 1000;
     public int playerCurrentHealth;
@@ -96,5 +110,25 @@ public class PlayerAttributes : MonoBehaviourPunCallbacks
 
             UIController.instance.healthSlider.value = playerCurrentHealth;
         }
+    }
+    //Level Up
+    public void LevelUp()
+    {
+        playerLevel++;
+        playerCurrentExperience = 0;
+        playerMaxExperience += (int)(playerMaxExperience / 15);
+    }
+    //Get exp
+    public void GetExp(int amount)
+    {
+        if (playerCurrentExperience + amount >= playerMaxExperience)
+        {
+            LevelUp();
+        }
+        else
+        {
+            playerCurrentExperience += amount;
+        }
+        
     }
 }
