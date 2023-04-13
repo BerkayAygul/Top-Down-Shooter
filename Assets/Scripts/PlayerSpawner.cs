@@ -35,6 +35,7 @@ public class PlayerSpawner : MonoBehaviour
         Inventory playerInventory = player.GetComponent<Inventory>();
         int playerActorNumber = player.GetPhotonView().Controller.ActorNumber;
         MatchManager.instance.inventories.Add(playerActorNumber,playerInventory);
+        MatchManager.instance.playersGameObjects.Add(player);
     }
 
     public void Die()
