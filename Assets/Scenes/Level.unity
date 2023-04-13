@@ -7940,6 +7940,10 @@ MonoBehaviour:
   vitText: {fileID: 1688286377}
   intText: {fileID: 1985742039}
   remainStatText: {fileID: 468755329}
+  currentExpText: {fileID: 64606168}
+  maxExpText: {fileID: 414114163}
+  levelText: {fileID: 392430389}
+  expBarImage: {fileID: 1500612452}
 --- !u!1 &1984240775
 GameObject:
   m_ObjectHideFlags: 0

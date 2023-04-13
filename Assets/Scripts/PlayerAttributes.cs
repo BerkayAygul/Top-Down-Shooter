@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
+using TMPro;
+using UnityEngine.UIElements;
+using Image = UnityEngine.UI.Image;
 
 public class PlayerAttributes : MonoBehaviourPunCallbacks
 {
@@ -29,9 +32,11 @@ public class PlayerAttributes : MonoBehaviourPunCallbacks
 
     //Exp
     public int playerMaxExperience = 100;
-    public int playerCurrentExperience = 0;
-    public int playerLevel = 1;
-  
+    public int playerCurrentExperience = 1;
+    public int playerLevel = 1; 
+    public delegate void OnGetExp();
+    public static OnGetExp onGetExp;
+
     public int playerMaxHealth = 1000;
     public int playerCurrentHealth;
 
@@ -115,20 +120,30 @@ public class PlayerAttributes : MonoBehaviourPunCallbacks
     public void LevelUp()
     {
         playerLevel++;
-        playerCurrentExperience = 0;
-        playerMaxExperience += (int)(playerMaxExperience / 15);
+        statPoints++;
+        playerCurrentExperience -= playerMaxExperience; 
+        playerMaxExperience += (int)(playerMaxExperience*20 / 100);
+        if (playerCurrentExperience >= playerMaxExperience)
+        {
+            LevelUp();
+        }
+        onGetExp += SkillTreeController.instance.UpdateExpValuesOnText;
+        onGetExp?.Invoke();
+        onGetExp -= SkillTreeController.instance.UpdateExpValuesOnText;
     }
     //Get exp
     public void GetExp(int amount)
     {
-        if (playerCurrentExperience + amount >= playerMaxExperience)
+        playerCurrentExperience += amount;
+        onGetExp += SkillTreeController.instance.UpdateExpValuesOnText;
+        onGetExp?.Invoke();
+        if (playerCurrentExperience >= playerMaxExperience)
         {
             LevelUp();
         }
-        else
-        {
-            playerCurrentExperience += amount;
-        }
-        
+
+        onGetExp -= SkillTreeController.instance.UpdateExpValuesOnText;
     }
+
+   
 }

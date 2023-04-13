@@ -4,14 +4,24 @@ using System.Collections.Generic;
 using Photon.Pun;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SkillTreeController : MonoBehaviour
 {
+    public static SkillTreeController instance;
     [SerializeField] private GameObject skillTreePanel;
     private GameObject player;
     private PlayerAttributes playerAttributes;
     public TextMeshProUGUI dexText, strText, vitText, intText;
     public TextMeshProUGUI remainStatText;
+    public TextMeshProUGUI currentExpText,maxExpText;
+    public TextMeshProUGUI levelText;
+    public Image expBarImage;
+
+    public SkillTreeController()
+    {
+        instance = this;
+    }
 
     private void Start()
     {
@@ -42,6 +52,17 @@ public class SkillTreeController : MonoBehaviour
         strText.text = playerAttributes.strength.ToString();
         remainStatText.text = playerAttributes.statPoints.ToString();
         
+    }
+    public void UpdateExpValuesOnText()
+    {
+        currentExpText.text = playerAttributes.playerCurrentExperience.ToString();
+        maxExpText.text = playerAttributes.playerMaxExperience.ToString();
+        expBarImage.fillAmount =
+            Mathf.Repeat((float)playerAttributes.playerCurrentExperience / (float)playerAttributes.playerMaxExperience,
+                1.0f);
+        
+        remainStatText.text = playerAttributes.statPoints.ToString();
+        levelText.text = playerAttributes.playerLevel.ToString();
     }
 
     public void OpenSkillTree()
