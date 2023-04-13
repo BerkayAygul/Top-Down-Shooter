@@ -2343,7 +2343,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 484463757}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1930749325}
+        m_TargetAssemblyTypeName: SkillTreeController, Assembly-CSharp
+        m_MethodName: IncreaseStr
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &484463757
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2549,7 +2561,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 496856977}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1930749325}
+        m_TargetAssemblyTypeName: SkillTreeController, Assembly-CSharp
+        m_MethodName: IncreaseVit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &496856977
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3515,7 +3539,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 723143441}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1930749325}
+        m_TargetAssemblyTypeName: SkillTreeController, Assembly-CSharp
+        m_MethodName: IncreaseDex
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &723143441
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5589,7 +5637,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1252851272
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6093,7 +6141,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1392395060}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1930749325}
+        m_TargetAssemblyTypeName: SkillTreeController, Assembly-CSharp
+        m_MethodName: IncreaseInt
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1392395060
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7875,6 +7935,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillTreePanel: {fileID: 1252851271}
+  dexText: {fileID: 776767469}
+  strText: {fileID: 668357879}
+  vitText: {fileID: 1688286377}
+  intText: {fileID: 1985742039}
+  remainStatText: {fileID: 468755329}
 --- !u!1 &1984240775
 GameObject:
   m_ObjectHideFlags: 0
