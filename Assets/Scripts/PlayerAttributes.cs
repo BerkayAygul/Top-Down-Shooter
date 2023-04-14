@@ -29,11 +29,16 @@ public class PlayerAttributes : MonoBehaviourPunCallbacks
     public int intelligence = 1;
     public int vitality= 1;
     public int statPoints = 0;
+    public PlayerData.Classes playerClass;
+    public Dictionary<PlayerData.Classes,int[]> classAndStats;
 
     //Exp
     public int playerMaxExperience = 100;
     public int playerCurrentExperience = 1;
     public int playerLevel = 1; 
+    
+    //Gold
+    public int playerGold = 0;
     public delegate void OnGetExp();
     public static OnGetExp onGetExp;
 
@@ -97,6 +102,25 @@ public class PlayerAttributes : MonoBehaviourPunCallbacks
                 playerAnimator.SetBool("isPlayerMoving", false);
             }
         }
+    }
+
+    public void AddStatToClass(PlayerData.Classes pClass)
+    {
+        int[] stats = new int[4];
+        stats[0] = strength;
+        stats[1] = dexterity;
+        stats[2] = intelligence;
+        stats[3] = vitality;
+
+        if (classAndStats.ContainsKey(pClass))
+        {
+            classAndStats[pClass] = stats;
+        }
+        else
+        {
+            classAndStats.Add(pClass,stats);
+        }
+        
     }
 
     [PunRPC]
