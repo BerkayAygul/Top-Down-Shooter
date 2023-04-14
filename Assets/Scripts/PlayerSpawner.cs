@@ -61,7 +61,7 @@ public class PlayerSpawner : MonoBehaviour
 
         if (playerAttributes.LoadPlayer().IsUnityNull())
         {
-            playerAttributes.playerClass = playerAttributes.playerclassscriptable.currentClass;
+            playerAttributes.playerClass = ClassScriptable.instance.currentClass;
             playerAttributes.SavePlayer();
             Debug.Log("Saved");
         }

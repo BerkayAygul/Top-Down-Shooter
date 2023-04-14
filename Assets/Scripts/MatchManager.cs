@@ -394,7 +394,7 @@ public class MatchManager : MonoBehaviourPunCallbacks, IOnEventCallback
                 playerAttributes = player.GetComponent<PlayerAttributes>();
             }
         }
-        playerAttributes.playerClass = playerAttributes.playerclassscriptable.currentClass;
+        playerAttributes.playerClass = ClassScriptable.instance.currentClass;
         playerAttributes.SavePlayer();
         Debug.Log("Saved");
     }

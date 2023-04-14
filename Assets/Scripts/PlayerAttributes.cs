@@ -115,7 +115,7 @@ public class PlayerAttributes : MonoBehaviourPunCallbacks
     public void SetStats()
     {
         int[] stats = new int[4];
-        stats = classAndStats[playerclassscriptable.currentClass];
+        stats = classAndStats[ClassScriptable.instance.currentClass];
         strength = stats[0];
         dexterity = stats[1];
         intelligence = stats[2];
@@ -129,7 +129,7 @@ public class PlayerAttributes : MonoBehaviourPunCallbacks
         playerAttributes.classAndStats = data.classAndStats;
         playerAttributes.playerCurrentExperience = data.currentExp;
         playerAttributes.playerMaxExperience = data.maxExp;
-        ChangeClass(playerclassscriptable);
+        ChangeClass(ClassScriptable.instance);
     }
 
     public void CreateClassesDictionary()
@@ -206,7 +206,7 @@ public class PlayerAttributes : MonoBehaviourPunCallbacks
 
     public void SavePlayer()
     {
-        AddStatToClass(playerclassscriptable.currentClass);
+        AddStatToClass(ClassScriptable.instance.currentClass);
         SaveSystem.SavePlayerData(this);
     }
 
