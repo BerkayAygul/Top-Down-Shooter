@@ -17,8 +17,8 @@ public class ClassController : MonoBehaviour
 
   private void Start()
   {
-    currentClassImage.sprite = classImages[0];
-    currentClassName.text = selectedClass.ToString();
+    selectedClass = PlayerData.Classes.warrior;
+    GetRigthClass();
   }
 
   public void GetRigthClass()
@@ -38,7 +38,7 @@ public class ClassController : MonoBehaviour
       currentClassImage.sprite = classImages[2];
       currentClassName.text = selectedClass.ToString();
     }
-    
+    saveClassScriptable.currentClass = selectedClass;
   }
 
   public void NextClass()
@@ -47,27 +47,34 @@ public class ClassController : MonoBehaviour
     {
       selectedClass = PlayerData.Classes.warrior;
     }
-    else
+    else if (selectedClass == PlayerData.Classes.warrior)
     {
-      selectedClass++;
+      selectedClass = PlayerData.Classes.mage;
+    }
+    else if(selectedClass == PlayerData.Classes.mage)
+    {
+      selectedClass = PlayerData.Classes.archer;
     }
     GetRigthClass();
   }
 
   public void Continue()
   {
-    saveClassScriptable.currentClass = selectedClass;
     UnityEngine.SceneManagement.SceneManager.LoadScene("Main_Menu");
   }
   public void BackClass()
   {
-    if (selectedClass <= PlayerData.Classes.warrior )
+    if (selectedClass == PlayerData.Classes.archer )
+    {
+      selectedClass = PlayerData.Classes.mage;
+    }
+    else if (selectedClass == PlayerData.Classes.warrior)
     {
       selectedClass = PlayerData.Classes.archer;
     }
-    else
+    else if(selectedClass == PlayerData.Classes.mage)
     {
-      selectedClass--;
+      selectedClass = PlayerData.Classes.warrior;
     }
     GetRigthClass();
   }

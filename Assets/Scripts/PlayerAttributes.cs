@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine.UIElements;
 using Image = UnityEngine.UI.Image;
 
@@ -20,8 +21,8 @@ public class PlayerAttributes : MonoBehaviourPunCallbacks
     private Camera playerCamera;
 
     public Animator playerAnimator;
-    
-    
+
+
 
     //Stats
     public int strength = 1;
@@ -31,6 +32,7 @@ public class PlayerAttributes : MonoBehaviourPunCallbacks
     public int statPoints = 0;
     public PlayerData.Classes playerClass;
     public Dictionary<PlayerData.Classes,int[]> classAndStats;
+    public ClassScriptable playerclassscriptable;
 
     //Exp
     public int playerMaxExperience = 100;
@@ -50,13 +52,19 @@ public class PlayerAttributes : MonoBehaviourPunCallbacks
     private void Awake()
     {
         instance = this;
+        classAndStats = new Dictionary<PlayerData.Classes, int[]>();
     }
 
     void Start()
     {
+        
         if (photonView.IsMine)
         {
             playerCamera = Camera.main;
+            if (classAndStats == new Dictionary<PlayerData.Classes, int[]>())
+            {
+                CreateClassesDictionary();
+            }
         }
 
         playerCurrentHealth = playerMaxHealth;
@@ -104,22 +112,44 @@ public class PlayerAttributes : MonoBehaviourPunCallbacks
         }
     }
 
+    public void SetStats()
+    {
+        int[] stats = new int[4];
+        stats = classAndStats[playerclassscriptable.currentClass];
+        strength = stats[0];
+        dexterity = stats[1];
+        intelligence = stats[2];
+        vitality = stats[3];
+    }
+    public void SetLoadedData(PlayerData data, PlayerAttributes playerAttributes)
+    {
+        playerAttributes.playerLevel = data.level;
+        playerAttributes.playerGold = data.gold;
+        playerAttributes.statPoints = data.remainingStats;
+        playerAttributes.classAndStats = data.classAndStats;
+        playerAttributes.playerCurrentExperience = data.currentExp;
+        playerAttributes.playerMaxExperience = data.maxExp;
+        ChangeClass(playerclassscriptable);
+    }
+
+    public void CreateClassesDictionary()
+    {
+        int[] stats = new[] { 1, 1, 1, 1 };
+        classAndStats[PlayerData.Classes.archer] = stats;
+        classAndStats[PlayerData.Classes.mage] = stats;
+        classAndStats[PlayerData.Classes.warrior] = stats;
+    }
     public void AddStatToClass(PlayerData.Classes pClass)
     {
+        
         int[] stats = new int[4];
         stats[0] = strength;
         stats[1] = dexterity;
         stats[2] = intelligence;
         stats[3] = vitality;
 
-        if (classAndStats.ContainsKey(pClass))
-        {
-            classAndStats[pClass] = stats;
-        }
-        else
-        {
-            classAndStats.Add(pClass,stats);
-        }
+        
+        classAndStats[pClass] = stats;
         
     }
 
@@ -167,6 +197,29 @@ public class PlayerAttributes : MonoBehaviourPunCallbacks
         }
 
         onGetExp -= SkillTreeController.instance.UpdateExpValuesOnText;
+    }
+
+    public void ChangeClass(ClassScriptable classScriptable)
+    {
+        playerClass = classScriptable.currentClass;
+    }
+
+    public void SavePlayer()
+    {
+        AddStatToClass(playerclassscriptable.currentClass);
+        SaveSystem.SavePlayerData(this);
+    }
+
+    public PlayerData LoadPlayer()
+    {
+        PlayerData data = SaveSystem.LoadData();
+        if (!data.IsUnityNull())
+        {
+            SetLoadedData(data,this);
+            SetStats();
+            return data;
+        }
+        return null;
     }
 
    

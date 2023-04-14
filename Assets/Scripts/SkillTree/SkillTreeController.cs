@@ -16,6 +16,7 @@ public class SkillTreeController : MonoBehaviour
     public TextMeshProUGUI remainStatText;
     public TextMeshProUGUI currentExpText,maxExpText;
     public TextMeshProUGUI levelText;
+    public TextMeshProUGUI classText;
     public Image expBarImage;
 
     public SkillTreeController()
@@ -26,9 +27,11 @@ public class SkillTreeController : MonoBehaviour
     private void Start()
     {
         GetPlayer();
-        
+       
         Debug.Log("Girdi"); 
         playerAttributes = player.GetComponent<PlayerAttributes>();
+        UpdateText();
+        UpdateExpValuesOnText();
         
     }
 
@@ -51,7 +54,8 @@ public class SkillTreeController : MonoBehaviour
         intText.text = playerAttributes.intelligence.ToString();
         strText.text = playerAttributes.strength.ToString();
         remainStatText.text = playerAttributes.statPoints.ToString();
-        
+        classText.text = playerAttributes.playerClass.ToString();
+
     }
     public void UpdateExpValuesOnText()
     {

@@ -441,9 +441,12 @@ MonoBehaviour:
   intelligence: 1
   vitality: 1
   statPoints: 0
+  playerClass: 0
+  playerclassscriptable: {fileID: 11400000, guid: 40ee2af0b0b9a64478c62e2101085584, type: 2}
   playerMaxExperience: 100
   playerCurrentExperience: 0
   playerLevel: 0
+  playerGold: 0
   playerMaxHealth: 1000
   playerCurrentHealth: 0
   hitEffect: {fileID: 8150682208409160637, guid: 41b8f29dfea2ab64fa18a7f480965650, type: 3}

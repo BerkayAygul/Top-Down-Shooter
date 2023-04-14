@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using ExitGames.Client.Photon.StructWrapping;
 using UnityEngine;
 using Photon.Pun;
+using Unity.VisualScripting;
 
 public class PlayerSpawner : MonoBehaviour
 {
@@ -21,6 +23,7 @@ public class PlayerSpawner : MonoBehaviour
         if (PhotonNetwork.IsConnected)
         {
             SpawnPlayer();
+            
         }
     }
 
@@ -31,13 +34,43 @@ public class PlayerSpawner : MonoBehaviour
         // Instantiate Player Prefab over the network.
         #endregion
         player = PhotonNetwork.Instantiate(playerPrefab.name, spawnPoint.position, spawnPoint.rotation);
+        PlayerAttributes playerAttributes = player.GetComponent<PlayerAttributes>();
+        
+
         //Gets player's inventory information to MatchManager.cs
         Inventory playerInventory = player.GetComponent<Inventory>();
         int playerActorNumber = player.GetPhotonView().Controller.ActorNumber;
         MatchManager.instance.inventories.Add(playerActorNumber,playerInventory);
         MatchManager.instance.playersGameObjects.Add(player);
+        GetPlayer();
     }
 
+    public void GetPlayer()
+    {
+        GameObject localPlayer;
+        PlayerAttributes playerAttributes = new PlayerAttributes();
+        foreach (var player in MatchManager.instance.playersGameObjects)
+        {
+            
+            if (PhotonNetwork.LocalPlayer.ActorNumber == player.GetComponent<PhotonView>().ControllerActorNr)
+            {
+                localPlayer = player;
+                playerAttributes = player.GetComponent<PlayerAttributes>();
+            }
+        }
+
+        if (playerAttributes.LoadPlayer().IsUnityNull())
+        {
+            playerAttributes.playerClass = playerAttributes.playerclassscriptable.currentClass;
+            playerAttributes.SavePlayer();
+            Debug.Log("Saved");
+        }
+        else
+        {
+            playerAttributes.LoadPlayer();
+        }
+        
+    }
     public void Die()
     {
         PhotonNetwork.Destroy(player);

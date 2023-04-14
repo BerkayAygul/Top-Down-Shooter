@@ -7943,6 +7943,7 @@ MonoBehaviour:
   currentExpText: {fileID: 64606168}
   maxExpText: {fileID: 414114163}
   levelText: {fileID: 392430389}
+  classText: {fileID: 636355971}
   expBarImage: {fileID: 1500612452}
 --- !u!1 &1984240775
 GameObject:
