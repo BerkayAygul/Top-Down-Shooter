@@ -13,8 +13,6 @@ public class ClassController : MonoBehaviour
   public Image currentClassImage;
   public TextMeshProUGUI currentClassName;
 
-  public ClassScriptable saveClassScriptable;
-
   private void Start()
   {
     selectedClass = PlayerData.Classes.warrior;
@@ -38,7 +36,7 @@ public class ClassController : MonoBehaviour
       currentClassImage.sprite = classImages[2];
       currentClassName.text = selectedClass.ToString();
     }
-    saveClassScriptable.currentClass = selectedClass;
+    ClassScriptable.instance.currentClass = selectedClass;
   }
 
   public void NextClass()
