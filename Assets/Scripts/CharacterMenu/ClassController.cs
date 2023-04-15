@@ -13,6 +13,8 @@ public class ClassController : MonoBehaviour
   public Image currentClassImage;
   public TextMeshProUGUI currentClassName;
 
+  public GameObject choosePanel;
+
   private void Start()
   {
     selectedClass = PlayerData.Classes.warrior;
@@ -58,7 +60,7 @@ public class ClassController : MonoBehaviour
 
   public void Continue()
   {
-    UnityEngine.SceneManagement.SceneManager.LoadScene("Main_Menu");
+    choosePanel.SetActive(false);
   }
   public void BackClass()
   {
