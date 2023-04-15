@@ -90,11 +90,26 @@ public class SkillTreeController : MonoBehaviour
         }
         
     }
+    //Save stats
+    public void SaveStats()
+    {
+        playerAttributes.SavePlayer();
+    }
+
+    public void ResetStats()
+    {
+        playerAttributes.intelligence = 1;
+        playerAttributes.dexterity = 1;
+        playerAttributes.strength = 1;
+        playerAttributes.vitality = 1;
+        playerAttributes.statPoints = playerAttributes.playerLevel;
+        UpdateText();
+    }
 
     //stat increase section
     public void IncreaseDex()
     {
-        if (playerAttributes.statPoints > 0)
+        if (playerAttributes.statPoints > 1)
         {
             playerAttributes.statPoints--;
             playerAttributes.dexterity++;
@@ -125,6 +140,63 @@ public class SkillTreeController : MonoBehaviour
         {
             playerAttributes.statPoints--;
             playerAttributes.vitality++;
+            UpdateText();
+        }
+    }
+    //stat decreasing section
+    public void DecreaseDex()
+    {
+        if (playerAttributes.statPoints <= playerAttributes.playerLevel)
+        {
+            
+            if (playerAttributes.dexterity > 0)
+            {
+                playerAttributes.dexterity--;
+                playerAttributes.statPoints++;
+            }
+            
+            UpdateText();
+        }
+    }
+    public void DecreaseInt()
+    {
+        if (playerAttributes.statPoints <= playerAttributes.playerLevel)
+        {
+            
+            if (playerAttributes.intelligence > 0)
+            {
+                playerAttributes.intelligence--;
+                playerAttributes.statPoints++;
+            }
+            
+            UpdateText();
+        }
+    }
+    public void DecreaseStr()
+    {
+        if (playerAttributes.statPoints <= playerAttributes.playerLevel)
+        {
+            
+            if (playerAttributes.strength > 0)
+            {
+                playerAttributes.strength--;
+                playerAttributes.statPoints++;
+            }
+            
+            UpdateText();
+        }
+    }
+    public void DecreaseVit()
+    {
+        if (playerAttributes.statPoints <= playerAttributes.playerLevel)
+        {
+            
+            if (playerAttributes.vitality > 0)
+            {
+                playerAttributes.vitality--;
+                playerAttributes.statPoints++;
+            }
+            
             UpdateText();
         }
     }
