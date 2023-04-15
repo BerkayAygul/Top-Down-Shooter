@@ -42,10 +42,10 @@ public class PlayerSpawner : MonoBehaviour
         int playerActorNumber = player.GetPhotonView().Controller.ActorNumber;
         MatchManager.instance.inventories.Add(playerActorNumber,playerInventory);
         MatchManager.instance.playersGameObjects.Add(player);
-        GetPlayer();
+        GetPlayerData();
     }
 
-    public void GetPlayer()
+    public void GetPlayerData()
     {
         GameObject localPlayer;
         PlayerAttributes playerAttributes = new PlayerAttributes();
