@@ -104,7 +104,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -886485713, guid: a47294d8f066c634d90ee371916313ff, type: 3}
+  m_Sprite: {fileID: -1553796768, guid: a47294d8f066c634d90ee371916313ff, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -358,7 +358,7 @@ GameObject:
   - component: {fileID: 1011041029229113464}
   - component: {fileID: 4502082974428572162}
   m_Layer: 6
-  m_Name: Player
+  m_Name: Mage
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -441,7 +441,7 @@ MonoBehaviour:
   intelligence: 1
   vitality: 1
   statPoints: 0
-  playerClass: 0
+  playerClass: 1
   playerclassscriptable: {fileID: 11400000, guid: 40ee2af0b0b9a64478c62e2101085584, type: 2}
   playerMaxExperience: 100
   playerCurrentExperience: 0

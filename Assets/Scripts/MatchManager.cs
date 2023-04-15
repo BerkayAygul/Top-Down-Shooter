@@ -5,6 +5,7 @@ using Photon.Pun;
 using Photon.Realtime;
 using ExitGames.Client.Photon;
 using TMPro;
+using Unity.VisualScripting;
 
 public class MatchManager : MonoBehaviourPunCallbacks, IOnEventCallback
 {
@@ -12,6 +13,7 @@ public class MatchManager : MonoBehaviourPunCallbacks, IOnEventCallback
 
     public List<PlayerInformation> allPlayersList = new List<PlayerInformation>();
 
+    public List<GameObject> playersGameObjects = new List<GameObject>();//all players gameobjects
     public Dictionary< int,Inventory> inventories = new Dictionary<int,Inventory>(); //players inventories.
 
     public GameObject itemTextPrefab;
@@ -339,6 +341,7 @@ public class MatchManager : MonoBehaviourPunCallbacks, IOnEventCallback
 
     void EndMatch()
     {
+        SavePlayer();
         currentGameState = GameStates.GameEndingState;
 
         if(PhotonNetwork.IsMasterClient)
@@ -351,7 +354,7 @@ public class MatchManager : MonoBehaviourPunCallbacks, IOnEventCallback
 
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
-
+        
         StartCoroutine(EndMatchCoroutine());
     }
 
@@ -377,5 +380,22 @@ public class MatchManager : MonoBehaviourPunCallbacks, IOnEventCallback
             playerActorNumber = _playerActorNumber;
             playerKills = _playerKills;
         }
+    }
+    public void SavePlayer()
+    {
+        GameObject localPlayer;
+        PlayerAttributes playerAttributes = new PlayerAttributes();
+        foreach (var player in MatchManager.instance.playersGameObjects)
+        {
+            
+            if (PhotonNetwork.LocalPlayer.ActorNumber == player.GetComponent<PhotonView>().ControllerActorNr)
+            {
+                localPlayer = player;
+                playerAttributes = player.GetComponent<PlayerAttributes>();
+            }
+        }
+        playerAttributes.playerClass = ClassScriptable.instance.currentClass;
+        playerAttributes.SavePlayer();
+        Debug.Log("Saved");
     }
 }

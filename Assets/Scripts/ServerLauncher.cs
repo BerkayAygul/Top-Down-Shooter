@@ -42,15 +42,18 @@ public class ServerLauncher : MonoBehaviourPunCallbacks
 
     public string levelNameToPlay;
     public GameObject startGameButton;
+
+    public GameObject choosePanel;
     void Start()
     {
         CloseMenus();
 
         loadingPanel.SetActive(true);
         loadingText.text = "Connecting To Network...";
-
+        
         PhotonNetwork.ConnectUsingSettings();
-
+       
+        
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
     }
@@ -302,5 +305,10 @@ public class ServerLauncher : MonoBehaviourPunCallbacks
     public void QuitGame()
     {
         Application.Quit();
+    }
+
+    public void ChooseCharacter()
+    {
+        choosePanel.SetActive(true);
     }
 }
