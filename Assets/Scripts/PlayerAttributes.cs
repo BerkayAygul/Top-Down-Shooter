@@ -112,23 +112,27 @@ public class PlayerAttributes : MonoBehaviourPunCallbacks
         }
     }
 
-    public void SetStats()
+    public void SetStatsLevelAndExpValues()
     {
-        int[] stats = new int[4];
+        int[] stats = new int[8];
         stats = classAndStats[ClassScriptable.instance.currentClass];
         strength = stats[0];
         dexterity = stats[1];
         intelligence = stats[2];
         vitality = stats[3];
+        playerLevel = stats[4];
+        playerCurrentExperience = stats[5];
+        playerMaxExperience = stats[6];
+        statPoints = stats[7];
     }
     public void SetLoadedData(PlayerData data, PlayerAttributes playerAttributes)
     {
-        playerAttributes.playerLevel = data.level;
+        //playerAttributes.playerLevel = data.level;
         playerAttributes.playerGold = data.gold;
         playerAttributes.statPoints = data.remainingStats;
         playerAttributes.classAndStats = data.classAndStats;
-        playerAttributes.playerCurrentExperience = data.currentExp;
-        playerAttributes.playerMaxExperience = data.maxExp;
+        //playerAttributes.playerCurrentExperience = data.currentExp;
+        //playerAttributes.playerMaxExperience = data.maxExp;
         ChangeClass(ClassScriptable.instance);
     }
 
@@ -142,13 +146,17 @@ public class PlayerAttributes : MonoBehaviourPunCallbacks
     public void AddStatToClass(PlayerData.Classes pClass)
     {
         
-        int[] stats = new int[4];
+        int[] stats = new int[8];
         stats[0] = strength;
         stats[1] = dexterity;
         stats[2] = intelligence;
         stats[3] = vitality;
+        stats[4] = playerLevel;
+        stats[5] = playerCurrentExperience;
+        stats[6] = playerMaxExperience;
+        stats[7] = statPoints;
 
-        
+
         classAndStats[pClass] = stats;
         
     }
@@ -216,7 +224,7 @@ public class PlayerAttributes : MonoBehaviourPunCallbacks
         if (!data.IsUnityNull())
         {
             SetLoadedData(data,this);
-            SetStats();
+            SetStatsLevelAndExpValues();
             return data;
         }
         return null;

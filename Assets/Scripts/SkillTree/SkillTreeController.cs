@@ -109,7 +109,7 @@ public class SkillTreeController : MonoBehaviour
     //stat increase section
     public void IncreaseDex()
     {
-        if (playerAttributes.statPoints > 1)
+        if (playerAttributes.statPoints > 0)
         {
             playerAttributes.statPoints--;
             playerAttributes.dexterity++;
@@ -149,7 +149,7 @@ public class SkillTreeController : MonoBehaviour
         if (playerAttributes.statPoints <= playerAttributes.playerLevel)
         {
             
-            if (playerAttributes.dexterity > 0)
+            if (playerAttributes.dexterity > 1)
             {
                 playerAttributes.dexterity--;
                 playerAttributes.statPoints++;
@@ -163,7 +163,7 @@ public class SkillTreeController : MonoBehaviour
         if (playerAttributes.statPoints <= playerAttributes.playerLevel)
         {
             
-            if (playerAttributes.intelligence > 0)
+            if (playerAttributes.intelligence > 1)
             {
                 playerAttributes.intelligence--;
                 playerAttributes.statPoints++;
@@ -177,7 +177,7 @@ public class SkillTreeController : MonoBehaviour
         if (playerAttributes.statPoints <= playerAttributes.playerLevel)
         {
             
-            if (playerAttributes.strength > 0)
+            if (playerAttributes.strength > 1)
             {
                 playerAttributes.strength--;
                 playerAttributes.statPoints++;
@@ -191,7 +191,7 @@ public class SkillTreeController : MonoBehaviour
         if (playerAttributes.statPoints <= playerAttributes.playerLevel)
         {
             
-            if (playerAttributes.vitality > 0)
+            if (playerAttributes.vitality > 1)
             {
                 playerAttributes.vitality--;
                 playerAttributes.statPoints++;
