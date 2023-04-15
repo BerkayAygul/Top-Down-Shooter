@@ -15,7 +15,7 @@ public class PlayerSpawner : MonoBehaviour
         instance = this;
     }
 
-    public GameObject playerPrefab;
+    public GameObject[] playerPrefabs;
 
     private GameObject player;
 
@@ -34,7 +34,19 @@ public class PlayerSpawner : MonoBehaviour
         #region comment
         // Instantiate Player Prefab over the network.
         #endregion
-        player = PhotonNetwork.Instantiate(playerPrefab.name, spawnPoint.position, spawnPoint.rotation);
+
+        if (ClassScriptable.instance.currentClass == PlayerData.Classes.warrior)
+        {
+            player = PhotonNetwork.Instantiate(playerPrefabs[0].name, spawnPoint.position, spawnPoint.rotation);
+        }
+        else if(ClassScriptable.instance.currentClass == PlayerData.Classes.mage)
+        {
+            player = PhotonNetwork.Instantiate(playerPrefabs[1].name, spawnPoint.position, spawnPoint.rotation);
+        }
+        else if(ClassScriptable.instance.currentClass == PlayerData.Classes.archer)
+        {
+            player = PhotonNetwork.Instantiate(playerPrefabs[2].name, spawnPoint.position, spawnPoint.rotation);
+        }
         PlayerAttributes playerAttributes = player.GetComponent<PlayerAttributes>();
         
 
@@ -46,7 +58,6 @@ public class PlayerSpawner : MonoBehaviour
         
         //if there is any saved data gets saved player data if not create new save for current data.
         GetPlayerData();
-        ChangeClassSprite(playerAttributes.playerClass);
     }
 
     public void ChangeClassSprite(PlayerData.Classes playerClass)

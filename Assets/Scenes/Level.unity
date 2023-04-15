@@ -3642,7 +3642,10 @@ MonoBehaviour:
   - {fileID: -1345060074, guid: a47294d8f066c634d90ee371916313ff, type: 3}
   - {fileID: -1553796768, guid: a47294d8f066c634d90ee371916313ff, type: 3}
   - {fileID: 599217191, guid: a47294d8f066c634d90ee371916313ff, type: 3}
-  playerPrefab: {fileID: 7646298474353698961, guid: b84ccb4ed0ff49e429638c1994c95bd8, type: 3}
+  playerPrefabs:
+  - {fileID: 7646298474353698961, guid: c559620f61bc8c64aaf82657ebcaffc1, type: 3}
+  - {fileID: 7646298474353698961, guid: 8d253ed71461b8d4199c2fb91fdeff92, type: 3}
+  - {fileID: 7646298474353698961, guid: e1e12227452e48c48ad5144b8e52a06c, type: 3}
 --- !u!1 &698544164
 GameObject:
   m_ObjectHideFlags: 0
