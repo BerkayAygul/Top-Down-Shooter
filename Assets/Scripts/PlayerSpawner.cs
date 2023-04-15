@@ -42,6 +42,8 @@ public class PlayerSpawner : MonoBehaviour
         int playerActorNumber = player.GetPhotonView().Controller.ActorNumber;
         MatchManager.instance.inventories.Add(playerActorNumber,playerInventory);
         MatchManager.instance.playersGameObjects.Add(player);
+        
+        //if there is any saved data gets saved player data if not create new save for current data.
         GetPlayerData();
     }
 
