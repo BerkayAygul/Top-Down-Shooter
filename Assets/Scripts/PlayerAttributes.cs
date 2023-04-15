@@ -53,6 +53,7 @@ public class PlayerAttributes : MonoBehaviourPunCallbacks
     {
         instance = this;
         classAndStats = new Dictionary<PlayerData.Classes, int[]>();
+        CreateClassesDictionary();
     }
 
     void Start()
@@ -61,10 +62,7 @@ public class PlayerAttributes : MonoBehaviourPunCallbacks
         if (photonView.IsMine)
         {
             playerCamera = Camera.main;
-            if (classAndStats == new Dictionary<PlayerData.Classes, int[]>())
-            {
-                CreateClassesDictionary();
-            }
+            
         }
 
         playerCurrentHealth = playerMaxHealth;
@@ -115,7 +113,7 @@ public class PlayerAttributes : MonoBehaviourPunCallbacks
     public void SetStatsLevelAndExpValues()
     {
         int[] stats = new int[8];
-        stats = classAndStats[ClassScriptable.instance.currentClass];
+        stats = classAndStats[playerClass];
         strength = stats[0];
         dexterity = stats[1];
         intelligence = stats[2];
@@ -125,23 +123,25 @@ public class PlayerAttributes : MonoBehaviourPunCallbacks
         playerMaxExperience = stats[6];
         statPoints = stats[7];
     }
-    public void SetLoadedData(PlayerData data, PlayerAttributes playerAttributes)
+    public void SetLoadedData(PlayerData data)
     {
-        //playerAttributes.playerLevel = data.level;
-        playerAttributes.playerGold = data.gold;
-        playerAttributes.statPoints = data.remainingStats;
-        playerAttributes.classAndStats = data.classAndStats;
-        //playerAttributes.playerCurrentExperience = data.currentExp;
-        //playerAttributes.playerMaxExperience = data.maxExp;
+        playerGold = data.gold;
+        statPoints = data.remainingStats;
+        classAndStats = data.classAndStats;
         ChangeClass(ClassScriptable.instance);
     }
 
+    //creates default stat values for each class
     public void CreateClassesDictionary()
     {
-        int[] stats = new[] { 1, 1, 1, 1 };
+        int[] stats = new[] { 1, 1, 1, 1,0,1,100,0 };
         classAndStats[PlayerData.Classes.archer] = stats;
         classAndStats[PlayerData.Classes.mage] = stats;
         classAndStats[PlayerData.Classes.warrior] = stats;
+            
+           
+        
+        
     }
     public void AddStatToClass(PlayerData.Classes pClass)
     {
@@ -223,7 +223,7 @@ public class PlayerAttributes : MonoBehaviourPunCallbacks
         PlayerData data = SaveSystem.LoadData();
         if (!data.IsUnityNull())
         {
-            SetLoadedData(data,this);
+            SetLoadedData(data);
             SetStatsLevelAndExpValues();
             return data;
         }

@@ -10,7 +10,7 @@ public class PlayerData
    public int currentExp;
    public int maxExp;
    public int remainingStats;
-   public Dictionary<Classes,int[]> classAndStats;
+   public Dictionary<PlayerData.Classes,int[]> classAndStats;
 
    public PlayerData(PlayerAttributes data)
    {

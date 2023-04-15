@@ -3638,6 +3638,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b567d9c44f7a75449d27c5efecb6654, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  classSprites:
+  - {fileID: -1345060074, guid: a47294d8f066c634d90ee371916313ff, type: 3}
+  - {fileID: -1553796768, guid: a47294d8f066c634d90ee371916313ff, type: 3}
+  - {fileID: 599217191, guid: a47294d8f066c634d90ee371916313ff, type: 3}
   playerPrefab: {fileID: 7646298474353698961, guid: b84ccb4ed0ff49e429638c1994c95bd8, type: 3}
 --- !u!1 &698544164
 GameObject:

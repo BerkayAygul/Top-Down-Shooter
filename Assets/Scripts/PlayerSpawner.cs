@@ -8,6 +8,7 @@ using Unity.VisualScripting;
 public class PlayerSpawner : MonoBehaviour
 {
     public static PlayerSpawner instance;
+    public Sprite[] classSprites;
 
     private void Awake()
     {
@@ -45,8 +46,27 @@ public class PlayerSpawner : MonoBehaviour
         
         //if there is any saved data gets saved player data if not create new save for current data.
         GetPlayerData();
+        ChangeClassSprite(playerAttributes.playerClass);
     }
 
+    public void ChangeClassSprite(PlayerData.Classes playerClass)
+    {
+        Debug.Log(player.gameObject.transform.GetChild(0).transform.name);
+        Debug.Log(playerClass.ToString());
+        SpriteRenderer playerSprite = player.gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>();
+        switch (playerClass)
+        {
+            case PlayerData.Classes.warrior:
+                playerSprite.sprite = classSprites[0];
+                break;
+            case PlayerData.Classes.mage:
+                playerSprite.sprite = classSprites[1];
+                break;
+            case PlayerData.Classes.archer:
+                playerSprite.sprite = classSprites[2];
+                break;
+        }
+    }
     public void GetPlayerData()
     {
         GameObject localPlayer;
