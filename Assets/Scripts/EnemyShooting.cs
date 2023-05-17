@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class EnemyShooting : MonoBehaviour
+public class EnemyShooting
 {
     public Transform GetNearestPlayer(GameObject gameObject)
     {
