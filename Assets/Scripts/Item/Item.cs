@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Newtonsoft.Json.Bson;
 using UnityEngine;
 using UnityEngine.UI;
-public class Item:MonoBehaviour
+public class Item
 {
     //Item Properties
     public string itemName;
