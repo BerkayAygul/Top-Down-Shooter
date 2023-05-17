@@ -15,7 +15,10 @@ public class PlayerProjectile : MonoBehaviourPunCallbacks
 
     private void Start()
     {
-        photonView.RPC("MoveProjectile", RpcTarget.All);
+        if(photonView.IsMine)
+        {
+            photonView.RPC("MoveProjectile", RpcTarget.All);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collisionObject)
@@ -37,7 +40,10 @@ public class PlayerProjectile : MonoBehaviourPunCallbacks
 
     private void OnBecameInvisible()
     {
-        photonView.RPC("DestroyObject", RpcTarget.All);
+        if(photonView.IsMine)
+        {
+            photonView.RPC("DestroyObject", RpcTarget.All);
+        }
     }
 
     [PunRPC]
