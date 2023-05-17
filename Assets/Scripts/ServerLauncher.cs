@@ -38,7 +38,7 @@ public class ServerLauncher : MonoBehaviourPunCallbacks
 
     public GameObject createNicknamePanel;
     public TMP_InputField nicknameInput;
-    private bool hasSetNickname;
+    public static bool hasSetNickname;
 
     public string levelNameToPlay;
     public GameObject startGameButton;
