@@ -17,6 +17,8 @@ public class UIController : MonoBehaviour
 
     public GameObject matchEndScreen;
 
+    public TMP_Text matchTimerText;
+
     private void Awake()
     {
         instance = this;

@@ -23,6 +23,10 @@ public class MatchManager : MonoBehaviourPunCallbacks, IOnEventCallback
 
     private List<LeaderboardPlayerInformation> leaderboardPlayerInformationList = new List<LeaderboardPlayerInformation>();
 
+    public float matchTimeLength = 60;
+    private float currentMatchTime;
+    private bool bossAliveStatus;
+
     public enum EventCodes : byte
     {
         NewPlayerEvent,
@@ -59,6 +63,9 @@ public class MatchManager : MonoBehaviourPunCallbacks, IOnEventCallback
 
             currentGameState = GameStates.GamePlayingState;
         }
+
+        bossAliveStatus = true;
+        StartTimer();
     }
 
     void Update()
@@ -73,6 +80,23 @@ public class MatchManager : MonoBehaviourPunCallbacks, IOnEventCallback
             {
                 ShowLeaderboard();
             }
+        }
+
+        if(currentGameState == GameStates.GamePlayingState)
+        {
+            currentMatchTime += Time.deltaTime;
+
+            if(bossAliveStatus == false)
+            {
+                currentMatchTime = 0;
+                currentGameState = GameStates.GameEndingState;
+
+                if (PhotonNetwork.IsMasterClient)
+                {
+                    ListPlayerEventSend();
+                }
+            }
+            UpdateTimerUIDisplay();
         }
     }
 
@@ -323,6 +347,7 @@ public class MatchManager : MonoBehaviourPunCallbacks, IOnEventCallback
 
         if(bossDefeated == true)
         {
+            bossAliveStatus = false; 
             if(PhotonNetwork.IsMasterClient && currentGameState != GameStates.GameEndingState)
             {
                 currentGameState = GameStates.GameEndingState;
@@ -365,6 +390,22 @@ public class MatchManager : MonoBehaviourPunCallbacks, IOnEventCallback
         PhotonNetwork.AutomaticallySyncScene = false;
 
         PhotonNetwork.LeaveRoom();
+    }
+
+    public void StartTimer()
+    {
+        if(currentGameState == GameStates.GamePlayingState)
+        {
+            currentMatchTime = 0;
+            UpdateTimerUIDisplay();
+        }
+    }
+
+    public void UpdateTimerUIDisplay()
+    {
+        var timeToDisplay = System.TimeSpan.FromSeconds(currentMatchTime);
+
+        UIController.instance.matchTimerText.text = timeToDisplay.Minutes.ToString("00") + ":" + timeToDisplay.Seconds.ToString("00");
     }
 
 
