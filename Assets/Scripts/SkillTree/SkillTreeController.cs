@@ -93,24 +93,13 @@ public class SkillTreeController : MonoBehaviour
     }
     public void OpenSkillChoosePanel()
     {
-        if (!skillTreePanel.activeInHierarchy)
-        {
-            OpenSkillTree();
-            skillChoosePanel.SetActive(true);
-        }
-        else
-        {
-            CloseSkillChoosePanel();
-        }
+        skillTreePanel.SetActive(true);
+        skillChoosePanel.SetActive(true);
     }
     public void CloseSkillChoosePanel()
     {
-        if (skillChoosePanel.activeInHierarchy)
-        {
-            skillChoosePanel.SetActive(false);
-            CloseSkillTree();
-        }
-        
+        skillChoosePanel.SetActive(false);
+        CloseSkillTree();
     }
     //Save stats
     public void SaveStats()
