@@ -7,6 +7,12 @@ TagManager:
   - Enemy
   - Player_Bullet
   - Enemy_Bullet
+  - Tilemap_Ground
+  - Tilemap_Decoration1
+  - Tilemap_Decoration2
+  - Tilemap_Front
+  - Tilemap_Collision
+  - Tilemap_Minimap
   layers:
   - Default
   - TransparentFX
@@ -18,9 +24,9 @@ TagManager:
   - Player_Projectile
   - Enemy_Body
   - Enemy_Projectile
-  - 
-  - 
-  - 
+  - Level_Map
+  - Level_Wall
+  - Minimap
   - 
   - 
   - 
@@ -55,4 +61,22 @@ TagManager:
     locked: 0
   - name: Enemy_Projectile
     uniqueID: 3809394659
+    locked: 0
+  - name: L_Tilemap_Ground
+    uniqueID: 513910553
+    locked: 0
+  - name: L_Tilemap_Ground_Decoration1
+    uniqueID: 201084095
+    locked: 0
+  - name: L_Tilemap_Ground_Decoration2
+    uniqueID: 1859688181
+    locked: 0
+  - name: L_Tilemap_Front
+    uniqueID: 2973379485
+    locked: 0
+  - name: L_Tilemap_Collision
+    uniqueID: 1517875377
+    locked: 0
+  - name: L_Minimap
+    uniqueID: 1572605557
     locked: 0

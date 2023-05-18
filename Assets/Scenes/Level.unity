@@ -156,8 +156,6 @@ MonoBehaviour:
   playersGameObjects: []
   itemTextPrefab: {fileID: 3539542682603925182, guid: 32c57df8b5f508348a60a5bcb503d5d2, type: 3}
   itemTextPanel: {fileID: 935012907}
-  currentMatchTime: 0
-  syncTimePerSecond: 0
   currentGameState: 0
   waitGameStateTime: 8
 --- !u!4 &6791294
@@ -3191,6 +3189,18 @@ PrefabInstance:
     - target: {fileID: 5207366239292380119, guid: e4f8ec3504e27824e9a29560384589f2, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5207366239811650422, guid: e4f8ec3504e27824e9a29560384589f2, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5207366239811650422, guid: e4f8ec3504e27824e9a29560384589f2, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5207366239811650422, guid: e4f8ec3504e27824e9a29560384589f2, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5207366239972248120, guid: e4f8ec3504e27824e9a29560384589f2, type: 3}
       propertyPath: m_Pivot.x
