@@ -19,6 +19,8 @@ public class UIController : MonoBehaviour
 
     public TMP_Text matchTimerText;
 
+    public GameObject skillChoosePanel;
+
     private void Awake()
     {
         instance = this;

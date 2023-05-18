@@ -104,7 +104,6 @@ MonoBehaviour:
   projectileSpeed: 7.5
   projectileRB: {fileID: 7296094652494368642}
   projectileImpactEffect: {fileID: 3644861423452807198, guid: 788dae8dc43d25b4d9932991e5b7b69c, type: 3}
-  damageToGive: 50
 --- !u!61 &4739121994787236656
 BoxCollider2D:
   m_ObjectHideFlags: 0
