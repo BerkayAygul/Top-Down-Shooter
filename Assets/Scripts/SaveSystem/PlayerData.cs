@@ -9,7 +9,7 @@ public class PlayerData
    public int gold;
    public int currentExp;
    public int maxExp;
-   public int remainingStats;
+   public int leftSkillPoint;
    public Dictionary<PlayerData.Classes,int[]> classAndStats;
 
    public PlayerData(PlayerAttributes data)
@@ -18,7 +18,7 @@ public class PlayerData
       gold = data.playerGold;
       currentExp = data.playerCurrentExperience;
       maxExp = data.playerMaxExperience;
-      remainingStats = data.statPoints;
+      leftSkillPoint = data.leftSkillPoint;
       classAndStats = data.classAndStats;
    }
    public enum Classes

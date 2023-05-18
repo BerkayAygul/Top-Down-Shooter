@@ -100,7 +100,7 @@ public class PlayerSpawner : MonoBehaviour
         }
         else
         {
-            playerAttributes.LoadPlayer();
+            //playerAttributes.LoadPlayer();
         }
         
     }

@@ -436,11 +436,13 @@ MonoBehaviour:
   playerRB: {fileID: 7646298474353698967}
   playerWeaponHand: {fileID: 7646298473996126164}
   playerAnimator: {fileID: 7646298474353698964}
-  strength: 1
-  dexterity: 1
+  damage: 30
+  damageLevel: 1
+  speedLevel: 1
   intelligence: 1
   vitality: 1
   statPoints: 0
+  leftSkillPoint: 0
   playerClass: 0
   playerclassscriptable: {fileID: 11400000, guid: 40ee2af0b0b9a64478c62e2101085584, type: 2}
   playerMaxExperience: 100

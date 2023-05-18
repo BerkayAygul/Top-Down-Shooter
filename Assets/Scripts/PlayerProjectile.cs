@@ -8,15 +8,17 @@ public class PlayerProjectile : MonoBehaviourPunCallbacks
 {
     public float projectileSpeed = 7.5f;
     public Rigidbody2D projectileRB;
+    private GameObject player;
+    private PlayerAttributes playerAttributes;
 
     public GameObject projectileImpactEffect;
 
-    public int damageToGive = 50;
-
     private void Start()
     {
+        GetPlayer();
         if(photonView.IsMine)
         {
+            playerAttributes = player.GetComponent<PlayerAttributes>();
             photonView.RPC("MoveProjectile", RpcTarget.All);
         }
     }
@@ -32,8 +34,9 @@ public class PlayerProjectile : MonoBehaviourPunCallbacks
 
             if (collisionObject.tag == "Enemy")
             {
-                EnemyController enemy = collisionObject.gameObject.GetComponent<EnemyController>(); ;
-                enemy.pw.RPC("TakeDamage", RpcTarget.All, damageToGive, PhotonNetwork.LocalPlayer.ActorNumber);
+                EnemyController enemy = collisionObject.gameObject.GetComponent<EnemyController>();
+                Debug.Log("Damage: " + playerAttributes.damage);
+                enemy.pw.RPC("TakeDamage", RpcTarget.All, playerAttributes.damage, PhotonNetwork.LocalPlayer.ActorNumber);
             }
         }
     }
@@ -56,5 +59,16 @@ public class PlayerProjectile : MonoBehaviourPunCallbacks
     public void DestroyObject()
     {
         Destroy(gameObject);
+    }
+    private void GetPlayer()
+    {
+        foreach (var playerInList in MatchManager.instance.playersGameObjects)
+        {
+            if (playerInList.GetComponent<PhotonView>().ControllerActorNr == PhotonNetwork.LocalPlayer.ActorNumber)
+            {
+                player = playerInList;
+                
+            }
+        }
     }
 }
