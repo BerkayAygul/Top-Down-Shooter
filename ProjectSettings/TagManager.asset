@@ -50,6 +50,15 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: L_Tilemap_Ground
+    uniqueID: 513910553
+    locked: 0
+  - name: L_Tilemap_Ground_Decoration1
+    uniqueID: 201084095
+    locked: 0
+  - name: L_Tilemap_Ground_Decoration2
+    uniqueID: 1859688181
+    locked: 0
   - name: Player_Body
     uniqueID: 4018716385
     locked: 0
@@ -61,15 +70,6 @@ TagManager:
     locked: 0
   - name: Enemy_Projectile
     uniqueID: 3809394659
-    locked: 0
-  - name: L_Tilemap_Ground
-    uniqueID: 513910553
-    locked: 0
-  - name: L_Tilemap_Ground_Decoration1
-    uniqueID: 201084095
-    locked: 0
-  - name: L_Tilemap_Ground_Decoration2
-    uniqueID: 1859688181
     locked: 0
   - name: L_Tilemap_Front
     uniqueID: 2973379485
