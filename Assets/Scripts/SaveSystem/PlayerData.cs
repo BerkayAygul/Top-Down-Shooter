@@ -23,8 +23,7 @@ public class PlayerData
    }
    public enum Classes
    {
-      warrior,
-      mage,
-      archer
+      gunner,
+      ninja,
    }
 }

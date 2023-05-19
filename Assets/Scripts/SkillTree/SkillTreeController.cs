@@ -36,7 +36,7 @@ public class SkillTreeController : MonoBehaviour
         
     }
 
-    private void GetPlayer()
+    public void GetPlayer()
     {
         foreach (var playerInList in MatchManager.instance.playersGameObjects)
         {
@@ -46,6 +46,19 @@ public class SkillTreeController : MonoBehaviour
                 
             }
         }
+    }
+    public GameObject GetPlayerObject()
+    {
+        foreach (var playerInList in MatchManager.instance.playersGameObjects)
+        {
+            if (playerInList.GetComponent<PhotonView>().ControllerActorNr == PhotonNetwork.LocalPlayer.ActorNumber)
+            {
+                return playerInList;
+
+            }
+        }
+
+        return null;
     }
 
     private void UpdateText()
@@ -162,6 +175,18 @@ public class SkillTreeController : MonoBehaviour
             playerAttributes.leftSkillPoint--;
             playerAttributes.speedLevel++;
             playerAttributes.SpeedUp();
+            if (playerAttributes.leftSkillPoint <= 0)
+            {
+                CloseSkillChoosePanel();
+            }
+        }
+    }
+    public void IncreaseSpecial()
+    {
+        if (playerAttributes.leftSkillPoint > 0)
+        {
+            playerAttributes.leftSkillPoint--;
+            playerAttributes.specialLevel++;
             if (playerAttributes.leftSkillPoint <= 0)
             {
                 CloseSkillChoosePanel();

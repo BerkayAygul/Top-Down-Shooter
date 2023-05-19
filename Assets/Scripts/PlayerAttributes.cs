@@ -21,12 +21,19 @@ public class PlayerAttributes : MonoBehaviourPunCallbacks
     private Camera playerCamera;
 
     public Animator playerAnimator;
+    //public Classes playerClass;
+    public enum Classes
+    {
+        Gunner,
+        Ninja
+    }
 
 
 
     //Stats
     public int damage = 30;
     public int damageLevel = 1;
+    public int specialLevel = 1;
     public int speedLevel = 1;
     public int intelligence = 1;
     public int vitality= 1;
@@ -56,6 +63,9 @@ public class PlayerAttributes : MonoBehaviourPunCallbacks
     
     public delegate void OnSpeedUp();
     public static OnSpeedUp onSpeedUp;
+    
+    public delegate void OnSpecialUp();
+    public static OnSpecialUp onSpecialUp;
     
 
     public int playerMaxHealth = 1000;
@@ -149,13 +159,8 @@ public class PlayerAttributes : MonoBehaviourPunCallbacks
     public void CreateClassesDictionary()
     {
         int[] stats = new[] { 1, 1, 1, 1,0,1,100,0 };
-        classAndStats[PlayerData.Classes.archer] = stats;
-        classAndStats[PlayerData.Classes.mage] = stats;
-        classAndStats[PlayerData.Classes.warrior] = stats;
-            
-           
-        
-        
+        classAndStats[PlayerData.Classes.gunner] = stats;
+        classAndStats[PlayerData.Classes.ninja] = stats;
     }
     public void AddStatToClass(PlayerData.Classes pClass)
     {
@@ -277,6 +282,16 @@ public class PlayerAttributes : MonoBehaviourPunCallbacks
         onSpeedUp?.Invoke();
         
         onSpeedUp -= (() => { moveSpeed = 4 + (speedLevel-1) * 0.75f;
+        });
+    }
+    public void SpecialUp()
+    {
+        onSpecialUp += (() => { moveSpeed = 4 + (speedLevel-1) * 0.75f;
+        });
+        
+        onSpecialUp?.Invoke();
+        
+        onSpecialUp -= (() => { moveSpeed = 4 + (speedLevel-1) * 0.75f;
         });
     }
 
