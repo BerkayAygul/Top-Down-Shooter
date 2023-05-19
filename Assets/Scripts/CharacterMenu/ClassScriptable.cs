@@ -15,6 +15,6 @@ public class ClassScriptable:MonoBehaviour
 
     private void Start()
     {
-        currentClass = PlayerData.Classes.warrior;
+        currentClass = PlayerData.Classes.gunner;
     }
 }

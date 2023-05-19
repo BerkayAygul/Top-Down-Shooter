@@ -35,17 +35,13 @@ public class PlayerSpawner : MonoBehaviour
         // Instantiate Player Prefab over the network.
         #endregion
 
-        if (ClassScriptable.instance.currentClass == PlayerData.Classes.warrior)
+        if (ClassScriptable.instance.currentClass == PlayerData.Classes.gunner)
         {
             player = PhotonNetwork.Instantiate(playerPrefabs[0].name, spawnPoint.position, spawnPoint.rotation);
         }
-        else if(ClassScriptable.instance.currentClass == PlayerData.Classes.mage)
+        else if(ClassScriptable.instance.currentClass == PlayerData.Classes.ninja)
         {
             player = PhotonNetwork.Instantiate(playerPrefabs[1].name, spawnPoint.position, spawnPoint.rotation);
-        }
-        else if(ClassScriptable.instance.currentClass == PlayerData.Classes.archer)
-        {
-            player = PhotonNetwork.Instantiate(playerPrefabs[2].name, spawnPoint.position, spawnPoint.rotation);
         }
         PlayerAttributes playerAttributes = player.GetComponent<PlayerAttributes>();
         
@@ -67,14 +63,11 @@ public class PlayerSpawner : MonoBehaviour
         SpriteRenderer playerSprite = player.gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>();
         switch (playerClass)
         {
-            case PlayerData.Classes.warrior:
+            case PlayerData.Classes.gunner:
                 playerSprite.sprite = classSprites[0];
                 break;
-            case PlayerData.Classes.mage:
+            case PlayerData.Classes.ninja:
                 playerSprite.sprite = classSprites[1];
-                break;
-            case PlayerData.Classes.archer:
-                playerSprite.sprite = classSprites[2];
                 break;
         }
     }
@@ -95,12 +88,11 @@ public class PlayerSpawner : MonoBehaviour
         if (playerAttributes.LoadPlayer().IsUnityNull())
         {
             playerAttributes.playerClass = ClassScriptable.instance.currentClass;
-            playerAttributes.SavePlayer();
-            Debug.Log("Saved");
+            //playerAttributes.SavePlayer();
         }
         else
         {
-            playerAttributes.LoadPlayer();
+            //playerAttributes.LoadPlayer();
         }
         
     }

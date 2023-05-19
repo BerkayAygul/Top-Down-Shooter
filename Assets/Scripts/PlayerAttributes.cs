@@ -21,15 +21,24 @@ public class PlayerAttributes : MonoBehaviourPunCallbacks
     private Camera playerCamera;
 
     public Animator playerAnimator;
+    //public Classes playerClass;
+    public enum Classes
+    {
+        Gunner,
+        Ninja
+    }
 
 
 
     //Stats
-    public int strength = 1;
-    public int dexterity = 1;
+    public int damage = 30;
+    public int damageLevel = 1;
+    public int specialLevel = 1;
+    public int speedLevel = 1;
     public int intelligence = 1;
     public int vitality= 1;
     public int statPoints = 0;
+    public int leftSkillPoint = 0;
     public PlayerData.Classes playerClass;
     public Dictionary<PlayerData.Classes,int[]> classAndStats;
     public ClassScriptable playerclassscriptable;
@@ -41,11 +50,27 @@ public class PlayerAttributes : MonoBehaviourPunCallbacks
     
     //Gold
     public int playerGold = 0;
+    
+    //Events
     public delegate void OnGetExp();
     public static OnGetExp onGetExp;
+    
+    public delegate void OnHpUp();
+    public static OnHpUp onHpUp;
+    
+    public delegate void OnAttackUp();
+    public static OnAttackUp onAttackUp;
+    
+    public delegate void OnSpeedUp();
+    public static OnSpeedUp onSpeedUp;
+    
+    public delegate void OnSpecialUp();
+    public static OnSpecialUp onSpecialUp;
+    
 
     public int playerMaxHealth = 1000;
     public int playerCurrentHealth;
+   
 
     public GameObject hitEffect;
 
@@ -114,8 +139,7 @@ public class PlayerAttributes : MonoBehaviourPunCallbacks
     {
         int[] stats = new int[8];
         stats = classAndStats[playerClass];
-        strength = stats[0];
-        dexterity = stats[1];
+        speedLevel = stats[1];
         intelligence = stats[2];
         vitality = stats[3];
         playerLevel = stats[4];
@@ -126,7 +150,7 @@ public class PlayerAttributes : MonoBehaviourPunCallbacks
     public void SetLoadedData(PlayerData data)
     {
         playerGold = data.gold;
-        statPoints = data.remainingStats;
+        statPoints = data.leftSkillPoint;
         classAndStats = data.classAndStats;
         ChangeClass(ClassScriptable.instance);
     }
@@ -135,20 +159,15 @@ public class PlayerAttributes : MonoBehaviourPunCallbacks
     public void CreateClassesDictionary()
     {
         int[] stats = new[] { 1, 1, 1, 1,0,1,100,0 };
-        classAndStats[PlayerData.Classes.archer] = stats;
-        classAndStats[PlayerData.Classes.mage] = stats;
-        classAndStats[PlayerData.Classes.warrior] = stats;
-            
-           
-        
-        
+        classAndStats[PlayerData.Classes.gunner] = stats;
+        classAndStats[PlayerData.Classes.ninja] = stats;
     }
     public void AddStatToClass(PlayerData.Classes pClass)
     {
         
         int[] stats = new int[8];
-        stats[0] = strength;
-        stats[1] = dexterity;
+        stats[0] = damageLevel;
+        stats[1] = speedLevel;
         stats[2] = intelligence;
         stats[3] = vitality;
         stats[4] = playerLevel;
@@ -182,9 +201,11 @@ public class PlayerAttributes : MonoBehaviourPunCallbacks
     public void LevelUp()
     {
         playerLevel++;
-        statPoints++;
+        //statPoints++;
+        leftSkillPoint++;
         playerCurrentExperience -= playerMaxExperience; 
         playerMaxExperience += (int)(playerMaxExperience*20 / 100);
+        SkillTreeController.instance.OpenSkillChoosePanel();
         if (playerCurrentExperience >= playerMaxExperience)
         {
             LevelUp();
@@ -223,11 +244,55 @@ public class PlayerAttributes : MonoBehaviourPunCallbacks
         PlayerData data = SaveSystem.LoadData();
         if (!data.IsUnityNull())
         {
-            SetLoadedData(data);
-            SetStatsLevelAndExpValues();
+            //SetLoadedData(data);
+            //SetStatsLevelAndExpValues();
             return data;
         }
         return null;
+    }
+
+    public void HpUp()
+    {
+        onHpUp += (() => { playerMaxHealth = 1000 + ((vitality - 1) * 150);
+            playerCurrentHealth = playerMaxHealth;
+        });
+        
+        onHpUp?.Invoke();
+        
+        onHpUp -= (() => { playerMaxHealth = 1000 + ((vitality - 1) * 150);
+            playerCurrentHealth = playerMaxHealth;
+        });
+    }
+
+    public void AttackUp()
+    {
+        onAttackUp += (() => { damage = 30 + 20*(damageLevel-1);
+        });
+        
+        onAttackUp?.Invoke();
+        
+        onAttackUp -= (() => { damage = 30 + 20*(damageLevel-1);
+        });
+    }
+    public void SpeedUp()
+    {
+        onSpeedUp += (() => { moveSpeed = 4 + (speedLevel-1) * 0.75f;
+        });
+        
+        onSpeedUp?.Invoke();
+        
+        onSpeedUp -= (() => { moveSpeed = 4 + (speedLevel-1) * 0.75f;
+        });
+    }
+    public void SpecialUp()
+    {
+        onSpecialUp += (() => { moveSpeed = 4 + (speedLevel-1) * 0.75f;
+        });
+        
+        onSpecialUp?.Invoke();
+        
+        onSpecialUp -= (() => { moveSpeed = 4 + (speedLevel-1) * 0.75f;
+        });
     }
 
    

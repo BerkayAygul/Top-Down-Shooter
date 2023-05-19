@@ -18,6 +18,7 @@ public class SkillTreeController : MonoBehaviour
     public TextMeshProUGUI levelText;
     public TextMeshProUGUI classText;
     public Image expBarImage;
+    public GameObject skillChoosePanel;
 
     public SkillTreeController()
     {
@@ -35,7 +36,7 @@ public class SkillTreeController : MonoBehaviour
         
     }
 
-    private void GetPlayer()
+    public void GetPlayer()
     {
         foreach (var playerInList in MatchManager.instance.playersGameObjects)
         {
@@ -46,13 +47,26 @@ public class SkillTreeController : MonoBehaviour
             }
         }
     }
+    public GameObject GetPlayerObject()
+    {
+        foreach (var playerInList in MatchManager.instance.playersGameObjects)
+        {
+            if (playerInList.GetComponent<PhotonView>().ControllerActorNr == PhotonNetwork.LocalPlayer.ActorNumber)
+            {
+                return playerInList;
+
+            }
+        }
+
+        return null;
+    }
 
     private void UpdateText()
     {
-        dexText.text = playerAttributes.dexterity.ToString();
+        dexText.text = playerAttributes.speedLevel.ToString();
         vitText.text = playerAttributes.vitality.ToString();
         intText.text = playerAttributes.intelligence.ToString();
-        strText.text = playerAttributes.strength.ToString();
+        strText.text = playerAttributes.damage.ToString();
         remainStatText.text = playerAttributes.statPoints.ToString();
         classText.text = playerAttributes.playerClass.ToString();
 
@@ -90,6 +104,16 @@ public class SkillTreeController : MonoBehaviour
         }
         
     }
+    public void OpenSkillChoosePanel()
+    {
+        skillTreePanel.SetActive(true);
+        skillChoosePanel.SetActive(true);
+    }
+    public void CloseSkillChoosePanel()
+    {
+        skillChoosePanel.SetActive(false);
+        CloseSkillTree();
+    }
     //Save stats
     public void SaveStats()
     {
@@ -99,23 +123,14 @@ public class SkillTreeController : MonoBehaviour
     public void ResetStats()
     {
         playerAttributes.intelligence = 1;
-        playerAttributes.dexterity = 1;
-        playerAttributes.strength = 1;
+        playerAttributes.speedLevel = 1;
+        playerAttributes.damage = 30;
         playerAttributes.vitality = 1;
         playerAttributes.statPoints = playerAttributes.playerLevel;
         UpdateText();
     }
 
     //stat increase section
-    public void IncreaseDex()
-    {
-        if (playerAttributes.statPoints > 0)
-        {
-            playerAttributes.statPoints--;
-            playerAttributes.dexterity++;
-            UpdateText();
-        }
-    }
     public void IncreaseInt()
     {
         if (playerAttributes.statPoints > 0)
@@ -125,39 +140,60 @@ public class SkillTreeController : MonoBehaviour
             UpdateText();
         }
     }
-    public void IncreaseStr()
+    public void IncreaseDamage()
     {
-        if (playerAttributes.statPoints > 0)
+        if (playerAttributes.leftSkillPoint > 0)
         {
-            playerAttributes.statPoints--;
-            playerAttributes.strength++;
+            playerAttributes.leftSkillPoint--;
+            playerAttributes.damageLevel++;
+            playerAttributes.AttackUp();
             UpdateText();
+            if (playerAttributes.leftSkillPoint <= 0)
+            {
+               CloseSkillChoosePanel();
+            }
         }
     }
-    public void IncreaseVit()
+    public void IncreaseHealth()
     {
-        if (playerAttributes.statPoints > 0)
+        if (playerAttributes.leftSkillPoint > 0)
         {
-            playerAttributes.statPoints--;
+            playerAttributes.leftSkillPoint--;
             playerAttributes.vitality++;
+            playerAttributes.HpUp();
             UpdateText();
+            if (playerAttributes.leftSkillPoint <= 0)
+            {
+                CloseSkillChoosePanel();
+            }
+        }
+    }
+    public void IncreaseSpeed()
+    {
+        if (playerAttributes.leftSkillPoint > 0)
+        {
+            playerAttributes.leftSkillPoint--;
+            playerAttributes.speedLevel++;
+            playerAttributes.SpeedUp();
+            if (playerAttributes.leftSkillPoint <= 0)
+            {
+                CloseSkillChoosePanel();
+            }
+        }
+    }
+    public void IncreaseSpecial()
+    {
+        if (playerAttributes.leftSkillPoint > 0)
+        {
+            playerAttributes.leftSkillPoint--;
+            playerAttributes.specialLevel++;
+            if (playerAttributes.leftSkillPoint <= 0)
+            {
+                CloseSkillChoosePanel();
+            }
         }
     }
     //stat decreasing section
-    public void DecreaseDex()
-    {
-        if (playerAttributes.statPoints <= playerAttributes.playerLevel)
-        {
-            
-            if (playerAttributes.dexterity > 1)
-            {
-                playerAttributes.dexterity--;
-                playerAttributes.statPoints++;
-            }
-            
-            UpdateText();
-        }
-    }
     public void DecreaseInt()
     {
         if (playerAttributes.statPoints <= playerAttributes.playerLevel)
@@ -166,20 +202,6 @@ public class SkillTreeController : MonoBehaviour
             if (playerAttributes.intelligence > 1)
             {
                 playerAttributes.intelligence--;
-                playerAttributes.statPoints++;
-            }
-            
-            UpdateText();
-        }
-    }
-    public void DecreaseStr()
-    {
-        if (playerAttributes.statPoints <= playerAttributes.playerLevel)
-        {
-            
-            if (playerAttributes.strength > 1)
-            {
-                playerAttributes.strength--;
                 playerAttributes.statPoints++;
             }
             

@@ -17,25 +17,20 @@ public class ClassController : MonoBehaviour
 
   private void Start()
   {
-    selectedClass = PlayerData.Classes.warrior;
+    selectedClass = PlayerData.Classes.gunner;
     GetRigthClass();
   }
 
   public void GetRigthClass()
   {
-    if (selectedClass == PlayerData.Classes.warrior)
+    if (selectedClass == PlayerData.Classes.gunner)
     {
       currentClassImage.sprite = classImages[0];
       currentClassName.text = selectedClass.ToString();
     }
-    else if (selectedClass == PlayerData.Classes.mage)
+    else if (selectedClass == PlayerData.Classes.ninja)
     {
       currentClassImage.sprite = classImages[1];
-      currentClassName.text = selectedClass.ToString();
-    }
-    else if (selectedClass == PlayerData.Classes.archer)
-    {
-      currentClassImage.sprite = classImages[2];
       currentClassName.text = selectedClass.ToString();
     }
     ClassScriptable.instance.currentClass = selectedClass;
@@ -43,17 +38,13 @@ public class ClassController : MonoBehaviour
 
   public void NextClass()
   {
-    if (selectedClass == PlayerData.Classes.archer )
+    if (selectedClass == PlayerData.Classes.gunner )
     {
-      selectedClass = PlayerData.Classes.warrior;
+      selectedClass = PlayerData.Classes.ninja;
     }
-    else if (selectedClass == PlayerData.Classes.warrior)
+    else if (selectedClass == PlayerData.Classes.ninja)
     {
-      selectedClass = PlayerData.Classes.mage;
-    }
-    else if(selectedClass == PlayerData.Classes.mage)
-    {
-      selectedClass = PlayerData.Classes.archer;
+      selectedClass = PlayerData.Classes.gunner;
     }
     GetRigthClass();
   }
@@ -64,17 +55,13 @@ public class ClassController : MonoBehaviour
   }
   public void BackClass()
   {
-    if (selectedClass == PlayerData.Classes.archer )
+    if (selectedClass == PlayerData.Classes.gunner )
     {
-      selectedClass = PlayerData.Classes.mage;
+      selectedClass = PlayerData.Classes.ninja;
     }
-    else if (selectedClass == PlayerData.Classes.warrior)
+    else if (selectedClass == PlayerData.Classes.ninja)
     {
-      selectedClass = PlayerData.Classes.archer;
-    }
-    else if(selectedClass == PlayerData.Classes.mage)
-    {
-      selectedClass = PlayerData.Classes.warrior;
+      selectedClass = PlayerData.Classes.gunner;
     }
     GetRigthClass();
   }

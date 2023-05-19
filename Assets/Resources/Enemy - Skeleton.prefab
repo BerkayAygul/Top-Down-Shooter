@@ -97,7 +97,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c09888da7402b1f40abbf34357c407fd, type: 2}
   - {fileID: 11400000, guid: 7705c792579882c4286d4d6b8956fe57, type: 2}
   - {fileID: 11400000, guid: 6424a516cbfbf7745877e951bd40a799, type: 2}
-  enemyExp: 35
+  enemyExp: 150
   pw: {fileID: 0}
   isBoss: 0
 --- !u!61 &2996410614592613705
