@@ -61,6 +61,9 @@ TagManager:
   - name: L_Tilemap_Ground_Decoration2
     uniqueID: 1859688181
     locked: 0
+  - name: VFX
+    uniqueID: 3493449915
+    locked: 0
   - name: Player_Body
     uniqueID: 4018716385
     locked: 0
