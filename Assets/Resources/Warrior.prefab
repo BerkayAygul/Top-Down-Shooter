@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7756703816668650889}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: point2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6782580252532533621}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: point5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71,7 +71,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 162375436582752388}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: point3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -102,7 +102,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6474952590870359616}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: point4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -133,7 +133,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7646298473472972750}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: point1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -252,7 +252,7 @@ GameObject:
   - component: {fileID: 7646298473996126154}
   - component: {fileID: 1788963834233626685}
   - component: {fileID: 5286329186062854177}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Player Weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -400,7 +400,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7646298474136343182}
   - component: {fileID: 7646298474136343181}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Player Hand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -667,7 +667,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7646298474693082322}
   - component: {fileID: 7646298474693082321}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Player Shadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}

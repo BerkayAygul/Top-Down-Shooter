@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7646298473472972750}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Projectile Fire Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -128,7 +128,7 @@ GameObject:
   - component: {fileID: 7646298473996126154}
   - component: {fileID: 1788963834233626685}
   - component: {fileID: 5286329186062854177}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Player Weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -267,7 +267,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7646298474136343182}
   - component: {fileID: 7646298474136343181}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Player Hand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -534,7 +534,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7646298474693082322}
   - component: {fileID: 7646298474693082321}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Player Shadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}

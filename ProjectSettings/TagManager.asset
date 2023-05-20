@@ -30,8 +30,8 @@ TagManager:
   - Level_Wall
   - Minimap
   - Enemy_Movement
-  - 
-  - 
+  - Player_Noninteractive
+  - Enemy_Noninteractive
   - 
   - 
   - 
