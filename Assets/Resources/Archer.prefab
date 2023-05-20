@@ -216,7 +216,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectileObject: {fileID: 4705656337214625592, guid: 7007812fab2f3634c9c873adbf26958f, type: 3}
-  projectileFirePoint: {fileID: 7646298473472972750}
+  projectileFirePoints: []
   timeBetweenShots: 0.3
 --- !u!114 &1788963834233626685
 MonoBehaviour:
@@ -255,7 +255,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_SynchronizePosition: 1
   m_SynchronizeRotation: 1
-  m_SynchronizeScale: 0
+  m_SynchronizeScale: 1
   m_UseLocal: 1
 --- !u!1 &7646298474136343183
 GameObject:
@@ -438,7 +438,8 @@ MonoBehaviour:
   playerAnimator: {fileID: 7646298474353698964}
   damage: 30
   damageLevel: 1
-  dexterity: 1
+  specialLevel: 1
+  speedLevel: 1
   intelligence: 1
   vitality: 1
   statPoints: 0
