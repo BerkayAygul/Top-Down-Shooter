@@ -99,7 +99,7 @@ GameObject:
   - component: {fileID: 5286329186062854177}
   - component: {fileID: 8530127376891248433}
   - component: {fileID: 5643470290877606309}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Player Weapon
   m_TagString: ninjaweapon
   m_Icon: {fileID: 0}
@@ -274,7 +274,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7646298474136343182}
   - component: {fileID: 7646298474136343181}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Player Hand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -541,7 +541,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7646298474693082322}
   - component: {fileID: 7646298474693082321}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Player Shadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
