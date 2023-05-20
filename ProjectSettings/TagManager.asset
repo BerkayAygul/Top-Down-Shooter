@@ -14,6 +14,7 @@ TagManager:
   - Tilemap_Collision
   - Tilemap_Minimap
   - ninjaweapon
+  - Tilemap_EnemyMovement
   layers:
   - Default
   - TransparentFX
@@ -28,7 +29,7 @@ TagManager:
   - Level_Map
   - Level_Wall
   - Minimap
-  - 
+  - Enemy_Movement
   - 
   - 
   - 
@@ -80,4 +81,7 @@ TagManager:
     locked: 0
   - name: L_Minimap
     uniqueID: 1572605557
+    locked: 0
+  - name: L_Enemy_Movement
+    uniqueID: 2706379041
     locked: 0
