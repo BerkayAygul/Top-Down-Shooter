@@ -117,7 +117,10 @@ public class PlayerAttributes : MonoBehaviourPunCallbacks
             else
             {
                 transform.localScale = Vector3.one;
-                //playerWeaponHand.localScale = Vector3.one;
+                if (playerClass == PlayerData.Classes.gunner)
+                {
+                    playerWeaponHand.localScale = Vector3.one;
+                }
             }
 
             Vector2 weaponOffset = new Vector2(mousePosition.x - screenPoint.x, mousePosition.y - screenPoint.y);
