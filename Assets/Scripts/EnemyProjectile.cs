@@ -33,7 +33,15 @@ public class EnemyProjectile : MonoBehaviourPunCallbacks
                 player.photonView.RPC("TakeDamage", RpcTarget.All, damageToGive);
             }
         }
-        Destroy(gameObject);
+        else if(collisionObject.tag == "ninjaweapon")
+        {
+            
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+        
     }
 
     private void OnBecameInvisible()

@@ -1,36 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &7646298473472972751
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7646298473472972750}
-  m_Layer: 0
-  m_Name: Projectile Fire Point
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &7646298473472972750
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7646298473472972751}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.9, y: 0.25, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 7646298473996126164}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7646298473690226138
 GameObject:
   m_ObjectHideFlags: 0
@@ -128,9 +97,11 @@ GameObject:
   - component: {fileID: 7646298473996126154}
   - component: {fileID: 1788963834233626685}
   - component: {fileID: 5286329186062854177}
+  - component: {fileID: 8530127376891248433}
+  - component: {fileID: 5643470290877606309}
   m_Layer: 0
   m_Name: Player Weapon
-  m_TagString: Untagged
+  m_TagString: ninjaweapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -146,8 +117,7 @@ Transform:
   m_LocalPosition: {x: 0.385, y: -0.175, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 7646298473472972750}
+  m_Children: []
   m_Father: {fileID: 7646298474353698960}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -192,7 +162,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -1
-  m_Sprite: {fileID: -4254059877319897387, guid: 48d85d1ef51430e42b6aef57f02c863d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ce5ac10bec0870444b73c669b2a952f1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -216,7 +186,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectileObject: {fileID: 4705656337214625592, guid: 7007812fab2f3634c9c873adbf26958f, type: 3}
-  projectileFirePoint: {fileID: 7646298473472972750}
+  projectileFirePoints: []
   timeBetweenShots: 0.3
 --- !u!114 &1788963834233626685
 MonoBehaviour:
@@ -255,8 +225,45 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_SynchronizePosition: 1
   m_SynchronizeRotation: 1
-  m_SynchronizeScale: 0
+  m_SynchronizeScale: 1
   m_UseLocal: 1
+--- !u!50 &8530127376891248433
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7646298473996126165}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
+--- !u!58 &5643470290877606309
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7646298473996126165}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.315
 --- !u!1 &7646298474136343183
 GameObject:
   m_ObjectHideFlags: 0
@@ -438,7 +445,8 @@ MonoBehaviour:
   playerAnimator: {fileID: 7646298474353698964}
   damage: 30
   damageLevel: 1
-  dexterity: 1
+  specialLevel: 1
+  speedLevel: 1
   intelligence: 1
   vitality: 1
   statPoints: 0
@@ -509,7 +517,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_SynchronizePosition: 1
   m_SynchronizeRotation: 1
-  m_SynchronizeScale: 0
+  m_SynchronizeScale: 1
   m_UseLocal: 1
 --- !u!114 &4502082974428572162
 MonoBehaviour:
