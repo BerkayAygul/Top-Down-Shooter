@@ -7,14 +7,15 @@ using Photon.Realtime;
 using TMPro;
 using UnityEngine;
 using Random = UnityEngine.Random;
+using Pathfinding;
 
 public class EnemyController : MonoBehaviourPunCallbacks
 {
     private EnemyShooting _enemyShooting;
-    public float moveSpeed;
+    //public float moveSpeed;
     public Rigidbody2D enemyRB;
 
-    public float rangeToChasePlayer;
+    //public float rangeToChasePlayer;
     private Vector3 moveDirection;
 
     public Animator skeletonAnimator;
@@ -32,6 +33,9 @@ public class EnemyController : MonoBehaviourPunCallbacks
 
     public bool isBoss = false;
 
+    public AIPath aiPath;
+
+
     private void Awake()
     {
         pw = GetComponent<PhotonView>();
@@ -41,11 +45,18 @@ public class EnemyController : MonoBehaviourPunCallbacks
     {
         _enemyShooting = new EnemyShooting();
         currentEnemyHealth = enemyMaxHealth;
+
+        if(_enemyShooting.GetNearestPlayer(gameObject) != null)
+        {
+            aiPath.target = _enemyShooting.GetNearestPlayer(gameObject);
+        }
     }
 
     void Update()
     {
-        if (_enemyShooting.GetDistance(_enemyShooting.GetNearestPlayer(gameObject).transform,gameObject) >= 4)
+        #region old_movement
+        /*
+        if (_enemyShooting.GetDistance(_enemyShooting.GetNearestPlayer(gameObject).transform, gameObject) >= 4)
         {
             moveDirection = _enemyShooting.GetNearestPlayer(gameObject).position - transform.position;
         }
@@ -53,8 +64,8 @@ public class EnemyController : MonoBehaviourPunCallbacks
         {
             moveDirection = Vector2.zero;
         }
-        
-        
+
+
         moveDirection.Normalize();
 
         enemyRB.velocity = moveDirection * moveSpeed;
@@ -75,7 +86,34 @@ public class EnemyController : MonoBehaviourPunCallbacks
         else
         {
             skeletonAnimator.SetBool("isSkeletonMoving", false);
+        } 
+        */
+        #endregion
+
+        if(aiPath.desiredVelocity.x >= 0.01f)
+        {
+            transform.localScale = new Vector3(-1f, 1f, 1f);
         }
+        else if(aiPath.desiredVelocity.x <= -0.01f)
+        {
+            transform.localScale = new Vector3(1f, 1f, 1f);
+        }
+
+        if (_enemyShooting.GetNearestPlayer(gameObject) != null)
+        {
+            aiPath.target = _enemyShooting.GetNearestPlayer(gameObject);
+        }
+
+        if(aiPath.reachedEndOfPath == false)
+        {
+            skeletonAnimator.SetBool("isSkeletonMoving", true);
+        }
+        else
+        {
+            skeletonAnimator.SetBool("isSkeletonMoving", false);
+        }
+
+        //aiPath.whenCloseToDestination = CloseToDestinationMode.Stop;
     }
 
     [PunRPC]
