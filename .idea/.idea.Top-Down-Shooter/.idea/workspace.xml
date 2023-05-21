@@ -6,23 +6,17 @@
   <component name="ChangeListManager">
     <list default="true" id="1f07465a-6a25-40b2-b548-ff0c735a7fed" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Top-Down-Shooter/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Top-Down-Shooter/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Assets 2/Textures/Sprite Atlas.spriteatlas" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Assets 2/Textures/Sprite Atlas.spriteatlas" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Bullet Impact Effect.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Bullet Impact Effect.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Resources/Enemy - Boss.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Enemy - Boss.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Resources/Enemy - Skeleton.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Enemy - Skeleton.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Enemy Hurt Effect .prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Enemy Hurt Effect .prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Mage.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Mage.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Player Hurt Effect.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Player Hurt Effect.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Resources/Player Projectile.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Player Projectile.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Resources/Warrior.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Warrior.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Level.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Level.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CharacterMenu/ClassController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CharacterMenu/ClassController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CharacterMenu/ClassScriptable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CharacterMenu/ClassScriptable.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerAttributes.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerAttributes.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerSpawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerSpawner.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerWeapon.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerWeapon.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SaveSystem/PlayerData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SaveSystem/PlayerData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SkillTree/SkillTreeController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SkillTree/SkillTreeController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ShaderGraphSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ShaderGraphSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

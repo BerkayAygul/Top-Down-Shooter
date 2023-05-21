@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using UnityEngine;
 using Photon.Pun;
 using TMPro;
@@ -18,7 +19,8 @@ public class PlayerAttributes : MonoBehaviourPunCallbacks
 
     public Transform playerWeaponHand;
 
-    private Camera playerCamera;
+    public CinemachineBrain cinemachineBrain;
+    public CinemachineVirtualCamera playerCamera;
 
     public Animator playerAnimator;
     //public Classes playerClass;
@@ -79,17 +81,15 @@ public class PlayerAttributes : MonoBehaviourPunCallbacks
         instance = this;
         classAndStats = new Dictionary<PlayerData.Classes, int[]>();
         CreateClassesDictionary();
+        if (photonView.IsMine)
+        {
+            cinemachineBrain = Camera.main.GetComponent<CinemachineBrain>();
+            playerCamera.gameObject.SetActive(true);
+        }
     }
 
     void Start()
     {
-        
-        if (photonView.IsMine)
-        {
-            playerCamera = Camera.main;
-            
-        }
-
         playerCurrentHealth = playerMaxHealth;
 
         UIController.instance.healthSlider.maxValue = playerMaxHealth;
@@ -107,7 +107,7 @@ public class PlayerAttributes : MonoBehaviourPunCallbacks
             playerRB.velocity = moveInput * moveSpeed;
 
             Vector3 mousePosition = Input.mousePosition;
-            Vector3 screenPoint = playerCamera.WorldToScreenPoint(transform.localPosition);
+            Vector3 screenPoint = cinemachineBrain.OutputCamera.WorldToScreenPoint(transform.localPosition);
 
             if(mousePosition.x < screenPoint.x && playerClass == PlayerData.Classes.gunner)
             {
