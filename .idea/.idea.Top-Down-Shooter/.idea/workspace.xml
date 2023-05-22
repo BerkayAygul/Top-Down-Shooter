@@ -10,13 +10,11 @@
       <change beforePath="$PROJECT_DIR$/Assets/Resources/Enemy - Boss.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Enemy - Boss.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Resources/Enemy - Skeleton.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Enemy - Skeleton.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Resources/Enemy Hurt Effect .prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Enemy Hurt Effect .prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Mage.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Mage.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Resources/Player Hurt Effect.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Player Hurt Effect.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Resources/Player Projectile.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Player Projectile.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Warrior.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Warrior.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Level.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Level.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerAttributes.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerAttributes.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,7 +60,7 @@
 }</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor &amp; Play">
     <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="$PROJECT_DIR$/Build\Top-Down-Shooter.exe" />
+      <option name="EXE_PATH" value="$PROJECT_DIR$/Build/Top-Down-Shooter.exe" />
       <option name="PROGRAM_PARAMETERS" value="" />
       <option name="WORKING_DIRECTORY" value="C:\Top-Down-Shooter\Build" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -129,6 +127,8 @@
       <workItem from="1679943883002" duration="1238000" />
       <workItem from="1684433563804" duration="7849000" />
       <workItem from="1684524161936" duration="5687000" />
+      <workItem from="1684788292750" duration="5004000" />
+      <workItem from="1684794236927" duration="952000" />
     </task>
     <servers />
   </component>
