@@ -319,7 +319,7 @@ GameObject:
   - component: {fileID: 376348933047507864}
   - component: {fileID: 1845215639}
   m_Layer: 8
-  m_Name: Enemy - Red Monk
+  m_Name: Enemy - Green Monk
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -357,7 +357,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyRB: {fileID: 376348933047507858}
   enemyAnimator: {fileID: 376348933047507861}
-  enemyMaxHealth: 200
+  enemyMaxHealth: 150
   currentEnemyHealth: 0
   hitEffect: {fileID: 8150682208409160637, guid: 8ed857aa4cac1d24db5d225978457151, type: 3}
   possibleItems:
@@ -377,9 +377,9 @@ MonoBehaviour:
   isBoss: 0
   aiPath: {fileID: 376348933047507856}
   isMoving: 0
-  isRedMonk: 1
+  isRedMonk: 0
   isBlueMonk: 0
-  isGreenMonk: 0
+  isGreenMonk: 1
   isOwlWarden: 0
 --- !u!95 &376348933047507861
 Animator:
@@ -421,7 +421,7 @@ MonoBehaviour:
   observableSearch: 0
   ObservedComponents:
   - {fileID: 376348933047507863}
-  sceneViewId: 7
+  sceneViewId: 5
   InstantiationId: 0
   isRuntimeInstantiated: 0
 --- !u!114 &376348933047507863
@@ -517,7 +517,7 @@ MonoBehaviour:
   rotationSpeed: 360
   slowdownDistance: 0.6
   pickNextWaypointDist: 1
-  endReachedDistance: 8
+  endReachedDistance: 5
   alwaysDrawGizmos: 0
   slowWhenNotFacingTarget: 1
   whenCloseToDestination: 0
@@ -653,7 +653,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyShouldShoot: 1
-  projectileObject: {fileID: 792493161297836614, guid: 6f67688fe45004a49b329eba7e20c5b6, type: 3}
+  projectileObject: {fileID: 792493161297836614, guid: 27cf958228d1bbc4fbf7b8d20e54eb69, type: 3}
   projectileFirePoint: {fileID: 376348932431162386}
   timeBetweenShots: 1
   shotRange: 4

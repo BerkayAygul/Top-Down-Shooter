@@ -251,34 +251,67 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
---- !u!4 &697951463 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 376348932431162386, guid: b26cbeaf279e5344d966b92222289136, type: 3}
-  m_PrefabInstance: {fileID: 376348932682226194}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1845215614 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 376348933047507820, guid: b26cbeaf279e5344d966b92222289136, type: 3}
-  m_PrefabInstance: {fileID: 376348932682226194}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1845215639
-MonoBehaviour:
+--- !u!1001 &1710335077
+PrefabInstance:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1845215614}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 38d7567c45b08d547b7494180bb2be6b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyShouldShoot: 1
-  projectileObject: {fileID: 792493161297836614, guid: 6f67688fe45004a49b329eba7e20c5b6, type: 3}
-  projectileFirePoint: {fileID: 697951463}
-  timeBetweenShots: 1
-  shotRange: 4
-  hasShotRange: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 376348933047507820, guid: bd5a79b7a57442c43ae8ce385cc1800f, type: 3}
+      propertyPath: m_Name
+      value: Enemy - Blue Monk
+      objectReference: {fileID: 0}
+    - target: {fileID: 376348933047507860, guid: bd5a79b7a57442c43ae8ce385cc1800f, type: 3}
+      propertyPath: sceneViewId
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 376348933047507867, guid: bd5a79b7a57442c43ae8ce385cc1800f, type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 376348933047507867, guid: bd5a79b7a57442c43ae8ce385cc1800f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 16.78
+      objectReference: {fileID: 0}
+    - target: {fileID: 376348933047507867, guid: bd5a79b7a57442c43ae8ce385cc1800f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -4.177
+      objectReference: {fileID: 0}
+    - target: {fileID: 376348933047507867, guid: bd5a79b7a57442c43ae8ce385cc1800f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 376348933047507867, guid: bd5a79b7a57442c43ae8ce385cc1800f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 376348933047507867, guid: bd5a79b7a57442c43ae8ce385cc1800f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 376348933047507867, guid: bd5a79b7a57442c43ae8ce385cc1800f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 376348933047507867, guid: bd5a79b7a57442c43ae8ce385cc1800f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 376348933047507867, guid: bd5a79b7a57442c43ae8ce385cc1800f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 376348933047507867, guid: bd5a79b7a57442c43ae8ce385cc1800f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 376348933047507867, guid: bd5a79b7a57442c43ae8ce385cc1800f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: bd5a79b7a57442c43ae8ce385cc1800f, type: 3}
 --- !u!1001 &1935585901
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -336,6 +369,79 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d7224950a9fb69f4aac2506efa7584c1, type: 3}
+--- !u!1001 &2077048010
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1845215639, guid: caf1c13341d28a345bc20b8e9c076d9a, type: 3}
+      propertyPath: projectileObject
+      value: 
+      objectReference: {fileID: 792493161297836614, guid: 27cf958228d1bbc4fbf7b8d20e54eb69, type: 3}
+    - target: {fileID: 376348933047507820, guid: caf1c13341d28a345bc20b8e9c076d9a, type: 3}
+      propertyPath: m_Name
+      value: Enemy - Green Monk
+      objectReference: {fileID: 0}
+    - target: {fileID: 376348933047507860, guid: caf1c13341d28a345bc20b8e9c076d9a, type: 3}
+      propertyPath: sceneViewId
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 376348933047507866, guid: caf1c13341d28a345bc20b8e9c076d9a, type: 3}
+      propertyPath: isBlueMonk
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 376348933047507866, guid: caf1c13341d28a345bc20b8e9c076d9a, type: 3}
+      propertyPath: isGreenMonk
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 376348933047507867, guid: caf1c13341d28a345bc20b8e9c076d9a, type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 376348933047507867, guid: caf1c13341d28a345bc20b8e9c076d9a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 12.352997
+      objectReference: {fileID: 0}
+    - target: {fileID: 376348933047507867, guid: caf1c13341d28a345bc20b8e9c076d9a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -4.177
+      objectReference: {fileID: 0}
+    - target: {fileID: 376348933047507867, guid: caf1c13341d28a345bc20b8e9c076d9a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 376348933047507867, guid: caf1c13341d28a345bc20b8e9c076d9a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 376348933047507867, guid: caf1c13341d28a345bc20b8e9c076d9a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 376348933047507867, guid: caf1c13341d28a345bc20b8e9c076d9a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 376348933047507867, guid: caf1c13341d28a345bc20b8e9c076d9a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 376348933047507867, guid: caf1c13341d28a345bc20b8e9c076d9a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 376348933047507867, guid: caf1c13341d28a345bc20b8e9c076d9a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 376348933047507867, guid: caf1c13341d28a345bc20b8e9c076d9a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: caf1c13341d28a345bc20b8e9c076d9a, type: 3}
 --- !u!4 &192316148090195113
 Transform:
   m_ObjectHideFlags: 0
@@ -378,22 +484,6 @@ PrefabInstance:
     - target: {fileID: 376348933047507860, guid: b26cbeaf279e5344d966b92222289136, type: 3}
       propertyPath: sceneViewId
       value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 376348933047507866, guid: b26cbeaf279e5344d966b92222289136, type: 3}
-      propertyPath: isRedMonk
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 376348933047507866, guid: b26cbeaf279e5344d966b92222289136, type: 3}
-      propertyPath: enemyRedMonkColor.b
-      value: 0.12588644
-      objectReference: {fileID: 0}
-    - target: {fileID: 376348933047507866, guid: b26cbeaf279e5344d966b92222289136, type: 3}
-      propertyPath: enemyRedMonkColor.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 376348933047507866, guid: b26cbeaf279e5344d966b92222289136, type: 3}
-      propertyPath: enemyRedMonkColor.r
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 376348933047507867, guid: b26cbeaf279e5344d966b92222289136, type: 3}
       propertyPath: m_RootOrder
@@ -439,8 +529,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 376348932431162387, guid: b26cbeaf279e5344d966b92222289136, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b26cbeaf279e5344d966b92222289136, type: 3}
 --- !u!114 &1011041028962740460
 MonoBehaviour:
@@ -1370,6 +1459,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 6424a516cbfbf7745877e951bd40a799, type: 2}
   enemySpriteRenderer: {fileID: 0}
   enemyRedMonkColor: {r: 1, g: 0, b: 0, a: 1}
+  enemyBlueMonkColor: {r: 0, g: 0, b: 1, a: 1}
+  enemyGreenMonkColor: {r: 0, g: 0, b: 1, a: 1}
   defaultEnemyColor: {r: 1, g: 1, b: 1, a: 1}
   enemyExp: 150
   pw: {fileID: 0}
@@ -1377,6 +1468,8 @@ MonoBehaviour:
   aiPath: {fileID: 7996399375473564879}
   isMoving: 0
   isRedMonk: 0
+  isBlueMonk: 0
+  isGreenMonk: 0
   isOwlWarden: 0
 --- !u!95 &7996399375473564865
 Animator:

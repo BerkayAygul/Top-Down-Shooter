@@ -28,6 +28,8 @@ public class EnemyController : MonoBehaviourPunCallbacks
 
     public SpriteRenderer enemySpriteRenderer;
     public Color enemyRedMonkColor = new Color(1, 0, 0);
+    public Color enemyBlueMonkColor = new Color(0, 0, 1);
+    public Color enemyGreenMonkColor = new Color(0, 1, 0);
     public Color defaultEnemyColor = new Color(1, 1, 1);
 
     //Exp amount
@@ -43,6 +45,8 @@ public class EnemyController : MonoBehaviourPunCallbacks
     //public Vector2 playerEnemyDistanceVector;
 
     public bool isRedMonk = false;
+    public bool isBlueMonk = false;
+    public bool isGreenMonk = false;
     public bool isOwlWarden = false;
 
     private void Awake()
@@ -338,6 +342,48 @@ public class EnemyController : MonoBehaviourPunCallbacks
             {
                 EnemyWeapon.instance.shotRange = 10f;
                 EnemyWeapon.instance.timeBetweenShots = 2f;
+                enemySpriteRenderer = GetComponent<SpriteRenderer>();
+                enemySpriteRenderer.color = defaultEnemyColor;
+            }
+        }
+        else if (isBlueMonk == true)
+        {
+            EnemyWeapon.instance.enemyShouldShoot = true;
+            if (isMoving == false)
+            {
+                EnemyWeapon.instance.shotRange = 0f;
+                EnemyWeapon.instance.timeBetweenShots = 1.5f;
+                enemySpriteRenderer = GetComponent<SpriteRenderer>();
+                enemySpriteRenderer.color = enemyBlueMonkColor;
+
+                //EnemyWeapon.instance.enemyShouldShoot = true;
+                //EnemyWeapon.instance.shotRange = aiPath.endReachedDistance + 2f;
+            }
+            else if (isMoving == true)
+            {
+                EnemyWeapon.instance.shotRange = 10f;
+                EnemyWeapon.instance.timeBetweenShots = 1f;
+                enemySpriteRenderer = GetComponent<SpriteRenderer>();
+                enemySpriteRenderer.color = defaultEnemyColor;
+            }
+        }
+        else if (isGreenMonk == true)
+        {
+            EnemyWeapon.instance.enemyShouldShoot = true;
+            if (isMoving == false)
+            {
+                EnemyWeapon.instance.shotRange = 0f;
+                EnemyWeapon.instance.timeBetweenShots = 1f;
+                enemySpriteRenderer = GetComponent<SpriteRenderer>();
+                enemySpriteRenderer.color = enemyGreenMonkColor;
+
+                //EnemyWeapon.instance.enemyShouldShoot = true;
+                //EnemyWeapon.instance.shotRange = aiPath.endReachedDistance + 2f;
+            }
+            else if (isMoving == true)
+            {
+                EnemyWeapon.instance.shotRange = 10f;
+                EnemyWeapon.instance.timeBetweenShots = 1f;
                 enemySpriteRenderer = GetComponent<SpriteRenderer>();
                 enemySpriteRenderer.color = defaultEnemyColor;
             }
