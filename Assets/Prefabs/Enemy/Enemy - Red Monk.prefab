@@ -372,8 +372,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efc5c750f08fc214ba77ea786f2aa1a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyRB: {fileID: 0}
-  skeletonAnimator: {fileID: 376348933047507861}
+  enemyRB: {fileID: 376348933047507858}
+  enemyAnimator: {fileID: 376348933047507861}
   enemyMaxHealth: 200
   currentEnemyHealth: 0
   hitEffect: {fileID: 8150682208409160637, guid: 8ed857aa4cac1d24db5d225978457151, type: 3}
@@ -388,6 +388,7 @@ MonoBehaviour:
   pw: {fileID: 0}
   isBoss: 0
   aiPath: {fileID: 376348933047507856}
+  isMoving: 0
 --- !u!95 &376348933047507861
 Animator:
   serializedVersion: 4
@@ -524,7 +525,7 @@ MonoBehaviour:
   rotationSpeed: 360
   slowdownDistance: 0.6
   pickNextWaypointDist: 1
-  endReachedDistance: 0.2
+  endReachedDistance: 8
   alwaysDrawGizmos: 0
   slowWhenNotFacingTarget: 1
   whenCloseToDestination: 0

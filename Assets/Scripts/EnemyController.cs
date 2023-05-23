@@ -18,7 +18,7 @@ public class EnemyController : MonoBehaviourPunCallbacks
     //public float rangeToChasePlayer;
     private Vector3 moveDirection;
 
-    public Animator skeletonAnimator;
+    public Animator enemyAnimator;
 
     public int enemyMaxHealth = 200;
     public int currentEnemyHealth;
@@ -35,6 +35,8 @@ public class EnemyController : MonoBehaviourPunCallbacks
 
     public AIPath aiPath;
 
+    public bool isMoving;
+    //public Vector2 playerEnemyDistanceVector;
 
     private void Awake()
     {
@@ -90,27 +92,20 @@ public class EnemyController : MonoBehaviourPunCallbacks
         */
         #endregion
 
-        if(aiPath.desiredVelocity.x >= 0.01f)
+        if(aiPath.desiredVelocity.magnitude >= 0.01f)
         {
-            transform.localScale = new Vector3(-1f, 1f, 1f);
+            isMoving = true;
+            EnemyAnimationCheck();
         }
-        else if(aiPath.desiredVelocity.x <= -0.01f)
+        else if(aiPath.desiredVelocity.magnitude == 0f)
         {
-            transform.localScale = new Vector3(1f, 1f, 1f);
+            isMoving = false;
+            EnemyAnimationCheck();
         }
 
         if (_enemyShooting.GetNearestPlayer(gameObject) != null)
         {
             aiPath.target = _enemyShooting.GetNearestPlayer(gameObject);
-        }
-
-        if(aiPath.reachedEndOfPath == false)
-        {
-            skeletonAnimator.SetBool("isSkeletonMoving", true);
-        }
-        else
-        {
-            skeletonAnimator.SetBool("isSkeletonMoving", false);
         }
 
         //aiPath.whenCloseToDestination = CloseToDestinationMode.Stop;
@@ -218,5 +213,100 @@ public class EnemyController : MonoBehaviourPunCallbacks
     public void DestroyObject()
     {
         PhotonNetwork.Destroy(gameObject);
+    }
+
+    public void EnemyAnimationCheck()
+    {
+        if (isMoving == true)
+        {
+            enemyAnimator.SetBool("isMoving", true);
+            enemyAnimator.SetBool("isIdle", false);
+
+            if (aiPath.desiredVelocity.x > 0 && (aiPath.desiredVelocity.y == 0 || aiPath.desiredVelocity.y < 0))
+            {
+                enemyAnimator.SetBool("aimRight", true);
+                enemyAnimator.SetBool("aimUpRight", false);
+                enemyAnimator.SetBool("aimLeft", false);
+                enemyAnimator.SetBool("aimUpLeft", false);
+                enemyAnimator.SetBool("aimUp", false);
+                enemyAnimator.SetBool("aimDown", false);
+
+            }
+            else if (aiPath.desiredVelocity.x > 0 && aiPath.desiredVelocity.y > 0)
+            {
+                enemyAnimator.SetBool("aimRight", false);
+                enemyAnimator.SetBool("aimUpRight", true);
+                enemyAnimator.SetBool("aimLeft", false);
+                enemyAnimator.SetBool("aimUpLeft", false);
+                enemyAnimator.SetBool("aimUp", false);
+                enemyAnimator.SetBool("aimDown", false);
+            }
+            /*else if (enemyPositions.x > 0 && enemyPositions.y < 0)
+            {
+                enemyAnimator.SetBool("aimUp", false);
+                enemyAnimator.SetBool("aimDown", false);
+                enemyAnimator.SetBool("aimRight", false);
+                enemyAnimator.SetBool("aimLeft", false);
+                enemyAnimator.SetBool("aimUpRight", false);
+                enemyAnimator.SetBool("aimUpLeft", false);
+            }*/
+            else if (aiPath.desiredVelocity.x < 0 && (aiPath.desiredVelocity.y == 0 || aiPath.desiredVelocity.y < 0))
+            {
+                enemyAnimator.SetBool("aimRight", false);
+                enemyAnimator.SetBool("aimUpRight", false);
+                enemyAnimator.SetBool("aimLeft", true);
+                enemyAnimator.SetBool("aimUpLeft", false);
+                enemyAnimator.SetBool("aimUp", false);
+                enemyAnimator.SetBool("aimDown", false);
+            }
+            else if (aiPath.desiredVelocity.x < 0 && aiPath.desiredVelocity.y > 0)
+            {
+                enemyAnimator.SetBool("aimRight", false);
+                enemyAnimator.SetBool("aimUpRight", false);
+                enemyAnimator.SetBool("aimLeft", false);
+                enemyAnimator.SetBool("aimUpLeft", true);
+                enemyAnimator.SetBool("aimUp", false);
+                enemyAnimator.SetBool("aimDown", false);
+            }
+            /*else if (enemyPositions.x < 0 && enemyPositions.y < 0)
+            {
+                enemyAnimator.SetBool("aimUp", false);
+                enemyAnimator.SetBool("aimDown", false);
+                enemyAnimator.SetBool("aimRight", false);
+                enemyAnimator.SetBool("aimLeft", false);
+                enemyAnimator.SetBool("aimUpRight", false);
+                enemyAnimator.SetBool("aimUpLeft", false);
+
+            }*/
+            else if (aiPath.desiredVelocity.x == 0 && aiPath.desiredVelocity.y > 0)
+            {
+                enemyAnimator.SetBool("aimRight", false);
+                enemyAnimator.SetBool("aimUpRight", false);
+                enemyAnimator.SetBool("aimLeft", false);
+                enemyAnimator.SetBool("aimUpLeft", false);
+                enemyAnimator.SetBool("aimUp", true);
+                enemyAnimator.SetBool("aimDown", false);
+            }
+            else if (aiPath.desiredVelocity.x == 0 && aiPath.desiredVelocity.y < 0)
+            {
+                enemyAnimator.SetBool("aimRight", false);
+                enemyAnimator.SetBool("aimUpRight", false);
+                enemyAnimator.SetBool("aimLeft", false);
+                enemyAnimator.SetBool("aimUpLeft", false);
+                enemyAnimator.SetBool("aimUp", false);
+                enemyAnimator.SetBool("aimDown", true);
+            }
+        }
+        else if(isMoving == false)
+        {
+            enemyAnimator.SetBool("isMoving", false);
+            enemyAnimator.SetBool("isIdle", true);
+            enemyAnimator.SetBool("aimRight", false);
+            enemyAnimator.SetBool("aimUpRight", false);
+            enemyAnimator.SetBool("aimLeft", false);
+            enemyAnimator.SetBool("aimUpLeft", false);
+            enemyAnimator.SetBool("aimUp", false);
+            enemyAnimator.SetBool("aimDown", true);
+        }
     }
 }
