@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class EnemyWeapon : MonoBehaviour
 {
+    public static EnemyWeapon instance;
 
     private EnemyShooting _enemyShooting;
     public bool enemyShouldShoot;
@@ -13,7 +14,12 @@ public class EnemyWeapon : MonoBehaviour
     public float timeBetweenShots = 1f;
     private float shotCounter = 1f;
 
-    public float shootRange = 4f;
+    public float shotRange = 4f;
+    public bool hasShotRange;
+    private void Awake()
+    {
+        instance = this;
+    }
 
     private void Start()
     {
@@ -22,17 +28,26 @@ public class EnemyWeapon : MonoBehaviour
 
     void Update()
     {
-        if(enemyShouldShoot && _enemyShooting.GetDistance(_enemyShooting.GetNearestPlayer(gameObject),gameObject) < shootRange)
+        if(enemyShouldShoot == true && hasShotRange == false)
         {
-            if (shotCounter > 0)
-            {
-                shotCounter -= Time.deltaTime;
-            }
-            else
-            {
-                shotCounter = timeBetweenShots;
-                Instantiate(projectileObject, projectileFirePoint.position, projectileFirePoint.rotation);
-            }
+            Shoot();
+        }
+        else if (hasShotRange && _enemyShooting.GetDistance(_enemyShooting.GetNearestPlayer(gameObject), gameObject) < shotRange)
+        {
+            Shoot();
+        }
+    }
+
+    public void Shoot()
+    {
+        if (shotCounter > 0)
+        {
+            shotCounter -= Time.deltaTime;
+        }
+        else
+        {
+            shotCounter = timeBetweenShots;
+            Instantiate(projectileObject, projectileFirePoint.position, projectileFirePoint.rotation);
         }
     }
 }

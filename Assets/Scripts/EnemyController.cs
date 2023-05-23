@@ -25,7 +25,11 @@ public class EnemyController : MonoBehaviourPunCallbacks
 
     public GameObject hitEffect;
     public List<ItemScriptable> possibleItems;
-    
+
+    public SpriteRenderer enemySpriteRenderer;
+    public Color enemyRedMonkColor = new Color(1, 0, 0);
+    public Color defaultEnemyColor = new Color(1, 1, 1);
+
     //Exp amount
     public int enemyExp = 1;
 
@@ -37,6 +41,9 @@ public class EnemyController : MonoBehaviourPunCallbacks
 
     public bool isMoving;
     //public Vector2 playerEnemyDistanceVector;
+
+    public bool isRedMonk = false;
+    public bool isOwlWarden = false;
 
     private void Awake()
     {
@@ -107,6 +114,8 @@ public class EnemyController : MonoBehaviourPunCallbacks
         {
             aiPath.target = _enemyShooting.GetNearestPlayer(gameObject);
         }
+
+        EnemyTypeController();
 
         //aiPath.whenCloseToDestination = CloseToDestinationMode.Stop;
     }
@@ -307,6 +316,31 @@ public class EnemyController : MonoBehaviourPunCallbacks
             enemyAnimator.SetBool("aimUpLeft", false);
             enemyAnimator.SetBool("aimUp", false);
             enemyAnimator.SetBool("aimDown", true);
+        }
+    }
+
+    public void EnemyTypeController()
+    {
+        if(isRedMonk == true)
+        {
+            EnemyWeapon.instance.enemyShouldShoot = true;
+            if (isMoving == false)
+            {
+                EnemyWeapon.instance.shotRange = 0f;
+                EnemyWeapon.instance.timeBetweenShots = 0.75f;
+                enemySpriteRenderer = GetComponent<SpriteRenderer>();
+                enemySpriteRenderer.color = enemyRedMonkColor;
+
+                //EnemyWeapon.instance.enemyShouldShoot = true;
+                //EnemyWeapon.instance.shotRange = aiPath.endReachedDistance + 2f;
+            }
+            else if (isMoving == true)
+            {
+                EnemyWeapon.instance.shotRange = 10f;
+                EnemyWeapon.instance.timeBetweenShots = 2f;
+                enemySpriteRenderer = GetComponent<SpriteRenderer>();
+                enemySpriteRenderer.color = defaultEnemyColor;
+            }
         }
     }
 }
