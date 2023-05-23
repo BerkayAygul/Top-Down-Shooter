@@ -4579,6 +4579,14 @@ PrefabInstance:
       propertyPath: currentClassImage
       value: 
       objectReference: {fileID: 2119716093}
+    - target: {fileID: 8041298330087658224, guid: ea8c0650ad1c2234da889df7b4ba513c, type: 3}
+      propertyPath: classImages.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8041298330087658224, guid: ea8c0650ad1c2234da889df7b4ba513c, type: 3}
+      propertyPath: classImages.Array.data[1]
+      value: 
+      objectReference: {fileID: 1795650247, guid: a47294d8f066c634d90ee371916313ff, type: 3}
     - target: {fileID: 8041298330087658225, guid: ea8c0650ad1c2234da889df7b4ba513c, type: 3}
       propertyPath: m_RootOrder
       value: 3

@@ -12,11 +12,23 @@ public class SkillTreeController : MonoBehaviour
     [SerializeField] private GameObject skillTreePanel;
     private GameObject player;
     private PlayerAttributes playerAttributes;
+    
     public TextMeshProUGUI dexText, strText, vitText, intText;
     public TextMeshProUGUI remainStatText;
     public TextMeshProUGUI currentExpText,maxExpText;
     public TextMeshProUGUI levelText;
     public TextMeshProUGUI classText;
+    
+    //Upgrade Section
+    [SerializeField] private GameObject attackUpButton;
+    [SerializeField] private GameObject hpUpButton;
+    [SerializeField] private GameObject speedUpButton;
+    [SerializeField] private GameObject specialUpButton;
+
+    [SerializeField] private TextMeshProUGUI attackLevelText;
+    [SerializeField] private TextMeshProUGUI speedLevelText;
+    [SerializeField] private TextMeshProUGUI hpLevelText;
+    [SerializeField] private TextMeshProUGUI specialLevelText;
     public Image expBarImage;
     public GameObject skillChoosePanel;
 
@@ -63,13 +75,16 @@ public class SkillTreeController : MonoBehaviour
 
     private void UpdateText()
     {
-        dexText.text = playerAttributes.speedLevel.ToString();
-        vitText.text = playerAttributes.vitality.ToString();
-        intText.text = playerAttributes.intelligence.ToString();
-        strText.text = playerAttributes.damage.ToString();
-        remainStatText.text = playerAttributes.statPoints.ToString();
+        // dexText.text = playerAttributes.speedLevel.ToString();
+        // vitText.text = playerAttributes.vitality.ToString();
+        // intText.text = playerAttributes.intelligence.ToString();
+        // strText.text = playerAttributes.damage.ToString();
+        // remainStatText.text = playerAttributes.statPoints.ToString();
         classText.text = playerAttributes.playerClass.ToString();
-
+        hpLevelText.text = "Level:" + playerAttributes.vitality.ToString();
+        specialLevelText.text = "Level:" + playerAttributes.specialLevel.ToString();
+        speedLevelText.text = "Level:" + playerAttributes.speedLevel.ToString();
+        attackLevelText.text = "Level:" + playerAttributes.damageLevel.ToString();
     }
     public void UpdateExpValuesOnText()
     {
@@ -147,7 +162,15 @@ public class SkillTreeController : MonoBehaviour
             playerAttributes.leftSkillPoint--;
             playerAttributes.damageLevel++;
             playerAttributes.AttackUp();
-            UpdateText();
+            if (playerAttributes.damageLevel >= 5)
+            {
+                attackUpButton.GetComponent<Button>().interactable = false;
+                attackLevelText.text = "Maxed Out";
+            }
+            else
+            {
+                attackLevelText.text = "Level:" + playerAttributes.damageLevel.ToString();
+            }
             if (playerAttributes.leftSkillPoint <= 0)
             {
                CloseSkillChoosePanel();
@@ -161,7 +184,15 @@ public class SkillTreeController : MonoBehaviour
             playerAttributes.leftSkillPoint--;
             playerAttributes.vitality++;
             playerAttributes.HpUp();
-            UpdateText();
+            if (playerAttributes.vitality >= 5)
+            {
+                hpUpButton.GetComponent<Button>().interactable = false;
+                hpLevelText.text = "Maxed Out";
+            }
+            else
+            {
+                hpLevelText.text = "Level:" + playerAttributes.vitality.ToString();
+            }
             if (playerAttributes.leftSkillPoint <= 0)
             {
                 CloseSkillChoosePanel();
@@ -175,6 +206,15 @@ public class SkillTreeController : MonoBehaviour
             playerAttributes.leftSkillPoint--;
             playerAttributes.speedLevel++;
             playerAttributes.SpeedUp();
+            if (playerAttributes.speedLevel >= 5)
+            {
+                speedUpButton.GetComponent<Button>().interactable = false;
+                speedLevelText.text = "Maxed Out";
+            }
+            else
+            {
+                speedLevelText.text = "Level:" + playerAttributes.speedLevel.ToString();
+            }
             if (playerAttributes.leftSkillPoint <= 0)
             {
                 CloseSkillChoosePanel();
@@ -187,6 +227,15 @@ public class SkillTreeController : MonoBehaviour
         {
             playerAttributes.leftSkillPoint--;
             playerAttributes.specialLevel++;
+            if (playerAttributes.specialLevel >= 5)
+            {
+                specialUpButton.GetComponent<Button>().interactable = false;
+                specialLevelText.text = "Maxed Out";
+            }
+            else
+            {
+                specialLevelText.text = "Level:" + playerAttributes.specialLevel.ToString();
+            }
             if (playerAttributes.leftSkillPoint <= 0)
             {
                 CloseSkillChoosePanel();

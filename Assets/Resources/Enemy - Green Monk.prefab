@@ -319,7 +319,7 @@ GameObject:
   - component: {fileID: 376348933047507864}
   - component: {fileID: 1845215639}
   m_Layer: 8
-  m_Name: Enemy - Blue Monk
+  m_Name: Enemy - Green Monk
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -378,8 +378,8 @@ MonoBehaviour:
   aiPath: {fileID: 376348933047507856}
   isMoving: 0
   isRedMonk: 0
-  isBlueMonk: 1
-  isGreenMonk: 0
+  isBlueMonk: 0
+  isGreenMonk: 1
   isOwlWarden: 0
 --- !u!95 &376348933047507861
 Animator:
@@ -421,7 +421,7 @@ MonoBehaviour:
   observableSearch: 0
   ObservedComponents:
   - {fileID: 376348933047507863}
-  sceneViewId: 6
+  sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
 --- !u!114 &376348933047507863
@@ -517,7 +517,7 @@ MonoBehaviour:
   rotationSpeed: 360
   slowdownDistance: 0.6
   pickNextWaypointDist: 1
-  endReachedDistance: 10
+  endReachedDistance: 5
   alwaysDrawGizmos: 0
   slowWhenNotFacingTarget: 1
   whenCloseToDestination: 0
@@ -653,7 +653,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyShouldShoot: 1
-  projectileObject: {fileID: 792493161297836614, guid: 2af8385c380248f43a7818316204c442, type: 3}
+  projectileObject: {fileID: 792493161297836614, guid: 27cf958228d1bbc4fbf7b8d20e54eb69, type: 3}
   projectileFirePoint: {fileID: 376348932431162386}
   timeBetweenShots: 1
   shotRange: 4

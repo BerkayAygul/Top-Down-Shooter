@@ -92,14 +92,6 @@ public class EnemyController : MonoBehaviourPunCallbacks
             transform.localScale = new Vector3(1f, 1f, 1f);
         }
 
-        if (moveDirection != Vector3.zero)
-        {
-            skeletonAnimator.SetBool("isSkeletonMoving", true);
-        }
-        else
-        {
-            skeletonAnimator.SetBool("isSkeletonMoving", false);
-        } 
         */
         #endregion
 
@@ -230,7 +222,7 @@ public class EnemyController : MonoBehaviourPunCallbacks
 
     public void EnemyAnimationCheck()
     {
-        if (isMoving == true)
+        if (isMoving == true && !isBoss)
         {
             enemyAnimator.SetBool("isMoving", true);
             enemyAnimator.SetBool("isIdle", false);
@@ -310,7 +302,7 @@ public class EnemyController : MonoBehaviourPunCallbacks
                 enemyAnimator.SetBool("aimDown", true);
             }
         }
-        else if(isMoving == false)
+        else if(isMoving == false && !isBoss)
         {
             enemyAnimator.SetBool("isMoving", false);
             enemyAnimator.SetBool("isIdle", true);
@@ -320,6 +312,17 @@ public class EnemyController : MonoBehaviourPunCallbacks
             enemyAnimator.SetBool("aimUpLeft", false);
             enemyAnimator.SetBool("aimUp", false);
             enemyAnimator.SetBool("aimDown", true);
+        }
+        else if(isMoving && isBoss)
+        {
+            if (aiPath.desiredVelocity != Vector3.zero)
+            {
+                enemyAnimator.SetBool("isSkeletonMoving", true);
+            }
+            else
+            {
+                enemyAnimator.SetBool("isSkeletonMoving", false);
+            } 
         }
     }
 

@@ -99,12 +99,20 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c09888da7402b1f40abbf34357c407fd, type: 2}
   - {fileID: 11400000, guid: 7705c792579882c4286d4d6b8956fe57, type: 2}
   - {fileID: 11400000, guid: 6424a516cbfbf7745877e951bd40a799, type: 2}
+  enemySpriteRenderer: {fileID: 0}
+  enemyRedMonkColor: {r: 1, g: 0, b: 0, a: 1}
+  enemyBlueMonkColor: {r: 0, g: 0, b: 1, a: 1}
+  enemyGreenMonkColor: {r: 0, g: 1, b: 0, a: 1}
+  defaultEnemyColor: {r: 1, g: 1, b: 1, a: 1}
   enemyExp: 15
   pw: {fileID: 0}
   isBoss: 0
   aiPath: {fileID: 3222648027916965366}
-  enemyAnimationManager: {fileID: 0}
   isMoving: 0
+  isRedMonk: 0
+  isBlueMonk: 0
+  isGreenMonk: 0
+  isOwlWarden: 0
 --- !u!61 &2996410614592613705
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -368,7 +376,8 @@ MonoBehaviour:
   projectileObject: {fileID: 792493161297836614, guid: 99789675af2734c4d8262d7b61317135, type: 3}
   projectileFirePoint: {fileID: 2996410614559993235}
   timeBetweenShots: 1
-  shootRange: 10
+  shotRange: 4
+  hasShotRange: 0
 --- !u!1 &2996410615443219250
 GameObject:
   m_ObjectHideFlags: 0

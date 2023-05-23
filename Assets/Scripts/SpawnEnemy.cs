@@ -52,7 +52,11 @@ public class SpawnEnemy : MonoBehaviour
         if (spawnTimer >= waves[currentWaveCount].spawnInterval)
         {
             spawnTimer = 0;
-            SpawnEnemies();
+            if (PhotonNetwork.IsConnected && PhotonNetwork.IsMasterClient)
+            {
+                SpawnEnemies();
+            }
+            
         }
     }
 
