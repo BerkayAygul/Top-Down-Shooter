@@ -517,6 +517,9 @@ MonoBehaviour:
   - {fileID: 6474952590870359616}
   - {fileID: 6782580252532533621}
   timeBetweenShots: 0.3
+  granadeObject: {fileID: 0}
+  granadeShootPoint: {fileID: 0}
+  granedeTimeBetweenShoots: 2
 --- !u!114 &1788963834233626685
 MonoBehaviour:
   m_ObjectHideFlags: 0

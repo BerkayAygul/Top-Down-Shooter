@@ -9,8 +9,17 @@ public class PlayerWeapon : MonoBehaviourPunCallbacks
 {
     public GameObject projectileObject;
     public List<Transform> projectileFirePoints;
-    public float timeBetweenShots = 0.3f;
+    public float timeBetweenShots = 0.5f;
     private float shotCounter = 1;
+    
+    [SerializeField]
+    private GameObject granadeObject;
+    [SerializeField]
+    private GameObject granadeShootPoint;
+    public float granedeTimeBetweenShoots = 2f;
+    private float granadeCounter = 2f;
+    
+    
     private GameObject player;
     private PlayerAttributes playerAttributes;
     private Rigidbody2D projectileRB;
@@ -47,14 +56,22 @@ public class PlayerWeapon : MonoBehaviourPunCallbacks
                         GunnerShooting();
                         shotCounter = timeBetweenShots;
                     }
-                    else if (player.GetComponent<PlayerAttributes>().playerClass == PlayerData.Classes.ninja && isNinjaWeaponOnPlayer)
+                }
+            }
+
+            if (granadeCounter > 0)
+            {
+                granadeCounter -= Time.deltaTime;
+            }
+            else
+            {
+                if (Input.GetMouseButtonDown(0) || Input.GetMouseButton(0))
+                {
+                    if (player.GetComponent<PlayerAttributes>().playerClass == PlayerData.Classes.ninja)
                     {
-                        SetNinjaWeaponScale();
                         NinjaShooting();
-                        shotCounter = timeBetweenShots;
+                        granadeCounter = granedeTimeBetweenShoots;
                     }
-                    
-                    
                 }
             }
         }
@@ -109,30 +126,8 @@ public class PlayerWeapon : MonoBehaviourPunCallbacks
                 break;
         }
     }
-    public void SetNinjaWeaponScale()
-    {
-        
-        switch (player.GetComponent<PlayerAttributes>().specialLevel)
-        {
-            case 1:
-                gameObject.transform.localScale = Vector3.one * 1f;
-                break;
-            case 2:
-                gameObject.transform.DOScale(Vector3.one * 1.5f, 0);
-                break;
-            case 3:
-                gameObject.transform.DOScale(Vector3.one * 2f, 0);
-                break;
-            case 4:
-                gameObject.transform.DOScale(Vector3.one * 2.5f, 0);
-                break;
-            case 5:
-                gameObject.transform.DOScale(Vector3.one * 3f, 0);
-                break;
-        }
-    }
 
-    
+
     public void GunnerShooting()
     {
         foreach (var point in projectileFirePoints)
@@ -147,9 +142,15 @@ public class PlayerWeapon : MonoBehaviourPunCallbacks
     }
     public void NinjaShooting()
     {
-        isNinjaWeaponOnPlayer = false;
-        StartCoroutine(MoveProjectile());
+        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        GameObject granade = PhotonNetwork.Instantiate(granadeObject.name, granadeShootPoint.transform.position, granadeShootPoint.transform.rotation);
+        granade.transform.DORotate(Vector3.forward * 360,.75f,RotateMode.FastBeyond360);
+        granade.transform.DOMove(mousePos,1f).OnComplete(() =>
+        {
+            Destroy(granade);
+        });
     }
+    
     public IEnumerator MoveProjectile()
     {
         projectileRB.AddForce(transform.right * ninjaWeaponSpeed*3,ForceMode2D.Impulse);
