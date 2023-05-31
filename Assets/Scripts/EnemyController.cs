@@ -94,6 +94,16 @@ public class EnemyController : MonoBehaviourPunCallbacks
 
         */
         #endregion
+        
+        if(enemyRB.velocity.x <= 0 && enemyRB.velocity.y <= 0)
+        {
+            if (enemyAnimator.enabled == false)
+            {
+                enemyAnimator.enabled = true;
+                GetComponent<AIDestinationSetter>().enabled = true;
+                GetComponent<AIPath>().enabled = true;
+            }
+        }
 
         if(aiPath.desiredVelocity.magnitude >= 0.01f)
         {
@@ -104,6 +114,7 @@ public class EnemyController : MonoBehaviourPunCallbacks
         {
             isMoving = false;
             EnemyAnimationCheck();
+            
         }
 
         if (_enemyShooting.GetNearestPlayer(gameObject) != null)

@@ -109,7 +109,7 @@ public class PlayerAttributes : MonoBehaviourPunCallbacks
             Vector3 mousePosition = Input.mousePosition;
             Vector3 screenPoint = cinemachineBrain.OutputCamera.WorldToScreenPoint(transform.localPosition);
 
-            if(mousePosition.x < screenPoint.x && playerClass == PlayerData.Classes.gunner)
+            if(mousePosition.x < screenPoint.x /*&& playerClass == PlayerData.Classes.gunner*/)
             {
                 transform.localScale = new Vector3(-1f, 1f, 1f);
                 playerWeaponHand.localScale = new Vector3(-1f, -1f, 1f);
@@ -117,10 +117,7 @@ public class PlayerAttributes : MonoBehaviourPunCallbacks
             else
             {
                 transform.localScale = Vector3.one;
-                if (playerClass == PlayerData.Classes.gunner)
-                {
-                    playerWeaponHand.localScale = Vector3.one;
-                }
+                playerWeaponHand.localScale = Vector3.one;
             }
 
             Vector2 weaponOffset = new Vector2(mousePosition.x - screenPoint.x, mousePosition.y - screenPoint.y);
