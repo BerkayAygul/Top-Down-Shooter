@@ -39,7 +39,7 @@ public class PlayerSpawner : MonoBehaviour
         {
             player = PhotonNetwork.Instantiate(playerPrefabs[0].name, spawnPoint.position, spawnPoint.rotation);
         }
-        else if(ClassScriptable.instance.currentClass == PlayerData.Classes.ninja)
+        else if(ClassScriptable.instance.currentClass == PlayerData.Classes.commando)
         {
             player = PhotonNetwork.Instantiate(playerPrefabs[1].name, spawnPoint.position, spawnPoint.rotation);
         }
@@ -66,7 +66,7 @@ public class PlayerSpawner : MonoBehaviour
             case PlayerData.Classes.gunner:
                 playerSprite.sprite = classSprites[0];
                 break;
-            case PlayerData.Classes.ninja:
+            case PlayerData.Classes.commando:
                 playerSprite.sprite = classSprites[1];
                 break;
         }

@@ -24,6 +24,6 @@ public class PlayerData
    public enum Classes
    {
       gunner,
-      ninja,
+      commando,
    }
 }

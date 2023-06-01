@@ -535,7 +535,7 @@ GameObject:
   - component: {fileID: 1011041029229113464}
   - component: {fileID: 4502082974428572162}
   m_Layer: 6
-  m_Name: Ninja
+  m_Name: Commando
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

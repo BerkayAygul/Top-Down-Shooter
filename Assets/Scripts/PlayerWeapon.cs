@@ -67,7 +67,7 @@ public class PlayerWeapon : MonoBehaviourPunCallbacks
             {
                 if (Input.GetMouseButtonDown(0) || Input.GetMouseButton(0))
                 {
-                    if (player.GetComponent<PlayerAttributes>().playerClass == PlayerData.Classes.ninja)
+                    if (player.GetComponent<PlayerAttributes>().playerClass == PlayerData.Classes.commando)
                     {
                         NinjaShooting();
                         granadeCounter = granedeTimeBetweenShoots;
@@ -82,7 +82,7 @@ public class PlayerWeapon : MonoBehaviourPunCallbacks
         {
             PhotonNetwork.Instantiate(projectileObject.GetComponent<PlayerProjectile>().projectileImpactEffect.name, transform.position, transform.rotation);
             
-            if (collisionObject.tag == "Enemy" && playerAttributes.playerClass == PlayerData.Classes.ninja)
+            if (collisionObject.tag == "Enemy" && playerAttributes.playerClass == PlayerData.Classes.commando)
             {
                 EnemyController enemy = collisionObject.gameObject.GetComponent<EnemyController>();
                 enemy.pw.RPC("TakeDamage", RpcTarget.All, player.GetComponent<PlayerAttributes>().damage/2, PhotonNetwork.LocalPlayer.ActorNumber);
