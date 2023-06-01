@@ -15,7 +15,7 @@ public class Granade : MonoBehaviourPunCallbacks
     public float explodeRadius;
     public int damage;
     private PlayerAttributes player;
-
+    GameObject explosionEffect;
     private void Start()
     {
         GetPlayer();
@@ -43,8 +43,12 @@ public class Granade : MonoBehaviourPunCallbacks
         damage = player.damage/2;
         explodeRadius = 1 + player.specialLevel/2;
         explodeForce += player.specialLevel*100;
-        GameObject explosionEffect = PhotonNetwork.Instantiate("ExplosionEffect", transform.position, quaternion.identity);
-        explosionEffect.transform.DOScale(Vector3.one*explodeRadius/2, 0);
+        if(photonView.IsMine)
+        {
+            GameObject explosionEffect = PhotonNetwork.Instantiate("ExplosionEffect", transform.position, quaternion.identity);
+            photonView.RPC("GrenadeHitEffectMovement", RpcTarget.All);
+        }
+        //explosionEffect.transform.DOScale(Vector3.one*explodeRadius/2, 0);
         Collider2D[] enemiesInRange = Physics2D.OverlapCircleAll(gameObject.transform.position,explodeRadius);
         foreach (var col in enemiesInRange)
         {
@@ -62,6 +66,12 @@ public class Granade : MonoBehaviourPunCallbacks
             }
             
         }
+    }
+
+    [PunRPC]
+    public void GrenadeHitEffectMovement()
+    {
+        explosionEffect.transform.DOScale(Vector3.one* explodeRadius/2, 0);
     }
 
     IEnumerator ExplodeGranade()

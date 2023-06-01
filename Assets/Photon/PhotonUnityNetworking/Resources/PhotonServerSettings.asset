@@ -52,6 +52,9 @@ MonoBehaviour:
   - NinjaShooting
   - MoveGranade
   - DestroyGranade
+  - GrenadeHitEffect
+  - GrenadeEffectMovement
+  - GrenadeHitEffectMovement
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 0
