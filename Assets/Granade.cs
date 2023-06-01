@@ -29,7 +29,6 @@ public class Granade : MonoBehaviourPunCallbacks
     {
         if(photonView.IsMine && (other.CompareTag("Tilemap_Collision") || other.CompareTag("Enemy")))
         {
-            Destroy(gameObject);
             photonView.RPC("DestroyGranade", RpcTarget.All);
         }
     }
