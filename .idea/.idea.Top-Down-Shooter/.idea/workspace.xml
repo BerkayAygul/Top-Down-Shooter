@@ -6,15 +6,16 @@
   <component name="ChangeListManager">
     <list default="true" id="1f07465a-6a25-40b2-b548-ff0c735a7fed" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Top-Down-Shooter/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Top-Down-Shooter/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Granade.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Granade.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Resources/PhotonServerSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Resources/PhotonServerSettings.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Resources/Bullet Impact Effect.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Bullet Impact Effect.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Enemy - Boss.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Enemy - Boss.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Enemy - Skeleton.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Enemy - Skeleton.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Enemy - Blue Monk.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Enemy - Blue Monk.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Enemy - Green Monk.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Enemy - Green Monk.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Enemy - Red Monk.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Enemy - Red Monk.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Resources/Enemy Hurt Effect .prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Enemy Hurt Effect .prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Resources/Player Hurt Effect.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Player Hurt Effect.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Player Projectile.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Player Projectile.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Level.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Level.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/PlayerGranade.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/PlayerGranade.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerWeapon.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerWeapon.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -129,6 +130,7 @@
       <workItem from="1684524161936" duration="5687000" />
       <workItem from="1684788292750" duration="5004000" />
       <workItem from="1684794236927" duration="952000" />
+      <workItem from="1685619862777" duration="3482000" />
     </task>
     <servers />
   </component>
