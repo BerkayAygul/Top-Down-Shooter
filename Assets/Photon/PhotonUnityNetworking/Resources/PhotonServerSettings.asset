@@ -49,6 +49,9 @@ MonoBehaviour:
   - InstantiateProjectileEffect
   - RPCInstantiateEffect
   - InstantiateEffect
+  - NinjaShooting
+  - MoveGranade
+  - DestroyGranade
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 0

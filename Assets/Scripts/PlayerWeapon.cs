@@ -144,11 +144,6 @@ public class PlayerWeapon : MonoBehaviourPunCallbacks
     {
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         GameObject granade = PhotonNetwork.Instantiate(granadeObject.name, granadeShootPoint.transform.position, granadeShootPoint.transform.rotation);
-        granade.transform.DORotate(Vector3.forward * 360,.75f,RotateMode.FastBeyond360);
-        granade.transform.DOMove(mousePos,1f).OnComplete(() =>
-        {
-            Destroy(granade);
-        });
     }
     
     public IEnumerator MoveProjectile()
