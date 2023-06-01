@@ -393,8 +393,8 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 2ae33b558d7cc2d42b32f0db72a33a11, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
+  m_UpdateMode: 1
+  m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_WarningMessage: 
@@ -496,7 +496,7 @@ MonoBehaviour:
   radius: 0.5
   height: 2
   canMove: 1
-  maxSpeed: 0
+  maxSpeed: 3
   gravity: {x: NaN, y: NaN, z: NaN}
   groundMask:
     serializedVersion: 2
@@ -655,7 +655,7 @@ MonoBehaviour:
   enemyShouldShoot: 1
   projectileObject: {fileID: 792493161297836614, guid: 27cf958228d1bbc4fbf7b8d20e54eb69, type: 3}
   projectileFirePoint: {fileID: 376348932431162386}
-  timeBetweenShots: 1
+  timeBetweenShots: 1.5
   shotRange: 4
   hasShotRange: 0
 --- !u!1 &376348933315849688
