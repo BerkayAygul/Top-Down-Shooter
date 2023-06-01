@@ -121,7 +121,7 @@ public class ServerLauncher : MonoBehaviourPunCallbacks
             // using Photon.Realtime
             #endregion
             RoomOptions options = new RoomOptions();
-            options.MaxPlayers = 8;
+            options.MaxPlayers = 2;
 
             PhotonNetwork.CreateRoom(roomNameInput.text, options);
 
@@ -291,6 +291,8 @@ public class ServerLauncher : MonoBehaviourPunCallbacks
     public void StartGame()
     {
         PhotonNetwork.LoadLevel(levelNameToPlay);
+        PhotonNetwork.CurrentRoom.IsOpen = false;
+        PhotonNetwork.CurrentRoom.IsVisible = false;
     }
     public override void OnMasterClientSwitched(Player newMasterClient)
     {
@@ -312,5 +314,12 @@ public class ServerLauncher : MonoBehaviourPunCallbacks
     public void ChooseCharacter()
     {
         choosePanel.SetActive(true);
+    }
+
+    public override void OnJoinRoomFailed(short returnCode, string message)
+    {
+        errorText.text = "Failed to create a room: " + message;
+        CloseMenus();
+        errorPanel.SetActive(true);
     }
 }
