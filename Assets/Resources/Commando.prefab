@@ -55,7 +55,7 @@ MonoBehaviour:
   m_Follow: {fileID: 7646298474353698960}
   m_Lens:
     FieldOfView: 60
-    OrthographicSize: 5
+    OrthographicSize: 6.5
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
@@ -732,6 +732,7 @@ MonoBehaviour:
   playerMaxHealth: 1000
   playerCurrentHealth: 0
   hitEffect: {fileID: 8150682208409160637, guid: 41b8f29dfea2ab64fa18a7f480965650, type: 3}
+  localPlayerActorNumber: 0
 --- !u!95 &7646298474353698964
 Animator:
   serializedVersion: 4
