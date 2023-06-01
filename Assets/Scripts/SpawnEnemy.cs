@@ -35,6 +35,8 @@ public class SpawnEnemy : MonoBehaviour
    public int enemiesAlive;
    public int maxEnemiesAllowed;
    public bool maxEnemiesReached = false;
+   public AudioSource audioSource;
+   public AudioClip bossSound;
    
     void Start()
     {
@@ -45,6 +47,11 @@ public class SpawnEnemy : MonoBehaviour
     {
         if(currentWaveCount < waves.Count && waves[currentWaveCount].spawnCount == 0)
         {
+            if (currentWaveCount == 1)
+            {
+                audioSource.clip = bossSound;
+                audioSource.Play();
+            }
             StartCoroutine(BeginNextWave());
         }
         

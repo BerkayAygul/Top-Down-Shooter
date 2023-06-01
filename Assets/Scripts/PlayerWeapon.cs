@@ -26,6 +26,8 @@ public class PlayerWeapon : MonoBehaviourPunCallbacks
     private float ninjaWeaponSpeed = 4.5f;
     private Vector2 ninjaWeaponBasePosition;
     private bool isNinjaWeaponOnPlayer = true;
+    public AudioSource audioSource;
+    public AudioClip shootSFX;
     private void Start()
     {
         player = SkillTreeController.instance.GetPlayerObject();
@@ -52,6 +54,7 @@ public class PlayerWeapon : MonoBehaviourPunCallbacks
                 {
                     if (player.GetComponent<PlayerAttributes>().playerClass == PlayerData.Classes.gunner)
                     {
+                        
                         SetBulletPoints();
                         GunnerShooting();
                         shotCounter = timeBetweenShots;
@@ -130,6 +133,7 @@ public class PlayerWeapon : MonoBehaviourPunCallbacks
 
     public void GunnerShooting()
     {
+        audioSource.PlayOneShot(shootSFX);
         foreach (var point in projectileFirePoints)
         {
             if (point.gameObject.activeInHierarchy)
@@ -142,6 +146,7 @@ public class PlayerWeapon : MonoBehaviourPunCallbacks
     }
     public void NinjaShooting()
     {
+        audioSource.PlayOneShot(shootSFX);
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         GameObject granade = PhotonNetwork.Instantiate(granadeObject.name, granadeShootPoint.transform.position, granadeShootPoint.transform.rotation);
     }
