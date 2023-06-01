@@ -10,11 +10,14 @@ public class RoomBrowse : MonoBehaviour
 
     private RoomInfo roomInfo;
 
+    public TMP_Text roomPlayerCountText;
+
     public void SetButtonDetails(RoomInfo inputInfo)
     {
         roomInfo = inputInfo;
 
         roomButtonText.text = roomInfo.Name;
+        roomPlayerCountText.text = "Player Count: " + roomInfo.PlayerCount + "/" + roomInfo.MaxPlayers;
     }
 
     public void OpenRoom()
