@@ -49,6 +49,8 @@ public class EnemyController : MonoBehaviourPunCallbacks
     public bool isGreenMonk = false;
     public bool isOwlWarden = false;
 
+    public bool isHitByStunned = false;
+    public Sprite MonkhitSprite;
     private void Awake()
     {
         pw = GetComponent<PhotonView>();
@@ -94,34 +96,8 @@ public class EnemyController : MonoBehaviourPunCallbacks
 
         */
         #endregion
-        
-        if(enemyRB.velocity.x <= 0 && enemyRB.velocity.y <= 0)
-        {
-            if (enemyAnimator.enabled == false)
-            {
-                enemyAnimator.enabled = true;
-                GetComponent<AIDestinationSetter>().enabled = true;
-                GetComponent<AIPath>().enabled = true;
-            }
-        }
 
-        if(aiPath.desiredVelocity.magnitude >= 0.01f)
-        {
-            isMoving = true;
-            EnemyAnimationCheck();
-        }
-        else if(aiPath.desiredVelocity.magnitude == 0f)
-        {
-            isMoving = false;
-            EnemyAnimationCheck();
-            
-        }
-
-        if (_enemyShooting.GetNearestPlayer(gameObject) != null)
-        {
-            aiPath.target = _enemyShooting.GetNearestPlayer(gameObject);
-        }
-
+        EnemyMovement();
         EnemyTypeController();
 
         //aiPath.whenCloseToDestination = CloseToDestinationMode.Stop;
@@ -339,68 +315,132 @@ public class EnemyController : MonoBehaviourPunCallbacks
 
     public void EnemyTypeController()
     {
-        if(isRedMonk == true)
+        if(!isHitByStunned)
         {
-            EnemyWeapon.instance.enemyShouldShoot = true;
-            if (isMoving == false)
+            if (isRedMonk == true)
             {
-                EnemyWeapon.instance.shotRange = 0f;
-                EnemyWeapon.instance.timeBetweenShots = 0.75f;
-                enemySpriteRenderer = GetComponent<SpriteRenderer>();
-                enemySpriteRenderer.color = enemyRedMonkColor;
+                EnemyWeapon.instance.enemyShouldShoot = true;
+                if (isMoving == false)
+                {
+                    EnemyWeapon.instance.shotRange = 0f;
+                    EnemyWeapon.instance.timeBetweenShots = 0.75f;
+                    enemySpriteRenderer = GetComponent<SpriteRenderer>();
+                    enemySpriteRenderer.color = enemyRedMonkColor;
 
-                //EnemyWeapon.instance.enemyShouldShoot = true;
-                //EnemyWeapon.instance.shotRange = aiPath.endReachedDistance + 2f;
+                    //EnemyWeapon.instance.enemyShouldShoot = true;
+                    //EnemyWeapon.instance.shotRange = aiPath.endReachedDistance + 2f;
+                }
+                else if (isMoving == true)
+                {
+                    EnemyWeapon.instance.shotRange = 10f;
+                    EnemyWeapon.instance.timeBetweenShots = 2f;
+                    enemySpriteRenderer = GetComponent<SpriteRenderer>();
+                    enemySpriteRenderer.color = defaultEnemyColor;
+                }
             }
-            else if (isMoving == true)
+            else if (isBlueMonk == true)
             {
-                EnemyWeapon.instance.shotRange = 10f;
-                EnemyWeapon.instance.timeBetweenShots = 2f;
-                enemySpriteRenderer = GetComponent<SpriteRenderer>();
-                enemySpriteRenderer.color = defaultEnemyColor;
+                EnemyWeapon.instance.enemyShouldShoot = true;
+                if (isMoving == false)
+                {
+                    EnemyWeapon.instance.shotRange = 0f;
+                    EnemyWeapon.instance.timeBetweenShots = 1.5f;
+                    enemySpriteRenderer = GetComponent<SpriteRenderer>();
+                    enemySpriteRenderer.color = enemyBlueMonkColor;
+
+                    //EnemyWeapon.instance.enemyShouldShoot = true;
+                    //EnemyWeapon.instance.shotRange = aiPath.endReachedDistance + 2f;
+                }
+                else if (isMoving == true)
+                {
+                    EnemyWeapon.instance.shotRange = 10f;
+                    EnemyWeapon.instance.timeBetweenShots = 1f;
+                    enemySpriteRenderer = GetComponent<SpriteRenderer>();
+                    enemySpriteRenderer.color = defaultEnemyColor;
+                }
+            }
+            else if (isGreenMonk == true)
+            {
+                EnemyWeapon.instance.enemyShouldShoot = true;
+                if (isMoving == false)
+                {
+                    EnemyWeapon.instance.shotRange = 0f;
+                    EnemyWeapon.instance.timeBetweenShots = 1f;
+                    enemySpriteRenderer = GetComponent<SpriteRenderer>();
+                    enemySpriteRenderer.color = enemyGreenMonkColor;
+
+                    //EnemyWeapon.instance.enemyShouldShoot = true;
+                    //EnemyWeapon.instance.shotRange = aiPath.endReachedDistance + 2f;
+                }
+                else if (isMoving == true)
+                {
+                    EnemyWeapon.instance.shotRange = 10f;
+                    EnemyWeapon.instance.timeBetweenShots = 1f;
+                    enemySpriteRenderer = GetComponent<SpriteRenderer>();
+                    enemySpriteRenderer.color = defaultEnemyColor;
+                }
             }
         }
-        else if (isBlueMonk == true)
+        else if(isHitByStunned)
         {
-            EnemyWeapon.instance.enemyShouldShoot = true;
-            if (isMoving == false)
-            {
-                EnemyWeapon.instance.shotRange = 0f;
-                EnemyWeapon.instance.timeBetweenShots = 1.5f;
-                enemySpriteRenderer = GetComponent<SpriteRenderer>();
-                enemySpriteRenderer.color = enemyBlueMonkColor;
-
-                //EnemyWeapon.instance.enemyShouldShoot = true;
-                //EnemyWeapon.instance.shotRange = aiPath.endReachedDistance + 2f;
-            }
-            else if (isMoving == true)
+            if(isBlueMonk || isRedMonk || isGreenMonk)
             {
                 EnemyWeapon.instance.shotRange = 10f;
-                EnemyWeapon.instance.timeBetweenShots = 1f;
+                EnemyWeapon.instance.timeBetweenShots = 10f;
                 enemySpriteRenderer = GetComponent<SpriteRenderer>();
-                enemySpriteRenderer.color = defaultEnemyColor;
+                enemySpriteRenderer.color = Color.magenta;
+                enemySpriteRenderer.sprite = MonkhitSprite;
             }
         }
-        else if (isGreenMonk == true)
+    }
+    public void EnemyMovement()
+    {
+        if (!isHitByStunned)
         {
-            EnemyWeapon.instance.enemyShouldShoot = true;
-            if (isMoving == false)
+            if (enemyRB.velocity.x <= 0 && enemyRB.velocity.y <= 0)
             {
-                EnemyWeapon.instance.shotRange = 0f;
-                EnemyWeapon.instance.timeBetweenShots = 1f;
-                enemySpriteRenderer = GetComponent<SpriteRenderer>();
-                enemySpriteRenderer.color = enemyGreenMonkColor;
-
-                //EnemyWeapon.instance.enemyShouldShoot = true;
-                //EnemyWeapon.instance.shotRange = aiPath.endReachedDistance + 2f;
+                if (enemyAnimator.enabled == false)
+                {
+                    enemyAnimator.enabled = true;
+                    GetComponent<AIDestinationSetter>().enabled = true;
+                    GetComponent<AIPath>().enabled = true;
+                }
             }
-            else if (isMoving == true)
+
+            if (aiPath.desiredVelocity.magnitude >= 0.01f)
             {
-                EnemyWeapon.instance.shotRange = 10f;
-                EnemyWeapon.instance.timeBetweenShots = 1f;
-                enemySpriteRenderer = GetComponent<SpriteRenderer>();
-                enemySpriteRenderer.color = defaultEnemyColor;
+                isMoving = true;
+                EnemyAnimationCheck();
+            }
+            else if (aiPath.desiredVelocity.magnitude == 0f)
+            {
+                isMoving = false;
+                EnemyAnimationCheck();
+
+            }
+
+            if (_enemyShooting.GetNearestPlayer(gameObject) != null)
+            {
+                aiPath.target = _enemyShooting.GetNearestPlayer(gameObject);
             }
         }
+    }
+
+    IEnumerator EnemyStun()
+    {
+        isHitByStunned = true;
+        aiPath.target = null;
+        GetComponent<AIDestinationSetter>().enabled = false;
+        GetComponent<AIPath>().enabled = false;
+        enemyAnimator.enabled = false;
+        //isMoving = true;
+        EnemyWeapon.instance.enemyShouldShoot = false;
+        yield return new WaitForSeconds(1f);
+        isHitByStunned = false;
+        EnemyAnimationCheck();
+        enemyAnimator.enabled = true;
+        aiPath.target = _enemyShooting.GetNearestPlayer(gameObject);
+        GetComponent<AIDestinationSetter>().enabled = true;
+        GetComponent<AIPath>().enabled = true;
     }
 }

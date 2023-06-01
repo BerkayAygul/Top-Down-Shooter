@@ -8088,18 +8088,18 @@ MonoBehaviour:
   waves:
   - waveName: Wave 1
     enemyGroups:
+    - enemyName: Red Monk
+      enemyCount: 2
+      spawnCount: 0
+      enemyPrefab: {fileID: 376348933047507820, guid: b26cbeaf279e5344d966b92222289136, type: 3}
     - enemyName: Blue Monk
-      enemyCount: 3
+      enemyCount: 2
       spawnCount: 0
       enemyPrefab: {fileID: 376348933047507820, guid: bd5a79b7a57442c43ae8ce385cc1800f, type: 3}
     - enemyName: Green Monk
-      enemyCount: 5
+      enemyCount: 2
       spawnCount: 0
       enemyPrefab: {fileID: 376348933047507820, guid: caf1c13341d28a345bc20b8e9c076d9a, type: 3}
-    - enemyName: Red Monk
-      enemyCount: 6
-      spawnCount: 0
-      enemyPrefab: {fileID: 376348933047507820, guid: b26cbeaf279e5344d966b92222289136, type: 3}
     waveQuota: 0
     spawnInterval: 3
     spawnCount: 0

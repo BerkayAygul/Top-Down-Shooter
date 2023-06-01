@@ -381,6 +381,8 @@ MonoBehaviour:
   isBlueMonk: 0
   isGreenMonk: 0
   isOwlWarden: 0
+  isHitByStunned: 0
+  MonkhitSprite: {fileID: 6517734362387777984, guid: cc879386e01af5c42856164a95c9b9be, type: 3}
 --- !u!95 &376348933047507861
 Animator:
   serializedVersion: 4

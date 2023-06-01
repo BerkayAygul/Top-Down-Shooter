@@ -112,6 +112,8 @@ MonoBehaviour:
   isBlueMonk: 0
   isGreenMonk: 0
   isOwlWarden: 0
+  isHitByStunned: 0
+  MonkhitSprite: {fileID: 0}
 --- !u!61 &2996410614592613705
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -56,6 +56,7 @@ public class Granade : MonoBehaviourPunCallbacks
                 col.gameObject.GetComponent<AIPath>().enabled = false;
                 Rigidbody2D rb2d = col.GetComponent<Rigidbody2D>();
                 Vector2 direction = col.transform.position - transform.position;
+                enemy.StartCoroutine("EnemyStun");
                 enemy.pw.RPC("TakeDamage", RpcTarget.All, damage, PhotonNetwork.LocalPlayer.ActorNumber);
                 rb2d.AddForce(direction * explodeForce,ForceMode2D.Impulse);
             }
