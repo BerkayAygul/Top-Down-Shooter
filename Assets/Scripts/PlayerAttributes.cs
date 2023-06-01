@@ -27,7 +27,7 @@ public class PlayerAttributes : MonoBehaviourPunCallbacks
     public enum Classes
     {
         Gunner,
-        Ninja
+        Commando
     }
 
 
@@ -160,7 +160,7 @@ public class PlayerAttributes : MonoBehaviourPunCallbacks
     {
         int[] stats = new[] { 1, 1, 1, 1,0,1,100,0 };
         classAndStats[PlayerData.Classes.gunner] = stats;
-        classAndStats[PlayerData.Classes.ninja] = stats;
+        classAndStats[PlayerData.Classes.commando] = stats;
     }
     public void AddStatToClass(PlayerData.Classes pClass)
     {

@@ -26,12 +26,12 @@ public class ClassController : MonoBehaviour
     if (selectedClass == PlayerData.Classes.gunner)
     {
       currentClassImage.sprite = classImages[0];
-      currentClassName.text = selectedClass.ToString();
+      currentClassName.text = selectedClass.ToString().ToUpper();
     }
-    else if (selectedClass == PlayerData.Classes.ninja)
+    else if (selectedClass == PlayerData.Classes.commando)
     {
       currentClassImage.sprite = classImages[1];
-      currentClassName.text = selectedClass.ToString();
+      currentClassName.text = selectedClass.ToString().ToUpper();
     }
     ClassScriptable.instance.currentClass = selectedClass;
   }
@@ -40,9 +40,9 @@ public class ClassController : MonoBehaviour
   {
     if (selectedClass == PlayerData.Classes.gunner )
     {
-      selectedClass = PlayerData.Classes.ninja;
+      selectedClass = PlayerData.Classes.commando;
     }
-    else if (selectedClass == PlayerData.Classes.ninja)
+    else if (selectedClass == PlayerData.Classes.commando)
     {
       selectedClass = PlayerData.Classes.gunner;
     }
@@ -57,9 +57,9 @@ public class ClassController : MonoBehaviour
   {
     if (selectedClass == PlayerData.Classes.gunner )
     {
-      selectedClass = PlayerData.Classes.ninja;
+      selectedClass = PlayerData.Classes.commando;
     }
-    else if (selectedClass == PlayerData.Classes.ninja)
+    else if (selectedClass == PlayerData.Classes.commando)
     {
       selectedClass = PlayerData.Classes.gunner;
     }

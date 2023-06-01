@@ -25,7 +25,7 @@ public class PlayerProjectile : MonoBehaviourPunCallbacks
 
     private void OnTriggerEnter2D(Collider2D collisionObject)
     {
-        if(photonView.IsMine && collisionObject.CompareTag("Tilemap_Collision"))
+        if(photonView.IsMine /*&& /*collisionObject.CompareTag("Tilemap_Collision")*/)
         {
             PhotonNetwork.Instantiate(projectileImpactEffect.name, transform.position, transform.rotation);
             Destroy(gameObject);
