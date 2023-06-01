@@ -24,6 +24,8 @@ public class UIController : MonoBehaviour
 
     public GameObject inGameMenu;
 
+    public GameObject GameOverScreen;
+
     private void Awake()
     {
         instance = this;

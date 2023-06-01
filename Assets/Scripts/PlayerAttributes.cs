@@ -76,6 +76,8 @@ public class PlayerAttributes : MonoBehaviourPunCallbacks
 
     public GameObject hitEffect;
 
+    public int localPlayerActorNumber;
+
     private void Awake()
     {
         instance = this;
@@ -94,6 +96,8 @@ public class PlayerAttributes : MonoBehaviourPunCallbacks
 
         UIController.instance.healthSlider.maxValue = playerMaxHealth;
         UIController.instance.healthSlider.value = playerMaxHealth;
+
+        localPlayerActorNumber = photonView.ControllerActorNr;
     }
 
     void Update()
@@ -239,6 +243,7 @@ public class PlayerAttributes : MonoBehaviourPunCallbacks
         SaveSystem.SavePlayerData(this);
     }
 
+
     public PlayerData LoadPlayer()
     {
         PlayerData data = SaveSystem.LoadData();
@@ -262,6 +267,8 @@ public class PlayerAttributes : MonoBehaviourPunCallbacks
         onHpUp -= (() => { playerMaxHealth = 1000 + ((vitality - 1) * 150);
             playerCurrentHealth = playerMaxHealth;
         });
+
+        UIController.instance.healthSlider.value = playerCurrentHealth;
     }
 
     public void AttackUp()

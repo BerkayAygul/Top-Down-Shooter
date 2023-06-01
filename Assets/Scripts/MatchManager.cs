@@ -26,13 +26,13 @@ public class MatchManager : MonoBehaviourPunCallbacks, IOnEventCallback
     private float currentMatchTime;
     private bool bossAliveStatus;
     private float syncTimePerSecond = 0;
-
     public enum EventCodes : byte
     {
         NewPlayerEvent,
         ListPlayersEvent,
         UpdateStatsEvent,
-        SyncTimeEvent
+        SyncTimeEvent,
+        GameOverEvent
     }
 
     public enum GameStates : byte
@@ -46,6 +46,7 @@ public class MatchManager : MonoBehaviourPunCallbacks, IOnEventCallback
 
     public float waitGameStateTime = 8f;
 
+    public int deadPlayersCount = 0;
     private void Awake()
     {
         instance = this;
@@ -129,6 +130,11 @@ public class MatchManager : MonoBehaviourPunCallbacks, IOnEventCallback
                 }
             }
         }
+
+        if(deadPlayersCount == 2)
+        {
+            GameOverCheck();
+        }
     }
 
     public void OnEvent(EventData photonEvent)
@@ -153,6 +159,10 @@ public class MatchManager : MonoBehaviourPunCallbacks, IOnEventCallback
                 case EventCodes.SyncTimeEvent:
                     SyncTimeEventReceive(receivedData);
                     break;
+                case EventCodes.GameOverEvent:
+                    GameOverEventReceive(receivedData);
+                    break;
+
             }
         }
     }
@@ -400,7 +410,7 @@ public class MatchManager : MonoBehaviourPunCallbacks, IOnEventCallback
 
     void EndMatch()
     {
-        SavePlayer();
+        //SavePlayer();
         currentGameState = GameStates.GameEndingState;
 
         if(PhotonNetwork.IsMasterClient)
@@ -408,8 +418,11 @@ public class MatchManager : MonoBehaviourPunCallbacks, IOnEventCallback
             PhotonNetwork.DestroyAll();
         }
 
-        UIController.instance.matchEndScreen.SetActive(true);
-        ShowLeaderboard();
+        if(allPlayersList.Count != 0)
+        {
+            UIController.instance.matchEndScreen.SetActive(true);
+            ShowLeaderboard();
+        }
 
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
@@ -463,6 +476,55 @@ public class MatchManager : MonoBehaviourPunCallbacks, IOnEventCallback
         UpdateTimerUIDisplay();
 
         UIController.instance.matchTimerText.gameObject.SetActive(true);
+    }
+
+    public void GameOverEventSend(int playerActorNumber)
+    {
+        object[] package = new object[] {playerActorNumber};
+
+        PhotonNetwork.RaiseEvent
+        (
+        (byte)EventCodes.GameOverEvent,
+        package,
+        new RaiseEventOptions { Receivers = ReceiverGroup.All },
+        new SendOptions { Reliability = true }
+        );
+    }
+
+    public void GameOverEventReceive(object[] receivedData)
+    {
+        int playerActorNumber = (int)receivedData[0];
+
+        for (int i = 0; i < allPlayersList.Count; i++)
+        {
+            if(allPlayersList[i].playerActorNumber == playerActorNumber)
+             {
+                MatchManager.instance.allPlayersList.RemoveAt(i);
+                deadPlayersCount++;
+             }
+        }
+
+        if(MatchManager.instance.allPlayersList.Count == 0)
+        {
+            if (PhotonNetwork.IsMasterClient && currentGameState != GameStates.GameEndingState)
+            {
+                GameOverCheck();
+            }
+        }
+    }
+
+    public void GameOverCheck()
+    {
+        if(allPlayersList.Count == 0)
+        {
+            PhotonNetwork.DestroyAll();
+            UIController.instance.GameOverScreen.SetActive(true);
+        }
+
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
+        StartCoroutine(EndMatchCoroutine());
     }
 
 

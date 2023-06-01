@@ -857,6 +857,8 @@ MonoBehaviour:
   playerMaxHealth: 1000
   playerCurrentHealth: 0
   hitEffect: {fileID: 8150682208409160637, guid: 41b8f29dfea2ab64fa18a7f480965650, type: 3}
+  localPlayerActorNumber: 0
+  deadPlayersCount: 0
 --- !u!95 &7646298474353698964
 Animator:
   serializedVersion: 4
