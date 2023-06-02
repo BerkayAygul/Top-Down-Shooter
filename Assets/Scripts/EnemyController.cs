@@ -442,5 +442,6 @@ public class EnemyController : MonoBehaviourPunCallbacks
         aiPath.target = _enemyShooting.GetNearestPlayer(gameObject);
         GetComponent<AIDestinationSetter>().enabled = true;
         GetComponent<AIPath>().enabled = true;
+        EnemyWeapon.instance.enemyShouldShoot = true;
     }
 }
