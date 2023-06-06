@@ -47,11 +47,12 @@ GameObject:
   - component: {fileID: 6683519168775596631}
   - component: {fileID: -8586681143491651164}
   - component: {fileID: 4781969752282364260}
-  - component: {fileID: 608795675182690058}
-  - component: {fileID: 7266851664319689269}
-  - component: {fileID: 5248146855434189165}
+  - component: {fileID: 7019054316527644465}
+  - component: {fileID: 3222648027916965366}
+  - component: {fileID: -1720255519779287249}
+  - component: {fileID: 867054388900015997}
   m_Layer: 8
-  m_Name: Enemy - Boss
+  m_Name: Enemy - Skeleton 3
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -87,8 +88,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyRB: {fileID: 2996410614592613704}
-  enemyAnimator: {fileID: 2996410614592613707}
-  enemyMaxHealth: 1000
+  enemyAnimator: {fileID: 0}
+  enemyMaxHealth: 400
   currentEnemyHealth: 0
   hitEffect: {fileID: 8150682208409160637, guid: 8ed857aa4cac1d24db5d225978457151, type: 3}
   possibleItems:
@@ -103,17 +104,15 @@ MonoBehaviour:
   enemyBlueMonkColor: {r: 0, g: 0, b: 1, a: 1}
   enemyGreenMonkColor: {r: 0, g: 1, b: 0, a: 1}
   defaultEnemyColor: {r: 1, g: 1, b: 1, a: 1}
-  enemyExp: 200
+  enemyExp: 20
   pw: {fileID: 0}
-  isBoss: 1
-  aiPath: {fileID: 7266851664319689269}
+  isBoss: 0
+  aiPath: {fileID: 3222648027916965366}
   isMoving: 0
   isRedMonk: 0
   isBlueMonk: 0
   isGreenMonk: 0
   isOwlWarden: 0
-  isHitByStunned: 0
-  MonkhitSprite: {fileID: 0}
 --- !u!61 &2996410614592613705
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -152,9 +151,9 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 300
-  m_LinearDrag: 0.75
-  m_AngularDrag: 0.5
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
@@ -232,7 +231,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2304b3e1e9daea94b99b889b79a06034, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &608795675182690058
+--- !u!114 &7019054316527644465
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -260,7 +259,7 @@ MonoBehaviour:
   tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   graphMask:
     value: -1
---- !u!114 &7266851664319689269
+--- !u!114 &3222648027916965366
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -297,12 +296,12 @@ MonoBehaviour:
   rotationSpeed: 360
   slowdownDistance: 0.6
   pickNextWaypointDist: 1
-  endReachedDistance: 2.5
+  endReachedDistance: 5
   alwaysDrawGizmos: 0
   slowWhenNotFacingTarget: 1
   whenCloseToDestination: 0
   constrainInsideGraph: 0
---- !u!114 &5248146855434189165
+--- !u!114 &-1720255519779287249
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -316,6 +315,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   version: 1
   target: {fileID: 0}
+--- !u!114 &867054388900015997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2996410614592613702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69ce81e66c91b10408e466ce3afd7805, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2996410614924873158
 GameObject:
   m_ObjectHideFlags: 0
@@ -441,7 +452,7 @@ SpriteRenderer:
   m_SortingLayer: 7
   m_SortingOrder: 0
   m_Sprite: {fileID: -7537196482120660328, guid: 02027016afbc5d544ab92ba819bc8094, type: 3}
-  m_Color: {r: 1, g: 0.15566039, b: 0.17972173, a: 1}
+  m_Color: {r: 0.30019066, g: 0.8509804, b: 0.21960784, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

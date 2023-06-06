@@ -38,6 +38,12 @@ public class PlayerProjectile : MonoBehaviourPunCallbacks
                 Debug.Log("Damage: " + playerAttributes.damage);
                 enemy.pw.RPC("TakeDamage", RpcTarget.All, playerAttributes.damage, PhotonNetwork.LocalPlayer.ActorNumber);
             }
+            else if (collisionObject.tag == "EnemyBossSkullFace")
+            {
+                BossSkullFaceController skullfaceBoss = collisionObject.gameObject.GetComponent<BossSkullFaceController>();
+                Debug.Log("Damage: " + playerAttributes.damage);
+                skullfaceBoss.pw.RPC("BossSkullFaceTakeDamage", RpcTarget.All, playerAttributes.damage, PhotonNetwork.LocalPlayer.ActorNumber);
+            }
         }
     }
 
@@ -64,10 +70,13 @@ public class PlayerProjectile : MonoBehaviourPunCallbacks
     {
         foreach (var playerInList in MatchManager.instance.playersGameObjects)
         {
-            if (playerInList.GetComponent<PhotonView>().ControllerActorNr == PhotonNetwork.LocalPlayer.ActorNumber)
+            if(playerInList != null)
             {
-                player = playerInList;
-                
+                if (playerInList.GetComponent<PhotonView>().ControllerActorNr == PhotonNetwork.LocalPlayer.ActorNumber)
+                {
+                    player = playerInList;
+
+                }
             }
         }
     }

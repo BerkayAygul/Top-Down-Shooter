@@ -26,6 +26,8 @@ public class MatchManager : MonoBehaviourPunCallbacks, IOnEventCallback
     private float currentMatchTime;
     private bool bossAliveStatus;
     private float syncTimePerSecond = 0;
+
+    public int RoomQuitPlayerCount;
     public enum EventCodes : byte
     {
         NewPlayerEvent,
@@ -54,7 +56,6 @@ public class MatchManager : MonoBehaviourPunCallbacks, IOnEventCallback
 
     void Start()
     {
-        
         if(!PhotonNetwork.IsConnected)
         {
             UnityEngine.SceneManagement.SceneManager.LoadScene(0);
@@ -73,6 +74,8 @@ public class MatchManager : MonoBehaviourPunCallbacks, IOnEventCallback
                 UIController.instance.matchTimerText.gameObject.SetActive(false);
             }
         }
+
+        RoomQuitPlayerCount = 0;
     }
 
     void Update()
@@ -279,28 +282,45 @@ public class MatchManager : MonoBehaviourPunCallbacks, IOnEventCallback
 
         for (int i = 0; i < allPlayersList.Count; i++)
         {
-            if(allPlayersList[i].playerActorNumber == playerActorNumber)
+            if(isBossDefeated == false)
             {
-                switch (statTypeToUpdate)
+                if (allPlayersList[i].playerActorNumber == playerActorNumber)
                 {
-                    case 0:
-                        allPlayersList[i].playerKills += amountToChange;
-                        Debug.Log("Player " + allPlayersList[i].playerUsername + " : kills " + allPlayersList[i].playerKills);
-                        break;
-                }
+                    switch (statTypeToUpdate)
+                    {
+                        case 0:
+                            allPlayersList[i].playerKills += amountToChange;
+                            Debug.Log("Player " + allPlayersList[i].playerUsername + " : kills " + allPlayersList[i].playerKills);
+                            break;
+                    }
 
-                if (i == index)
-                {
-                    UpdateStatsDisplay();
-                }
+                    if (i == index)
+                    {
+                        UpdateStatsDisplay();
+                    }
 
-                if (UIController.instance.leaderboardTableDisplay.activeInHierarchy)
-                {
-                    ShowLeaderboard();
-                }
+                    if (UIController.instance.leaderboardTableDisplay.activeInHierarchy)
+                    {
+                        ShowLeaderboard();
+                    }
 
-                break;
+                    break;
+                }
             }
+            if(isBossDefeated == true)
+            {
+                for (int j = 0; j < allPlayersList.Count; j++)
+                {
+                    switch (statTypeToUpdate)
+                    {
+                        case 0:
+                            allPlayersList[j].playerKills += amountToChange;
+                            Debug.Log("Boss Defeated - Player " + allPlayersList[j].playerUsername + " : kills " + allPlayersList[j].playerKills);
+                            break;
+                    }
+                }
+            }
+
         }
 
         if(isBossDefeated == true)
@@ -384,6 +404,31 @@ public class MatchManager : MonoBehaviourPunCallbacks, IOnEventCallback
         UnityEngine.SceneManagement.SceneManager.LoadScene(0);
     }
 
+    public override void OnPlayerLeftRoom(Player otherPlayer)
+    {
+        RoomQuitPlayerCount++;
+
+        PhotonNetwork.DestroyPlayerObjects(otherPlayer);
+
+        for (int i = 0; i < allPlayersList.Count; i++)
+        {
+            if(otherPlayer.ActorNumber == allPlayersList[i].playerActorNumber)
+            {
+                allPlayersList.RemoveAt(i);
+            }
+        }
+
+        if(RoomQuitPlayerCount == 1 && allPlayersList.Count == 0)
+        {
+            EndMatch();
+        }
+        else if(RoomQuitPlayerCount == 1 && deadPlayersCount == 1)
+        {
+            EndMatch();
+        }
+
+        base.OnPlayerLeftRoom(otherPlayer);
+    }
     void MatchEndCheck(bool _bossDefeated)
     {
         bool bossDefeated = false;

@@ -98,7 +98,20 @@ public class PlayerSpawner : MonoBehaviour
     }
     public void Die()
     {
-        MatchManager.instance.GameOverEventSend(PlayerAttributes.instance.localPlayerActorNumber);
+        GameObject localPlayer;
+        PlayerAttributes playerAttributes = new PlayerAttributes();
+        foreach (var player in MatchManager.instance.playersGameObjects)
+        {
+
+            if (PhotonNetwork.LocalPlayer.ActorNumber == player.GetComponent<PhotonView>().ControllerActorNr)
+            {
+                localPlayer = player;
+                playerAttributes = player.GetComponent<PlayerAttributes>();
+                MatchManager.instance.GameOverEventSend(playerAttributes.localPlayerActorNumber);
+            }
+        }
+
+        //MatchManager.instance.GameOverEventSend(PlayerAttributes.instance.photonView.ControllerActorNr);
         PhotonNetwork.Destroy(player);
     }
 }

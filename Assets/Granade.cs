@@ -89,10 +89,13 @@ public class Granade : MonoBehaviourPunCallbacks
     {
         foreach (var playerInList in MatchManager.instance.playersGameObjects)
         {
-            if (playerInList.GetComponent<PhotonView>().ControllerActorNr == PhotonNetwork.LocalPlayer.ActorNumber)
+            if(playerInList != null)
             {
-                player = playerInList.GetComponent<PlayerAttributes>();
-                
+                if (playerInList.GetComponent<PhotonView>().ControllerActorNr == PhotonNetwork.LocalPlayer.ActorNumber)
+                {
+                    player = playerInList.GetComponent<PlayerAttributes>();
+
+                }
             }
         }
     }

@@ -50,7 +50,7 @@ GameObject:
   - component: {fileID: 7019054316527644465}
   - component: {fileID: 3222648027916965366}
   - component: {fileID: -1720255519779287249}
-  - component: {fileID: 867054388900015997}
+  - component: {fileID: 5653035948007824296}
   m_Layer: 8
   m_Name: Enemy - Skeleton 2
   m_TagString: Enemy
@@ -89,7 +89,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyRB: {fileID: 2996410614592613704}
   enemyAnimator: {fileID: 0}
-  enemyMaxHealth: 400
+  enemyMaxHealth: 300
   currentEnemyHealth: 0
   hitEffect: {fileID: 8150682208409160637, guid: 8ed857aa4cac1d24db5d225978457151, type: 3}
   possibleItems:
@@ -104,7 +104,7 @@ MonoBehaviour:
   enemyBlueMonkColor: {r: 0, g: 0, b: 1, a: 1}
   enemyGreenMonkColor: {r: 0, g: 1, b: 0, a: 1}
   defaultEnemyColor: {r: 1, g: 1, b: 1, a: 1}
-  enemyExp: 20
+  enemyExp: 15
   pw: {fileID: 0}
   isBoss: 0
   aiPath: {fileID: 3222648027916965366}
@@ -315,7 +315,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   version: 1
   target: {fileID: 0}
---- !u!114 &867054388900015997
+--- !u!114 &5653035948007824296
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -452,7 +452,7 @@ SpriteRenderer:
   m_SortingLayer: 7
   m_SortingOrder: 0
   m_Sprite: {fileID: -7537196482120660328, guid: 02027016afbc5d544ab92ba819bc8094, type: 3}
-  m_Color: {r: 0.30019066, g: 0.8509804, b: 0.21960784, a: 1}
+  m_Color: {r: 0.21947306, g: 0.38760352, b: 0.8490566, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

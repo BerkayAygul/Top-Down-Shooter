@@ -8,10 +8,14 @@ public class EnemyShooting
     public Transform GetNearestPlayer(GameObject gameObject)
     {
         var players = UnityEngine.Object.FindObjectsOfType<PlayerAttributes>();
+        if(players.Length == 0)
+        {
+            return null;
+        }
         Transform nearestPlayer;
         List<float> distances = new List<float>();
-        
-        for (int i = 0; i < players.Length; i++ )
+
+        for (int i = 0; i < players.Length; i++)
         {
             distances.Add(Vector3.Distance(gameObject.transform.position, players[i].transform.position));
         }

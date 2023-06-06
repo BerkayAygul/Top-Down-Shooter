@@ -13,9 +13,20 @@ public class EnemyProjectile : MonoBehaviourPunCallbacks
 
     void Start()
     {
-        _enemyShooting = new EnemyShooting();
-        projectileDirection = _enemyShooting.GetNearestPlayer(gameObject).position - transform.position;
-        projectileDirection.Normalize();
+        if(MatchManager.instance.allPlayersList.Count != 0)
+        {
+            _enemyShooting = new EnemyShooting();
+            projectileDirection = _enemyShooting.GetNearestPlayer(gameObject).position - transform.position;
+            if(projectileDirection == null)
+            {
+                Destroy(gameObject);
+            }
+            projectileDirection.Normalize();
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     void Update()

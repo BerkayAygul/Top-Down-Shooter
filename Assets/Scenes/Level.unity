@@ -156,6 +156,7 @@ MonoBehaviour:
   playersGameObjects: []
   itemTextPrefab: {fileID: 3539542682603925182, guid: 32c57df8b5f508348a60a5bcb503d5d2, type: 3}
   itemTextPanel: {fileID: 935012907}
+  RoomQuitPlayerCount: 0
   currentGameState: 0
   waitGameStateTime: 8
   deadPlayersCount: 0
@@ -8182,6 +8183,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1160800617}
   - component: {fileID: 1160800618}
+  - component: {fileID: 1160800619}
   m_Layer: 0
   m_Name: SpawnEnemy
   m_TagString: Untagged
@@ -8220,31 +8222,60 @@ MonoBehaviour:
   - waveName: Wave 1
     enemyGroups:
     - enemyName: Red Monk
-      enemyCount: 3
+      enemyCount: 4
       spawnCount: 0
       enemyPrefab: {fileID: 376348933047507820, guid: b26cbeaf279e5344d966b92222289136, type: 3}
     - enemyName: Blue Monk
-      enemyCount: 3
+      enemyCount: 4
       spawnCount: 0
       enemyPrefab: {fileID: 376348933047507820, guid: bd5a79b7a57442c43ae8ce385cc1800f, type: 3}
     - enemyName: Green Monk
-      enemyCount: 3
+      enemyCount: 4
       spawnCount: 0
       enemyPrefab: {fileID: 376348933047507820, guid: caf1c13341d28a345bc20b8e9c076d9a, type: 3}
     waveQuota: 0
-    spawnInterval: 5
+    spawnInterval: 6
     spawnCount: 0
   - waveName: Boss Wave
     enemyGroups:
-    - enemyName: Boss
+    - enemyName: Enemy - Skull Face Boss
       enemyCount: 1
       spawnCount: 0
-      enemyPrefab: {fileID: 2996410614592613702, guid: 70f3b1b6e938b514a8e2d704e5368011, type: 3}
+      enemyPrefab: {fileID: 7836097827271504222, guid: bdb54b52fe895b341997cdaaaeeda94d, type: 3}
     waveQuota: 0
     spawnInterval: 2
     spawnCount: 0
   currentWaveCount: 0
   waveInterval: 60
+  enemiesAlive: 0
+  maxEnemiesAllowed: 30
+  maxEnemiesReached: 0
+  audioSource: {fileID: 286156950}
+  bossSound: {fileID: 8300000, guid: 70298172d88ca2b4fb08d70a5c52c99b, type: 3}
+--- !u!114 &1160800619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1160800615}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 597b0a77cb3698142b3edbcce4a4a938, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waves:
+  - waveName: Boss Wave
+    enemyGroups:
+    - enemyName: Enemy - Skull Face Boss
+      enemyCount: 1
+      spawnCount: 0
+      enemyPrefab: {fileID: 7836097827271504222, guid: bdb54b52fe895b341997cdaaaeeda94d, type: 3}
+    waveQuota: 0
+    spawnInterval: 2
+    spawnCount: 0
+  currentWaveCount: 0
+  waveInterval: 5
   enemiesAlive: 0
   maxEnemiesAllowed: 30
   maxEnemiesReached: 0
@@ -10678,7 +10709,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5570228502712638113, guid: eb68fca41d99a8e4f8dc7bf9ea85a00f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.08
       objectReference: {fileID: 0}
     - target: {fileID: 5570228502712638113, guid: eb68fca41d99a8e4f8dc7bf9ea85a00f, type: 3}
       propertyPath: m_LocalPosition.y
@@ -10715,6 +10746,10 @@ PrefabInstance:
     - target: {fileID: 5570228502712638113, guid: eb68fca41d99a8e4f8dc7bf9ea85a00f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5570228502712638114, guid: eb68fca41d99a8e4f8dc7bf9ea85a00f, type: 3}
+      propertyPath: data.dataString
+      value: UEsDBBQAAAgIAAAQIew6ZeuGfAIAADgFAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFlVF1zojAU/StOntcOIIu6b7vU2n1o69Td6QsvES6SMSRMPqq243/fmwBCXV8M536dc3LhkzChG8iNVGvFiidZAPkxIe5Mvk2G4COc6F6KLfuAPueNFaZySdTnvFLDJOKhK9OyBqNY/lPsuUsOELSClVLVq2IPqdRGI1xSrgFDShpXLRD6nJAT/k2XruSMp2juTh94WgaTCx5zEAbUKDW8WwbzWbxIZqtpkHRlwd3S/+Ik7srDu/liEc6SKMK0uW9lRc5p3UDhdA0d4352HPs0gYq7DKcul5wz3dEl5tx4O1LaaItiMaFgFOV7ji6/AravjJMyLn4pSw2m80bR8z1T6GLblfySrbU11YeW1zvl1s2JgnjhSbVdn/5LmIY+XCpZP/aDw8ANMRXLD6/0nFNtRuaP4fuvzK04Un6gOw5vFYhnuVbSigKDRllXajVE98PjVVtaQX4Y8JbqDWibwfDe7/6mnYaLl39KOat3/j7jFthy6Q33CwIKr+Y3Evbro7sWiDoWfzX8ofvxnnWBB6a0wVCnUjh6O2mVSyUr75lTY00qlQAPd6QbEJSb8wbbmNs7vImNxt5EHqh7o7rhXax/UW5KPDzkB8FNaCOP18vSlTw+ga5erOFMwEDaBZ7Rp1QK0a7Y2JO+bGtVSfNR2d6y4utqkXlMaTKjwfeg2C2W88U0onkYlUGQR0m0i8uE+N1jAnVSvmmJdvbgrYmhucA96z80k7WijV/3QtHjmn3UcmQ5E6Xc5gpAvLQdrsRB4RB8LYtVwdCgLRjDhL9v8pkRLvMDFNm1UeaVrk5G0WzokpGGvUvjkIyk/suSEQdfd3mj4J3B0Q3vm13I5R9QSwMEFAAACAgAABAh7Ah8IY1tAAAAeAAAAAkAJABtZXRhLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQGrVipLLSrOzM9TslIw0TPSMzTXUVBKL0osyCgGihiCOKWZKSB2tJK5SWKimXGigalBSpKFpbmFrlFisqFRmoFBspGZUZJJmplSLFB9SWVBql9ibipET0BiSUZaZl5KZl66nntRZoo7yGil2FoAUEsBAi0AFAAACAgAABAh7Dpl64Z8AgAAOAUAAAsAJAAAAAAAAAAAAAAAAAAAAGdyYXBoMC5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0BUEsBAi0AFAAACAgAABAh7Ah8IY1tAAAAeAAAAAkAJAAAAAAAAAAAAAAAyQIAAG1ldGEuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAVBLBQYAAAAAAgACALgAAACBAwAAAAA=
       objectReference: {fileID: 0}
     - target: {fileID: 5570228502712638115, guid: eb68fca41d99a8e4f8dc7bf9ea85a00f, type: 3}
       propertyPath: m_Name

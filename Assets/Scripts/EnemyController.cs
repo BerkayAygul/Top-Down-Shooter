@@ -11,6 +11,8 @@ using Pathfinding;
 
 public class EnemyController : MonoBehaviourPunCallbacks
 {
+    private BossSkullFaceController _bossSkullFaceController;
+
     private EnemyShooting _enemyShooting;
     //public float moveSpeed;
     public Rigidbody2D enemyRB;
@@ -48,9 +50,17 @@ public class EnemyController : MonoBehaviourPunCallbacks
     public bool isBlueMonk = false;
     public bool isGreenMonk = false;
     public bool isOwlWarden = false;
+    public bool isSkeleton = false;
 
     public bool isHitByStunned = false;
     public Sprite MonkhitSprite;
+
+    public GameObject necromancingVFX;
+    public GameObject InstantiatedNecromancingEffect;
+    public Transform necromancingVFXPosition;
+
+    int killerPlayerActorNumber;
+    int nonKillerPlayerActorNumber;
     private void Awake()
     {
         pw = GetComponent<PhotonView>();
@@ -64,6 +74,12 @@ public class EnemyController : MonoBehaviourPunCallbacks
         if(_enemyShooting.GetNearestPlayer(gameObject) != null)
         {
             aiPath.target = _enemyShooting.GetNearestPlayer(gameObject);
+        }
+
+        if(isSkeleton == true)
+        {
+            _bossSkullFaceController = FindObjectOfType<BossSkullFaceController>();
+            InstantiatedNecromancingEffect = PhotonNetwork.Instantiate(necromancingVFX.name, necromancingVFXPosition.position, necromancingVFXPosition.rotation);
         }
     }
 
@@ -124,13 +140,11 @@ public class EnemyController : MonoBehaviourPunCallbacks
                     MatchManager.instance.UpdateStatsEventSend(damagerPlayerActorNumber, 0, 1, true);
                 }
                 RandomItemAddToPlayer(damagerPlayerActorNumber);
-                GiveExp(enemyExp,damagerPlayerActorNumber);
+                //GiveExp(enemyExp,damagerPlayerActorNumber);
+                photonView.RPC("GiveExp", RpcTarget.All, enemyExp, damagerPlayerActorNumber);
                 DestroyObject();
-                
             }
         }
-        
-      
     }
     
     private void RandomItemAddToPlayer( int playerActorNumber)
@@ -190,26 +204,54 @@ public class EnemyController : MonoBehaviourPunCallbacks
         return "Bir hata ortaya cikti";
     }
 
-    public void GiveExp(int amount, int actorNumber)
+    [PunRPC]
+    public void GiveExp(int amount, int _killerPlayerActorNumber)
     {
+        int totalPlayers = MatchManager.instance.allPlayersList.Count;
+        
         foreach (var player in MatchManager.instance.playersGameObjects)
         {
-            int playerActorNumber = player.GetComponent<PhotonView>().ControllerActorNr;
+            int getPlayerActorNumber = player.GetComponent<PhotonView>().ControllerActorNr;
             PlayerAttributes playerAttributes = player.GetComponent<PlayerAttributes>();
-            if ( playerActorNumber== actorNumber)
+
+            if(getPlayerActorNumber == _killerPlayerActorNumber)
             {
-                playerAttributes.GetExp(amount);
+                if(getPlayerActorNumber == playerAttributes.photonView.ControllerActorNr)
+                {
+                    killerPlayerActorNumber = getPlayerActorNumber;
+                    playerAttributes.GetExp(amount);
+                }
+
+            }
+            else if(getPlayerActorNumber != _killerPlayerActorNumber && totalPlayers == 2)
+            {
+                if(getPlayerActorNumber == playerAttributes.photonView.ControllerActorNr)
+                {
+                    nonKillerPlayerActorNumber = getPlayerActorNumber;
+                    playerAttributes.GetExp(amount/2);
+                }
             }
         }
     }
     public void DestroyObject()
     {
+        if(isSkeleton)
+        {
+            if(_bossSkullFaceController != null)
+            {
+                _bossSkullFaceController.currentNecromanceEnemyCount--;
+            }
+            else
+            {
+                Debug.LogWarning("BossSkullFaceController not found! But still spawned skeleton should be destroyed");
+            }
+        }
         PhotonNetwork.Destroy(gameObject);
     }
 
     public void EnemyAnimationCheck()
     {
-        if (isMoving == true && !isBoss)
+        if (isMoving == true && !isSkeleton)
         {
             enemyAnimator.SetBool("isMoving", true);
             enemyAnimator.SetBool("isIdle", false);
@@ -289,7 +331,7 @@ public class EnemyController : MonoBehaviourPunCallbacks
                 enemyAnimator.SetBool("aimDown", true);
             }
         }
-        else if(isMoving == false && !isBoss)
+        else if(isMoving == false && !isSkeleton)
         {
             enemyAnimator.SetBool("isMoving", false);
             enemyAnimator.SetBool("isIdle", true);
@@ -300,10 +342,18 @@ public class EnemyController : MonoBehaviourPunCallbacks
             enemyAnimator.SetBool("aimUp", false);
             enemyAnimator.SetBool("aimDown", true);
         }
-        else if(isMoving && isBoss)
+        else if(isSkeleton)
         {
             if (aiPath.desiredVelocity != Vector3.zero)
             {
+                if(aiPath.desiredVelocity.x >= 0.01f)
+                {
+                    transform.localScale = new Vector3(-1f, 1f, 1f);
+                }
+                else if(aiPath.desiredVelocity.x <= -0.01f)
+                {
+                    transform.localScale = new Vector3(1f, 1f, 1f);
+                }
                 enemyAnimator.SetBool("isSkeletonMoving", true);
             }
             else
@@ -379,6 +429,13 @@ public class EnemyController : MonoBehaviourPunCallbacks
                     enemySpriteRenderer = GetComponent<SpriteRenderer>();
                     enemySpriteRenderer.color = defaultEnemyColor;
                 }
+            }
+            else if(isSkeleton == true)
+            {
+                //aiPath.target = null;
+                EnemyWeapon.instance.enemyShouldShoot = true;
+                EnemyWeapon.instance.shotRange = 0f;
+                EnemyWeapon.instance.timeBetweenShots = 1f;
             }
         }
         else if(isHitByStunned)

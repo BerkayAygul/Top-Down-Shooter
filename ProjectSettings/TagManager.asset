@@ -15,6 +15,7 @@ TagManager:
   - Tilemap_Minimap
   - ninjaweapon
   - Tilemap_EnemyMovement
+  - EnemyBossSkullFace
   layers:
   - Default
   - TransparentFX
@@ -61,23 +62,23 @@ TagManager:
   - name: L_Tilemap_Ground_Decoration2
     uniqueID: 1859688181
     locked: 0
-  - name: VFX
-    uniqueID: 3493449915
-    locked: 0
   - name: Player_Body
     uniqueID: 4018716385
     locked: 0
-  - name: Player_Bullet
-    uniqueID: 1469125127
-    locked: 0
   - name: Enemy_Body
     uniqueID: 169502241
+    locked: 0
+  - name: Player_Bullet
+    uniqueID: 1469125127
     locked: 0
   - name: Enemy_Projectile
     uniqueID: 3809394659
     locked: 0
   - name: L_Tilemap_Front
     uniqueID: 2973379485
+    locked: 0
+  - name: VFX
+    uniqueID: 3493449915
     locked: 0
   - name: L_Tilemap_Collision
     uniqueID: 1517875377

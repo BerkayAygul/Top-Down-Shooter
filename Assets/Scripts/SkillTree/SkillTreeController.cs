@@ -42,7 +42,12 @@ public class SkillTreeController : MonoBehaviour
         GetPlayer();
        
         Debug.Log("Girdi"); 
-        playerAttributes = player.GetComponent<PlayerAttributes>();
+
+        if(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex != 0)
+        {
+            playerAttributes = player.GetComponent<PlayerAttributes>();
+        }
+
         UpdateText();
         UpdateExpValuesOnText();
         
