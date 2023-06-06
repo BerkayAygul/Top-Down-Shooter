@@ -202,6 +202,7 @@ public class BossSkullFaceController : MonoBehaviour
                 aiPath.target = null;
                 aiPath.maxSpeed = 0;
                 InstantiatedNecromancerEffect = PhotonNetwork.Instantiate(necromancerVFX.name, necromancerVFXPosition.position, necromancerVFXPosition.rotation);
+                InstantiatedNecromancerEffect.transform.SetParent(transform);
                 enemyRB.bodyType = RigidbodyType2D.Kinematic;
                 break;
             case BossSkullFacePhaseCodes.ThirdPhase:

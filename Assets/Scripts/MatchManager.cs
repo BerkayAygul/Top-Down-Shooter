@@ -333,11 +333,11 @@ public class MatchManager : MonoBehaviourPunCallbacks, IOnEventCallback
     {
         if (allPlayersList.Count > index)
         {
-            UIController.instance.killStatText.text = "Kills: " + allPlayersList[index].playerKills;
+            UIController.instance.killStatText.text = "Score: " + allPlayersList[index].playerKills;
         }
         else
         {
-            UIController.instance.killStatText.text = "Kills: 0 ";
+            UIController.instance.killStatText.text = "Score: 0 ";
         }
     }
 
@@ -440,6 +440,7 @@ public class MatchManager : MonoBehaviourPunCallbacks, IOnEventCallback
             if(PhotonNetwork.IsMasterClient && currentGameState != GameStates.GameEndingState)
             {
                 currentGameState = GameStates.GameEndingState;
+                UpdateStatsDisplay();
                 ListPlayerEventSend();
             }
         }
