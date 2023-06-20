@@ -6677,7 +6677,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &935012908
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8213,7 +8213,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1160800615}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 597b0a77cb3698142b3edbcce4a4a938, type: 3}
   m_Name: 
@@ -8222,15 +8222,15 @@ MonoBehaviour:
   - waveName: Wave 1
     enemyGroups:
     - enemyName: Red Monk
-      enemyCount: 4
+      enemyCount: 5
       spawnCount: 0
       enemyPrefab: {fileID: 376348933047507820, guid: b26cbeaf279e5344d966b92222289136, type: 3}
     - enemyName: Blue Monk
-      enemyCount: 4
+      enemyCount: 5
       spawnCount: 0
       enemyPrefab: {fileID: 376348933047507820, guid: bd5a79b7a57442c43ae8ce385cc1800f, type: 3}
     - enemyName: Green Monk
-      enemyCount: 4
+      enemyCount: 5
       spawnCount: 0
       enemyPrefab: {fileID: 376348933047507820, guid: caf1c13341d28a345bc20b8e9c076d9a, type: 3}
     waveQuota: 0
@@ -8259,7 +8259,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1160800615}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 597b0a77cb3698142b3edbcce4a4a938, type: 3}
   m_Name: 

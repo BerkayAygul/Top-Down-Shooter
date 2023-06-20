@@ -840,7 +840,7 @@ MonoBehaviour:
   cinemachineBrain: {fileID: 0}
   playerCamera: {fileID: 7366989115990223325}
   playerAnimator: {fileID: 7646298474353698964}
-  damage: 100
+  damage: 40
   damageLevel: 1
   specialLevel: 1
   speedLevel: 1

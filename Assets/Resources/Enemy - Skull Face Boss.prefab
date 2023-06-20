@@ -752,7 +752,7 @@ MonoBehaviour:
   enemyShouldNecromance: 0
   enemyShouldMoveAnimation: 0
   enemyShouldIdleAnimation: 0
-  enemyToNecromance: {fileID: 2996410614592613702, guid: 70f3b1b6e938b514a8e2d704e5368011, type: 3}
+  enemyToNecromance: {fileID: 2996410614592613702, guid: 4bb8a4219aa3cbb4ebfb325c65ba9cbe, type: 3}
   isNecromancing: 0
   currentNecromanceEnemyCount: 0
   necromancerVFX: {fileID: 8665047562849328717, guid: 9ad4e77e3b89c5f4c8026fe89fb8deba, type: 3}
